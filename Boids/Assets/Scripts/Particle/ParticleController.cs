@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    // Used for testing, will be removed once the merge happens on Tuesday
     public float maxX = 11.4f;
     public float maxY = 5f;
+
+    private float initEnergy = 1f;
+    private float currEnergy;
 
     public List<ParticleController> neighbors = new List<ParticleController>();
     private ParticleMovement movement;
@@ -30,11 +32,14 @@ public class ParticleController : MonoBehaviour
         aliWeight = Random.Range(0f, 1f);
         cohWeight = Random.Range(0f, 1f);
         sepWeight = Random.Range(0f, 1f);
+
+        currEnergy = initEnergy;
     }
 
     private void Update()
     {
         ParticleWrap();
+        UpdateEnergy();
     }
 
     private void FixedUpdate()
@@ -56,6 +61,15 @@ public class ParticleController : MonoBehaviour
             gameObject.transform.position *= -1;
             gameObject.transform.position += new Vector3(normVel.x, normVel.y, 0);
         }
+    }
+
+    private void UpdateEnergy()
+    {
+        if (currEnergy <= 0)
+        {
+            //Kill effect
+        }
+        currEnergy -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
