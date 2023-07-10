@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 42ac9c7d2e2abd64e9b958df48ba8763
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Ysabeau Office
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d1852774338091341bf2e9f04ab17190, type: 3}
+  - {fileID: 12800000, guid: 31677c6174308604381cd5db2a3f4f50, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
