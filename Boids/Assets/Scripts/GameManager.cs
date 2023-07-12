@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; // For scene management
 using TMPro; // For input fields
 
 public class GameManager : MonoBehaviour{
-    private static GameManager _instance;
+    public static GameManager _instance;
     public static GameManager Instance{
         get{
             if(_instance == null){
@@ -61,52 +61,33 @@ public class GameManager : MonoBehaviour{
 
 
 
-    public void FlagInvalidEntry() {
-        warningText.text = "Invalid Entry. Please enter a positive, whole number for both fields.";
-        particleInput.text = "";
-        foodInput.text = "";
-    }
-
-    public void ClearWarning() {
-        warningText.text = "";
-    }
+   
 
     public void StartGame(){
-        // Parse the text in the input fields to get the initial values
-        int initialParticles = int.Parse(particleInput.text);
-        int initialFood = int.Parse(foodInput.text);
+        //Validate input is present and parse into integers
+        int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+        int initialFood = ValidateEntry.ValidateInput(foodInput.text);
 
-        // Store the initial particle and food counts
-        PlayerPrefs.SetInt("InitialParticles", initialParticles);
-        PlayerPrefs.SetInt("InitialFood", initialFood);
-
-        // Load the game scene
-        SceneManager.LoadScene("GameScene"); // Replace "GameScene" with the name of your main game scene
-
-        //Testing:
-        Debug.Log("InitialFood is now " + initialFood + " and InitialParticles is now " + initialParticles);
-    }
-
-    public void ValidateEntry() {
-        if (particleInput.text != "") {
-            if (int.Parse(particleInput.text) > 0) {
-                if (foodInput.text != "") {
-                    if (int.Parse(foodInput.text) > 0) {
-                        ClearWarning();
-                        StartGame();
-                    } else {
-                        FlagInvalidEntry();
-                    }
-                } else {
-                    FlagInvalidEntry();
-                }
-            } else {
-                FlagInvalidEntry();
-            }
+        //Checks for and flags invalid entries:
+        if (initialParticles == -1 || initialFood == -1) {
+            ValidateEntry.FlagInvalidEntry();
         } else {
-            FlagInvalidEntry();
+            ValidateEntry.ClearWarning();
+        
+
+            // Store the initial particle and food counts
+            PlayerPrefs.SetInt("InitialParticles", initialParticles);
+            PlayerPrefs.SetInt("InitialFood", initialFood);
+
+            // Load the game scene
+            SceneManager.LoadScene("Game"); // Replace "GameScene" with the name of your main game scene
+
+            //Testing:
+            Debug.Log("InitialFood is now " + initialFood + " and InitialParticles is now " + initialParticles);
         }
     }
+
+
 
     public void EndGame(){
         // Load the main menu scene
