@@ -10,50 +10,71 @@ public class ParticleMovement : MonoBehaviour
     {
         pc = this.GetComponent<ParticleController>();
     }
-    public Vector3 alignment()
+    public Vector2 alignment()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
                 v.x += n.rb2d.velocity.x;
                 v.y += n.rb2d.velocity.y;
             }
-            v /= pc.neighbors.Count;
+            v /= pc.particleNeighbors.Count;
             v.Normalize();
         }
         return v;
     }
 
-    public Vector3 cohesion()
+    public Vector2 cohesion()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
-                v += n.gameObject.transform.position;
+                v.x += n.gameObject.transform.position.x;
+                v.y += n.gameObject.transform.position.y;
             }
-            v /= pc.neighbors.Count;
-            v -= pc.gameObject.transform.position;
+            v /= pc.particleNeighbors.Count;
+            v.x -= pc.gameObject.transform.position.x;
+            v.y -= pc.gameObject.transform.position.y;
             v.Normalize();
         }
         return v;
     }
 
-    public Vector3 seperation()
+    public Vector2 seperation()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
-                v += n.gameObject.transform.position - pc.gameObject.transform.position;
+                v.x += n.gameObject.transform.position.x - pc.gameObject.transform.position.x;
+                v.y += n.gameObject.transform.position.y - pc.gameObject.transform.position.y;
             }
             v *= -1;
             v.Normalize();
         }
+        return v;
+    }
+
+    public Vector2 nearestFood()
+    {
+        Vector2 v = Vector2.zero;
+        if (pc.foodNeighbors.Count == 0)
+            return Vector2.zero;
+        foreach (GameObject food in pc.foodNeighbors)
+        {
+            if(v == Vector2.zero)
+                v = food.transform.position - pc.gameObject.transform.position;
+            else if ((food.transform.position - pc.gameObject.transform.position).magnitude < v.magnitude)
+            {
+                v = food.transform.position - pc.gameObject.transform.position;
+            }
+        }
+        v.Normalize();
         return v;
     }
 }

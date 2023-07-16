@@ -4,23 +4,59 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
+    /*
+     * The current behaviour of the boids (going in one direction with little change)
+     * is due to the lack of goal setting, since they have no reason to change once
+     * they find a flock.
+     * 
+     * Goal Examples:
+     * http://www.kfish.org/boids/pseudocode.html
+     */
+    public Transform gfx;
+
     public float maxX = 11.4f;
     public float maxY = 5f;
 
-    private float initEnergy = 1f;
+    public float initEnergy = 1f;
     private float currEnergy;
 
-    public List<ParticleController> neighbors = new List<ParticleController>();
+    public List<ParticleController> particleNeighbors = new List<ParticleController>();
+    public List<GameObject> foodNeighbors = new List<GameObject>();
     private ParticleMovement movement;
-    [SerializeField]
+
+    [HideInInspector]
     public Rigidbody2D rb2d;
+
     public float speed = 1f;
-    private Vector3 ali;
+    public float maxSpeed = 3f;
+    private Vector2 ali;
     public float aliWeight;
-    private Vector3 coh;
+    private Vector2 coh;
     public float cohWeight;
-    private Vector3 sep;
+    private Vector2 sep;
     public float sepWeight;
+
+    /*
+     * States should be on a fixed percentage. Ex: 0<=Hungry<40<=Content<70<=Reproduce<100
+     * This needs to be put on a variable so it can be randomized later. Note: These variables
+     * can heavily change the behaviour of the particles, so very high/low values might lead to
+     * some issues
+     * 
+     * Tried to make the states more realistics by adding a max weight for hungry and reproduce.
+     * It works by finding percentage of the percentage energy within the specific state (Ex: 
+     * initEnergy = 1f, currEnergyPercent = .15f, hungerPercent = .3f, hungerWeightPercent = 
+     * .5f, and if the max weight is 10f then the weight for the hunger vector is 5f)
+     */
+    public enum States { Hungry, Content, Reproduce}
+    public States currState;
+    public float hungryPercent = .3f;
+    private Vector2 food;
+    public float maxHungryWeight = 10f;
+    public float currHungryWeight = 0f;
+    public float reproducePercent = .7f;
+    private Vector2 mate;
+    public float maxReproduceWeight = 10f;
+    public float currReproduceWeight = 0f;
 
     private void Awake()
     {
@@ -29,17 +65,19 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed;
 
-        aliWeight = Random.Range(0f, 1f);
-        cohWeight = Random.Range(0f, 1f);
-        sepWeight = Random.Range(0f, 1f);
+        aliWeight = Random.Range(0f, 2f);
+        cohWeight = Random.Range(0f, 2f);
+        sepWeight = Random.Range(0f, 2f);
 
         currEnergy = initEnergy;
     }
 
     private void Update()
     {
+        StateControl();
         ParticleWrap();
         UpdateEnergy();
+        Look();
     }
 
     private void FixedUpdate()
@@ -47,8 +85,35 @@ public class ParticleController : MonoBehaviour
         ali = movement.alignment() * aliWeight;
         coh = movement.cohesion() * cohWeight;
         sep = movement.seperation() * sepWeight;
-        rb2d.velocity += new Vector2(ali.x + coh.x + sep.x, ali.y + coh.y + sep.y);
+        food = movement.nearestFood() * currHungryWeight;
+        rb2d.velocity += ali + coh + sep + food;
         rb2d.velocity = rb2d.velocity.normalized * speed;
+
+        if (rb2d.velocity.magnitude > maxSpeed)
+        {
+            rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
+        }
+    }
+
+    private void StateControl()
+    {
+        float currEnergyPercent = currEnergy / initEnergy;
+        if (currEnergyPercent < hungryPercent)
+        {
+            currState = States.Hungry;
+            currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
+        }
+        else if (currEnergyPercent > reproducePercent)
+        {
+            currState = States.Reproduce;
+            currReproduceWeight = (1 - (1 - currEnergyPercent) / (1 - reproducePercent)) * maxReproduceWeight;
+        }
+        else
+        {
+            currState = States.Content;
+            currHungryWeight = 0f;
+            currReproduceWeight = 0f;
+        }
     }
 
     private void ParticleWrap()
@@ -68,15 +133,30 @@ public class ParticleController : MonoBehaviour
         if (currEnergy <= 0)
         {
             //Kill effect
+            speed = 0f;
         }
         currEnergy -= Time.deltaTime;
+    }
+
+    private void Look()
+    {
+        Vector3 normTarget = rb2d.velocity.normalized;
+        float angle = Mathf.Atan2(normTarget.y, normTarget.x) * Mathf.Rad2Deg;
+
+        Quaternion rotation = new Quaternion();
+        rotation.eulerAngles = new Vector3(0, 0, angle - 90);
+        gfx.rotation = rotation;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "particle")
         {
-            neighbors.Add(collision.gameObject.GetComponent<ParticleController>());
+            particleNeighbors.Add(collision.gameObject.GetComponent<ParticleController>());
+        }
+        if (collision.gameObject.tag == "food")
+        {
+            foodNeighbors.Add(collision.gameObject);
         }
     }
 
@@ -84,9 +164,15 @@ public class ParticleController : MonoBehaviour
     {
         if (collision.gameObject.tag == "particle")
         {
-            int indexOfController = neighbors.IndexOf(collision.gameObject.GetComponent<ParticleController>());
+            int indexOfController = particleNeighbors.IndexOf(collision.gameObject.GetComponent<ParticleController>());
             if (indexOfController >= 0)
-                neighbors.RemoveAt(indexOfController);
+                particleNeighbors.RemoveAt(indexOfController);
+        }
+        if(collision.gameObject.tag == "food")
+        {
+            int indexOfFood = foodNeighbors.IndexOf(collision.gameObject);
+            if (indexOfFood >= 0)
+                foodNeighbors.RemoveAt(indexOfFood);
         }
     }
 }
