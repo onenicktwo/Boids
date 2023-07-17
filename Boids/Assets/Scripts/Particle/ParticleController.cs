@@ -31,11 +31,11 @@ public class ParticleController : MonoBehaviour
     public float speed = 1f;
     public float maxSpeed = 3f;
     private Vector2 ali;
-    public float aliWeight;
+    public float aliWeight = 1f;
     private Vector2 coh;
-    public float cohWeight;
+    public float cohWeight = 1f;
     private Vector2 sep;
-    public float sepWeight;
+    public float sepWeight = 1f;
 
     /*
      * States should be on a fixed percentage. Ex: 0<=Hungry<40<=Content<70<=Reproduce<100
@@ -65,10 +65,10 @@ public class ParticleController : MonoBehaviour
         rb2d = this.GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
-
-        aliWeight = Random.Range(0f, 2f);
-        cohWeight = Random.Range(0f, 2f);
-        sepWeight = Random.Range(0f, 2f);
+   
+        aliWeight = Random.Range(0f, 5f);
+        cohWeight = Random.Range(0f, 5f);
+        sepWeight = Random.Range(0f, 5f);
 
         currEnergy = initEnergy;
     }
@@ -86,7 +86,7 @@ public class ParticleController : MonoBehaviour
         ali = movement.alignment() * aliWeight;
         coh = movement.cohesion() * cohWeight;
         sep = movement.seperation() * sepWeight;
-        food = movement.nearestFood() * 100;
+        food = movement.nearestFood() * currHungryWeight;
         Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food;
         newVelocity = newVelocity.normalized * speed * Time.deltaTime;
         rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);

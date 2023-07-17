@@ -17,11 +17,9 @@ public class ParticleMovement : MonoBehaviour
         {
             foreach (ParticleController n in pc.particleNeighbors)
             {
-                v.x += n.rb2d.velocity.x;
-                v.y += n.rb2d.velocity.y;
+                v += (Vector2) (n.rb2d.velocity);
             }
             v /= pc.particleNeighbors.Count;
-            v.Normalize();
         }
         return v;
     }
@@ -33,13 +31,10 @@ public class ParticleMovement : MonoBehaviour
         {
             foreach (ParticleController n in pc.particleNeighbors)
             {
-                v.x += n.gameObject.transform.position.x;
-                v.y += n.gameObject.transform.position.y;
+                v += (Vector2)(n.gameObject.transform.position);
             }
             v /= pc.particleNeighbors.Count;
-            v.x -= pc.gameObject.transform.position.x;
-            v.y -= pc.gameObject.transform.position.y;
-            v.Normalize();
+            v -= (Vector2) (pc.gameObject.transform.position);  
         }
         return v;
     }
@@ -47,17 +42,42 @@ public class ParticleMovement : MonoBehaviour
     public Vector2 seperation()
     {
         Vector2 v = Vector2.zero;
+        int nAvoid = 0;
         if (pc.particleNeighbors.Count != 0)
         {
             foreach (ParticleController n in pc.particleNeighbors)
             {
-                v.x += n.gameObject.transform.position.x - pc.gameObject.transform.position.x;
-                v.y += n.gameObject.transform.position.y - pc.gameObject.transform.position.y;
+                if (Vector2.SqrMagnitude(n.gameObject.transform.position - pc.gameObject.transform.position) < 4f)
+                {
+                    nAvoid++;
+                    v += (Vector2)(pc.gameObject.transform.position - n.gameObject.transform.position);
+                }
             }
-            v *= -1;
-            v.Normalize();
+            if(nAvoid > 0)
+                v /= nAvoid;
         }
         return v;
+        /*
+         * // If no neighbors, return no adjustment
+        if (context.Count == 0)
+            return Vector2.zero;
+
+        // Add all points together and average.
+        Vector2 avoidanceMove = Vector2.zero;
+        int nAvoid = 0;
+        foreach (Transform item in context)
+        {
+            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+            {
+                nAvoid++;
+                avoidanceMove += (Vector2)(agent.transform.position - item.position);
+            }
+        }
+        if (nAvoid > 0)
+            avoidanceMove /= nAvoid;
+
+        return avoidanceMove;
+         */
     }
 
     public Vector2 nearestFood()
