@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class ParticleEat : MonoBehaviour
 {
-    ParticleController pc;
-
-    private void Awake()
-    {
-        pc = gameObject.GetComponentInParent<ParticleController>();
-    }
+    public ParticleController pc;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "food")
         {
-            Eat(pc.foodNeighbors.IndexOf(collision.gameObject));
+            pc.currEnergy += 5f;
+            pc.foodNeighbors.Remove(collision.gameObject);
             Destroy(collision.gameObject);
         }
-    }
-
-    private void Eat(int foodIndex)
-    {
-        // Add energy based on food script
-        pc.foodNeighbors.RemoveAt(foodIndex);
     }
 }

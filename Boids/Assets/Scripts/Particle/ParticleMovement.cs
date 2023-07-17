@@ -65,13 +65,21 @@ public class ParticleMovement : MonoBehaviour
         Vector2 v = Vector2.zero;
         if (pc.foodNeighbors.Count == 0)
             return Vector2.zero;
-        foreach (GameObject food in pc.foodNeighbors)
+        for(int i = 0; i < pc.foodNeighbors.Count; i++)
         {
-            if(v == Vector2.zero)
-                v = food.transform.position - pc.gameObject.transform.position;
-            else if ((food.transform.position - pc.gameObject.transform.position).magnitude < v.magnitude)
+            if (pc.foodNeighbors[i] != null)
+            {       
+                if (v == Vector2.zero)
+                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
+                else if ((pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position).magnitude < v.magnitude)
+                {
+                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
+                }
+            }
+            else
             {
-                v = food.transform.position - pc.gameObject.transform.position;
+                pc.foodNeighbors.Remove(pc.foodNeighbors[i]);
+                i--;
             }
         }
         v.Normalize();

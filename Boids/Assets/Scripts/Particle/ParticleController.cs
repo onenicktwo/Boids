@@ -16,9 +16,10 @@ public class ParticleController : MonoBehaviour
 
     public float maxX = 11.4f;
     public float maxY = 5f;
+    public float turnFactor = 1f;
 
     public float initEnergy = 1f;
-    private float currEnergy;
+    public float currEnergy;
 
     public List<ParticleController> particleNeighbors = new List<ParticleController>();
     public List<GameObject> foodNeighbors = new List<GameObject>();
@@ -51,11 +52,11 @@ public class ParticleController : MonoBehaviour
     public States currState;
     public float hungryPercent = .3f;
     private Vector2 food;
-    public float maxHungryWeight = 10f;
+    public float maxHungryWeight = 3f;
     public float currHungryWeight = 0f;
     public float reproducePercent = .7f;
     private Vector2 mate;
-    public float maxReproduceWeight = 10f;
+    public float maxReproduceWeight = 3f;
     public float currReproduceWeight = 0f;
 
     private void Awake()
@@ -63,7 +64,7 @@ public class ParticleController : MonoBehaviour
         movement = this.GetComponent<ParticleMovement>();
         rb2d = this.GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        rb2d.velocity = rb2d.velocity.normalized * speed;
+        rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
 
         aliWeight = Random.Range(0f, 2f);
         cohWeight = Random.Range(0f, 2f);
@@ -75,7 +76,7 @@ public class ParticleController : MonoBehaviour
     private void Update()
     {
         StateControl();
-        ParticleWrap();
+        Border();
         UpdateEnergy();
         Look();
     }
@@ -85,9 +86,10 @@ public class ParticleController : MonoBehaviour
         ali = movement.alignment() * aliWeight;
         coh = movement.cohesion() * cohWeight;
         sep = movement.seperation() * sepWeight;
-        food = movement.nearestFood() * currHungryWeight;
-        rb2d.velocity += ali + coh + sep + food;
-        rb2d.velocity = rb2d.velocity.normalized * speed;
+        food = movement.nearestFood() * 100;
+        Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food;
+        newVelocity = newVelocity.normalized * speed * Time.deltaTime;
+        rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
 
         if (rb2d.velocity.magnitude > maxSpeed)
         {
@@ -98,6 +100,8 @@ public class ParticleController : MonoBehaviour
     private void StateControl()
     {
         float currEnergyPercent = currEnergy / initEnergy;
+        // currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
+        // currReproduceWeight = currEnergyPercent * maxReproduceWeight;
         if (currEnergyPercent < hungryPercent)
         {
             currState = States.Hungry;
@@ -116,16 +120,26 @@ public class ParticleController : MonoBehaviour
         }
     }
 
-    private void ParticleWrap()
+    private void Border()
     {
         float posX = gameObject.transform.position.x;
         float posY = gameObject.transform.position.y;
+        /*
         Vector2 normVel = rb2d.velocity.normalized;
         if (posX > maxX || posX < -maxX || posY > maxY || posY < -maxY)
         {
             gameObject.transform.position *= -1;
-            gameObject.transform.position += new Vector3(normVel.x, normVel.y, 0);
+            gameObject.transform.position += new Vector3(normVel.x / 10, normVel.y / 10, 0);
         }
+        */
+        if (posX < -maxX)
+            rb2d.velocity += new Vector2(turnFactor, 0);
+        if (posX > maxX)
+            rb2d.velocity -= new Vector2(turnFactor, 0);
+        if (posY > -maxY)
+            rb2d.velocity -= new Vector2(0, turnFactor);
+        if (posY < maxY)
+            rb2d.velocity += new Vector2(0, turnFactor);
     }
 
     private void UpdateEnergy()
@@ -133,7 +147,12 @@ public class ParticleController : MonoBehaviour
         if (currEnergy <= 0)
         {
             //Kill effect
-            speed = 0f;
+            Debug.Log(this.gameObject.name + " Died at " + System.DateTime.Now);
+            Destroy(this.gameObject);
+        }
+        if (currEnergy >= initEnergy)
+        {
+            currEnergy = initEnergy;
         }
         currEnergy -= Time.deltaTime;
     }
