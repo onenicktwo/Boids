@@ -17,11 +17,14 @@ public class GameManager : MonoBehaviour{
 
     public int particleCount;    // Holds the count of particles
     public int foodCount;        // Holds the count of food
+    public int energyFromFood;   // Holds the energy value of the food
     public List<GameObject> particles = new List<GameObject>(); // Holds references to all particles
 
     // Reference to the input fields in the UI
-    public TMP_InputField particleInput; // Using UnityEngine.UI
-    public TMP_InputField foodInput;     // Using UnityEngine.UI
+    public TMP_InputField particleInput; // Using TMPro
+    public TMP_InputField foodInput;     // Using TMPro
+    public TMP_InputField energyInput;     // Using TMPro
+
 
     //Reference to warning text area
     public TextMeshProUGUI warningText;
@@ -67,9 +70,10 @@ public class GameManager : MonoBehaviour{
         //Validate input is present and parse into integers
         int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
         int initialFood = ValidateEntry.ValidateInput(foodInput.text);
+        energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
-        if (initialParticles == -1 || initialFood == -1) {
+        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
             ValidateEntry.FlagInvalidEntry();
         } else {
             ValidateEntry.ClearWarning();
@@ -83,7 +87,7 @@ public class GameManager : MonoBehaviour{
             SceneManager.LoadScene("Game"); // Replace "GameScene" with the name of your main game scene
 
             //Testing:
-            Debug.Log("InitialFood is now " + initialFood + " and InitialParticles is now " + initialParticles);
+            //Debug.Log("InitialFood is now " + initialFood + " and InitialParticles is now " + initialParticles);
         }
     }
 
