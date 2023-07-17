@@ -1,118 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // For scene management
-using TMPro; // For input fields
+using UnityEngine.SceneManagement;
+using TMPro;
 
-public class GameManager : MonoBehaviour{
+public class GameManager : MonoBehaviour
+{
     public static GameManager _instance;
-    public static GameManager Instance{
-        get{
-            if(_instance == null){
-                Debug.LogError("Game Manager is NULL");
-            }
-            return _instance;
-        }
-    }
 
-    public int particleCount;    // Holds the count of particles
-    public int foodCount;        // Holds the count of food
+    public int particleCount;
+    public int foodCount;
+    public List<GameObject> particles = new List<GameObject>();
+    public List<GameObject> foods = new List<GameObject>();
     public int energyFromFood;   // Holds the energy value of the food
-    public List<GameObject> particles = new List<GameObject>(); // Holds references to all particles
 
-    // Reference to the input fields in the UI
-    public TMP_InputField particleInput; // Using TMPro
-    public TMP_InputField foodInput;     // Using TMPro
-    public TMP_InputField energyInput;     // Using TMPro
+    public FoodSpawner foodSpawner;
+    public ParticleSpawner particleSpawner;
 
+    public TMP_InputField particleInput;
+    public TMP_InputField foodInput;
+    public TMP_InputField energyInput;    
 
-    //Reference to warning text area
     public TextMeshProUGUI warningText;
-    private void Awake(){
-        if (_instance){
-            Destroy(gameObject);
-        }
-        else{
-            _instance = this;
-        }
+
+    private void Awake()
+    {
+        _instance = this;
         DontDestroyOnLoad(this);
     }
 
-    public void AddParticle(GameObject particle){
-        // Add a particle to the list
+    public void AddParticle(GameObject particle)
+    {
         particles.Add(particle);
-        // Increase the count
         particleCount++;
     }
 
-    public void RemoveParticle(GameObject particle){
-        // Remove a particle from the list
+    public void RemoveParticle(GameObject particle)
+    {
         particles.Remove(particle);
-        // Decrease the count
         particleCount--;
     }
 
-    public void AddFood(){
-        // Increase the count
+    public void AddFood(GameObject food)
+    {
+        foods.Add(food);
         foodCount++;
     }
 
-    public void RemoveFood(){
-        // Decrease the count
+    public void RemoveFood(GameObject food)
+    {
+        foods.Remove(food);
         foodCount--;
     }
-
-
-
-   
-
-    public void StartGame(){
+    
+    public void Verify() {
         //Validate input is present and parse into integers
-        int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
-        int initialFood = ValidateEntry.ValidateInput(foodInput.text);
-        energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
+          int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+          int initialFood = ValidateEntry.ValidateInput(foodInput.text);
+          energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
-        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+         if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
             ValidateEntry.FlagInvalidEntry();
-        } else {
+         } else {
             ValidateEntry.ClearWarning();
-        
-
-            // Store the initial particle and food counts
-            PlayerPrefs.SetInt("InitialParticles", initialParticles);
-            PlayerPrefs.SetInt("InitialFood", initialFood);
-
-            // Load the game scene
-            SceneManager.LoadScene("Game"); // Replace "GameScene" with the name of your main game scene
-
-            //Testing:
-            //Debug.Log("InitialFood is now " + initialFood + " and InitialParticles is now " + initialParticles);
-        }
     }
 
+    public void StartGame(int particleCount, int foodCount)
+    {
+        this.particleCount = particleCount;
+        this.foodCount = foodCount;
 
+        particleSpawner.SpawnParticles(particleCount);
+        foodSpawner.SpawnFood(foodCount);
 
-    public void EndGame(){
-        // Load the main menu scene
-        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with the name of your start menu scene
+        SceneManager.LoadScene("Game");
+
     }
 
-    public enum GameState { Play, Pause, MainMenu }
+    public void EndGame()
+    {
+        SceneManager.LoadScene("Start Menu");
+    }
+
+    public enum GameState { Play, Pause }
     public GameState gameState;
 
-    public void PauseGame(){
-        // Implement code to pause game
+    public void PauseGame()
+    {
         gameState = GameState.Pause;
     }
 
-    public void ResumeGame(){
-        // Implement code to resume game
+    public void ResumeGame()
+    {
         gameState = GameState.Play;
     }
 
-    public void RestartGame(){
-        // Implement code to restart game
+    public void RestartGame()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
