@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     public int foodCount;
     public List<GameObject> particles = new List<GameObject>();
     public List<GameObject> foods = new List<GameObject>();
+    public int energyFromFood;   // Holds the energy value of the food
 
     public FoodSpawner foodSpawner;
     public ParticleSpawner particleSpawner;
 
     public TMP_InputField particleInput;
     public TMP_InputField foodInput;
+    public TMP_InputField energyInput;    
 
     public TextMeshProUGUI warningText;
 
@@ -50,6 +52,19 @@ public class GameManager : MonoBehaviour
         foods.Remove(food);
         foodCount--;
     }
+    
+    public void Verify() {
+        //Validate input is present and parse into integers
+          int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+          int initialFood = ValidateEntry.ValidateInput(foodInput.text);
+          energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
+
+        //Checks for and flags invalid entries:
+         if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+            ValidateEntry.FlagInvalidEntry();
+         } else {
+            ValidateEntry.ClearWarning();
+    }
 
     public void StartGame(int particleCount, int foodCount)
     {
@@ -60,6 +75,7 @@ public class GameManager : MonoBehaviour
         foodSpawner.SpawnFood(foodCount);
 
         SceneManager.LoadScene("Game");
+
     }
 
     public void EndGame()
