@@ -60,10 +60,14 @@ public class GameManager : MonoBehaviour
           energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
-         if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1)
+        {
             ValidateEntry.FlagInvalidEntry();
-         } else {
+        }
+        else
+        {
             ValidateEntry.ClearWarning();
+        }
     }
 
     public void StartGame(int particleCount, int foodCount)
@@ -78,8 +82,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void EndGame()
-    {
+    public void EndGame() {
         SceneManager.LoadScene("Start Menu");
     }
 
