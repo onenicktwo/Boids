@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
           energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
+<<<<<<< Updated upstream
         if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1)
         {
             ValidateEntry.FlagInvalidEntry();
@@ -67,6 +68,13 @@ public class GameManager : MonoBehaviour
         else
         {
             ValidateEntry.ClearWarning();
+=======
+        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+            ValidateEntry.FlagInvalidEntry();
+        } else {
+            ValidateEntry.ClearWarning();
+            StartGame(initialParticles, initialFood);
+>>>>>>> Stashed changes
         }
     }
 
