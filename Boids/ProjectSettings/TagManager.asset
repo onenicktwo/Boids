@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - particle
+  - food
   layers:
   - Default
   - TransparentFX

@@ -10,50 +10,99 @@ public class ParticleMovement : MonoBehaviour
     {
         pc = this.GetComponent<ParticleController>();
     }
-    public Vector3 alignment()
+    public Vector2 alignment()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
-                v.x += n.rb2d.velocity.x;
-                v.y += n.rb2d.velocity.y;
+                v += (Vector2) (n.rb2d.velocity);
             }
-            v /= pc.neighbors.Count;
-            v.Normalize();
+            v /= pc.particleNeighbors.Count;
         }
         return v;
     }
 
-    public Vector3 cohesion()
+    public Vector2 cohesion()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
-                v += n.gameObject.transform.position;
+                v += (Vector2)(n.gameObject.transform.position);
             }
-            v /= pc.neighbors.Count;
-            v -= pc.gameObject.transform.position;
-            v.Normalize();
+            v /= pc.particleNeighbors.Count;
+            v -= (Vector2) (pc.gameObject.transform.position);  
         }
         return v;
     }
 
-    public Vector3 seperation()
+    public Vector2 seperation()
     {
-        Vector3 v = Vector3.zero;
-        if (pc.neighbors.Count != 0)
+        Vector2 v = Vector2.zero;
+        int nAvoid = 0;
+        if (pc.particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.neighbors)
+            foreach (ParticleController n in pc.particleNeighbors)
             {
-                v += n.gameObject.transform.position - pc.gameObject.transform.position;
+                if (Vector2.SqrMagnitude(n.gameObject.transform.position - pc.gameObject.transform.position) < 4f)
+                {
+                    nAvoid++;
+                    v += (Vector2)(pc.gameObject.transform.position - n.gameObject.transform.position);
+                }
             }
-            v *= -1;
-            v.Normalize();
+            if(nAvoid > 0)
+                v /= nAvoid;
         }
+        return v;
+        /*
+         * // If no neighbors, return no adjustment
+        if (context.Count == 0)
+            return Vector2.zero;
+
+        // Add all points together and average.
+        Vector2 avoidanceMove = Vector2.zero;
+        int nAvoid = 0;
+        foreach (Transform item in context)
+        {
+            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+            {
+                nAvoid++;
+                avoidanceMove += (Vector2)(agent.transform.position - item.position);
+            }
+        }
+        if (nAvoid > 0)
+            avoidanceMove /= nAvoid;
+
+        return avoidanceMove;
+         */
+    }
+
+    public Vector2 nearestFood()
+    {
+        Vector2 v = Vector2.zero;
+        if (pc.foodNeighbors.Count == 0)
+            return Vector2.zero;
+        for(int i = 0; i < pc.foodNeighbors.Count; i++)
+        {
+            if (pc.foodNeighbors[i] != null)
+            {       
+                if (v == Vector2.zero)
+                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
+                else if ((pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position).magnitude < v.magnitude)
+                {
+                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
+                }
+            }
+            else
+            {
+                pc.foodNeighbors.Remove(pc.foodNeighbors[i]);
+                i--;
+            }
+        }
+        v.Normalize();
         return v;
     }
 }
