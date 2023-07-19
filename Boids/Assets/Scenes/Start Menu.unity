@@ -1396,8 +1396,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Particle Amount
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9142022ce28cac41932279b393accc0, type: 2}
+  m_sharedMaterial: {fileID: -8062668694402050101, guid: f9142022ce28cac41932279b393accc0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2007,8 +2007,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Population Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
+  m_sharedMaterial: {fileID: -1612688671775875744, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2142,8 +2142,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2433,8 +2433,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Energy Gained from Food:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9142022ce28cac41932279b393accc0, type: 2}
+  m_sharedMaterial: {fileID: -8062668694402050101, guid: f9142022ce28cac41932279b393accc0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3044,8 +3044,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Food Rate
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9142022ce28cac41932279b393accc0, type: 2}
+  m_sharedMaterial: {fileID: -8062668694402050101, guid: f9142022ce28cac41932279b393accc0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3247,8 +3247,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
-  m_sharedMaterial: {fileID: -4139976646315480310, guid: 18b85b4603e834b4195b23bc024d7964, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
