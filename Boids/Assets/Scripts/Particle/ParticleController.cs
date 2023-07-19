@@ -66,9 +66,9 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
    
-        aliWeight = Random.Range(0f, 5f);
-        cohWeight = Random.Range(0f, 5f);
-        sepWeight = Random.Range(0f, 5f);
+        aliWeight = Random.Range(0f, 2f);
+        cohWeight = Random.Range(0f, 2f);
+        sepWeight = Random.Range(0f, 2f);
 
         currEnergy = initEnergy;
     }
@@ -100,23 +100,23 @@ public class ParticleController : MonoBehaviour
     private void StateControl()
     {
         float currEnergyPercent = currEnergy / initEnergy;
-        // currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
-        // currReproduceWeight = currEnergyPercent * maxReproduceWeight;
+        currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
+        currReproduceWeight = currEnergyPercent * maxReproduceWeight;
         if (currEnergyPercent < hungryPercent)
         {
             currState = States.Hungry;
-            currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
+            //currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
         }
         else if (currEnergyPercent > reproducePercent)
         {
             currState = States.Reproduce;
-            currReproduceWeight = (1 - (1 - currEnergyPercent) / (1 - reproducePercent)) * maxReproduceWeight;
+            //currReproduceWeight = (1 - (1 - currEnergyPercent) / (1 - reproducePercent)) * maxReproduceWeight;
         }
         else
         {
             currState = States.Content;
-            currHungryWeight = 0f;
-            currReproduceWeight = 0f;
+            //currHungryWeight = 0f;
+            //currReproduceWeight = 0f;
         }
     }
 

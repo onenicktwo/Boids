@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleMovement : MonoBehaviour
 {
     private ParticleController pc;
-
+    public float radius = 1f;
     private void Awake()
     {
         pc = this.GetComponent<ParticleController>();
@@ -47,7 +47,7 @@ public class ParticleMovement : MonoBehaviour
         {
             foreach (ParticleController n in pc.particleNeighbors)
             {
-                if (Vector2.SqrMagnitude(n.gameObject.transform.position - pc.gameObject.transform.position) < 4f)
+                if (Vector2.Distance(n.gameObject.transform.position, pc.gameObject.transform.position) < radius)
                 {
                     nAvoid++;
                     v += (Vector2)(pc.gameObject.transform.position - n.gameObject.transform.position);
@@ -57,27 +57,6 @@ public class ParticleMovement : MonoBehaviour
                 v /= nAvoid;
         }
         return v;
-        /*
-         * // If no neighbors, return no adjustment
-        if (context.Count == 0)
-            return Vector2.zero;
-
-        // Add all points together and average.
-        Vector2 avoidanceMove = Vector2.zero;
-        int nAvoid = 0;
-        foreach (Transform item in context)
-        {
-            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
-            {
-                nAvoid++;
-                avoidanceMove += (Vector2)(agent.transform.position - item.position);
-            }
-        }
-        if (nAvoid > 0)
-            avoidanceMove /= nAvoid;
-
-        return avoidanceMove;
-         */
     }
 
     public Vector2 nearestFood()

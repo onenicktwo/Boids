@@ -14,14 +14,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> foods = new List<GameObject>();
     public int energyFromFood;   // Holds the energy value of the food
 
-    public FoodSpawner foodSpawner;
-    public ParticleSpawner particleSpawner;
-
     public TMP_InputField particleInput;
     public TMP_InputField foodInput;
     public TMP_InputField energyInput;    
 
     public TextMeshProUGUI warningText;
+
+    public float maxX = 11.4f;
+    public float maxY = 5f;
 
     private void Awake()
     {
@@ -74,11 +74,7 @@ public class GameManager : MonoBehaviour
         this.particleCount = particleCount;
         this.foodCount = foodCount;
 
-        particleSpawner.SpawnParticles(particleCount);
-        foodSpawner.SpawnFood(foodCount);
-
         SceneManager.LoadScene("Game");
-
     }
 
     public void EndGame() {

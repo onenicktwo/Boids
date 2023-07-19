@@ -10,7 +10,7 @@ public class ParticleEat : MonoBehaviour
     {
         if (collision.tag == "food")
         {
-            pc.currEnergy += 5f;
+            pc.currEnergy += collision.GetComponent<FoodBehave>().energyValue;
             pc.foodNeighbors.Remove(collision.gameObject);
             Destroy(collision.gameObject);
         }

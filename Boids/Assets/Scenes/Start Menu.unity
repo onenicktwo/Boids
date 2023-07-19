@@ -1842,7 +1842,9 @@ MonoBehaviour:
   foodInput: {fileID: 32472257}
   energyInput: {fileID: 454318154}
   warningText: {fileID: 1480581713}
-  gameState: 2
+  maxX: 11.4
+  maxY: 5
+  gameState: 0
 --- !u!4 &1251998908
 Transform:
   m_ObjectHideFlags: 0
@@ -1851,7 +1853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251998906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7347644, y: 0.19064383, z: -0.006167633}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3042,7 +3044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Food Rate
+  m_text: Initial Food
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9142022ce28cac41932279b393accc0, type: 2}
   m_sharedMaterial: {fileID: -8062668694402050101, guid: f9142022ce28cac41932279b393accc0, type: 2}

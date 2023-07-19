@@ -7,8 +7,9 @@ public class ParticleSpawner : MonoBehaviour
     public GameObject particlePrefab;
     public int initialParticleCount;
 
-    private void Start()
+    private void Awake()
     {
+        initialParticleCount = GameManager._instance.particleCount;
         SpawnParticles(initialParticleCount);
     }
 
@@ -23,8 +24,8 @@ public class ParticleSpawner : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition()
     {
-        float spawnX = Random.Range(-10f, 10f);
-        float spawnY = Random.Range(-10f, 10f);
+        float spawnX = Random.Range(-GameManager._instance.maxX, GameManager._instance.maxX);
+        float spawnY = Random.Range(-GameManager._instance.maxY, GameManager._instance.maxY);
         return new Vector3(spawnX, spawnY, 0f);
     }
 }
