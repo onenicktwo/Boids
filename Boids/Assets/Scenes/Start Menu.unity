@@ -515,8 +515,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Energy Rate
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
+  m_sharedMaterial: {fileID: -1612688671775875744, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1725,10 +1725,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter Food Rate
+  m_text: Enter Initial Food
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
+  m_sharedMaterial: {fileID: -1612688671775875744, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1836,8 +1836,6 @@ MonoBehaviour:
   particles: []
   foods: []
   energyFromFood: 0
-  foodSpawner: {fileID: 0}
-  particleSpawner: {fileID: 0}
   particleInput: {fileID: 1589021927}
   foodInput: {fileID: 32472257}
   energyInput: {fileID: 454318154}
@@ -2009,8 +2007,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Population Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
-  m_sharedMaterial: {fileID: -1612688671775875744, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2176,8 +2174,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2298,10 +2296,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter Particle Amount
+  m_text: Enter Particles per Population
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
+  m_sharedMaterial: {fileID: -1612688671775875744, guid: 127fb64ee1f68f943b00dcc6b8b5cc93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
