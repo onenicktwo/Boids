@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TMP_InputField energyInput;    
 
     public TextMeshProUGUI warningText;
+    
 
     public float maxX = 11.4f;
     public float maxY = 5f;

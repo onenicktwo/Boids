@@ -6,7 +6,7 @@ using TMPro; // For input fields
 public class ValidateEntry : MonoBehaviour {
 
     [SerializeField] TMP_InputField inputField;
-    [SerializeField] TMP_Text resultText;
+    
 
     public static int ValidateInput(string inputString) {
         //string inputString = inputField.text;
