@@ -83,6 +83,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Start Menu");
     }
 
+    public void OpenOptions() {
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    public void SetOptions() {
+        CloseOptions();
+    }
+
+    public void CloseOptions() {
+        SceneManager.LoadSceneAsync(0);
+    }
+
     public enum GameState { Play, Pause }
     public GameState gameState;
 
@@ -99,5 +111,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
 }

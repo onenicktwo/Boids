@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: abac832946f076847a922972f65e5c29
+  - enabled: 1
+    path: Assets/Scenes/PopOptions.unity
+    guid: 5aba0a13c73a96d4b8bce1aba87b748a
   m_configObjects: {}
