@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class FoodAmt : MonoBehaviour {
     
@@ -13,7 +14,9 @@ public class FoodAmt : MonoBehaviour {
     }
 
     public void Update() {
+       
         foodAmtText.text = GameManager._instance.foodCount.ToString();
     }
+
 
 }

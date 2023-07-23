@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         this.foodCount = foodCount;
 
         SceneManager.LoadScene("Game");
+
     }
 
     public void EndGame() {
