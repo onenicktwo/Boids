@@ -24,6 +24,7 @@ public class ParticleController : MonoBehaviour
     public List<ParticleController> particleNeighbors = new List<ParticleController>();
     public List<GameObject> foodNeighbors = new List<GameObject>();
     private ParticleMovement movement;
+    private ParticleReproduction reproduction;
 
     [HideInInspector]
     public Rigidbody2D rb2d;
@@ -62,6 +63,7 @@ public class ParticleController : MonoBehaviour
     private void Awake()
     {
         movement = this.GetComponent<ParticleMovement>();
+        reproduction = this.GetComponent<ParticleReproduction>();
         rb2d = this.GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
@@ -79,14 +81,15 @@ public class ParticleController : MonoBehaviour
         Border();
         UpdateEnergy();
         Look();
+        Reproduce();
     }
 
     private void FixedUpdate()
     {
-        ali = movement.alignment() * aliWeight;
-        coh = movement.cohesion() * cohWeight;
-        sep = movement.seperation() * sepWeight;
-        food = movement.nearestFood() * currHungryWeight;
+        ali = movement.alignment(particleNeighbors) * aliWeight;
+        coh = movement.cohesion(particleNeighbors) * cohWeight * currReproduceWeight;
+        sep = movement.seperation(particleNeighbors) * sepWeight;
+        food = movement.nearestFood(foodNeighbors) * currHungryWeight;
         Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food;
         newVelocity = newVelocity.normalized * speed * Time.deltaTime;
         rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
@@ -95,6 +98,11 @@ public class ParticleController : MonoBehaviour
         {
             rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
         }
+    }
+
+    private void Reproduce()
+    {
+        reproduction.Reproduce();
     }
 
     private void StateControl()
