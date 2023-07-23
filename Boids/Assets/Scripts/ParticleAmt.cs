@@ -9,10 +9,10 @@ public class ParticleAmt : MonoBehaviour
 
 
     public void Start() {
-        particleAmtText.text = GameManager._instance.foodInput.text;
+        particleAmtText.text = GameManager._instance.particleInput.text;
     }
 
     public void Update() {
-        particleAmtText.text = GameManager._instance.foodCount.ToString();
+        particleAmtText.text = GameManager._instance.particleCount.ToString();
     }
 }

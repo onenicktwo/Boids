@@ -27,6 +27,7 @@ public class FoodSpawner : MonoBehaviour
             {
                 timer = secPerFood;
                 Instantiate(foodPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                GameManager._instance.foodCount++;
             }
         }
     }
