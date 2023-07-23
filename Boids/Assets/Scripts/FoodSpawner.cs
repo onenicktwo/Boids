@@ -38,10 +38,12 @@ public class FoodSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+            GameManager._instance.foodCount++;
         }
         secPerFood = 1 / foodPerSec;
         timer = secPerFood;
         spawn = true;
+        
     }
 
     private Vector3 GetRandomSpawnPosition()
