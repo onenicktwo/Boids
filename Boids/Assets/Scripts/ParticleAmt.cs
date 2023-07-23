@@ -14,5 +14,6 @@ public class ParticleAmt : MonoBehaviour
 
     public void Update() {
         particleAmtText.text = GameManager._instance.particleCount.ToString();
+
     }
 }
