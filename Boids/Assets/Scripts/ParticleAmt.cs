@@ -9,7 +9,7 @@ public class ParticleAmt : MonoBehaviour
 
 
     public void Start() {
-        particleAmtText.text = GameManager._instance.particleInput.text;
+        particleAmtText.text = GameManager._instance.particleCount.ToString();
     }
 
     public void Update() {
