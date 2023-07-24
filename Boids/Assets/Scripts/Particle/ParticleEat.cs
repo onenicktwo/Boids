@@ -13,7 +13,7 @@ public class ParticleEat : MonoBehaviour
             pc.currEnergy += collision.GetComponent<FoodBehave>().energyValue;
             pc.foodNeighbors.Remove(collision.gameObject);
             Destroy(collision.gameObject);
-            GameManager._instance.foodCount--;
+            GameManager._instance.RemoveFood(collision.gameObject);
         }
     }
 }

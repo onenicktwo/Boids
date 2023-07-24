@@ -18,7 +18,8 @@ public class ParticleSpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameObject particle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameManager._instance.AddParticle(particle);
         }
     }
 

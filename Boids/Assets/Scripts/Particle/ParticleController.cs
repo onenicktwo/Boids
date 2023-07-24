@@ -148,6 +148,7 @@ public class ParticleController : MonoBehaviour
         {
             //Kill effect
             Debug.Log(this.gameObject.name + " Died at " + System.DateTime.Now);
+            GameManager._instance.RemoveParticle(this.gameObject);
             Destroy(this.gameObject);
         }
         if (currEnergy >= initEnergy)
