@@ -297,8 +297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211, y: 25}
-  m_SizeDelta: {x: 106.0063, y: 66.7158}
+  m_AnchoredPosition: {x: 1, y: -145.9699}
+  m_SizeDelta: {x: 278.0294, y: 57.1589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182349431
 MonoBehaviour:
@@ -427,12 +427,12 @@ RectTransform:
   m_Children:
   - {fileID: 1800292856}
   m_Father: {fileID: 273373056}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311, y: -19}
-  m_SizeDelta: {x: 106.0063, y: 66.7158}
+  m_AnchoredPosition: {x: -1.3638, y: -80}
+  m_SizeDelta: {x: 278.0294, y: 57.1589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254667768
 MonoBehaviour:
@@ -570,7 +570,7 @@ MonoBehaviour:
   warningText: {fileID: 0}
   maxX: 11.4
   maxY: 5
-  gameState: 0
+  gameState: 1
 --- !u!114 &273373054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,8 +623,8 @@ RectTransform:
   m_Children:
   - {fileID: 431523522}
   - {fileID: 1673122347}
-  - {fileID: 254667767}
   - {fileID: 1066154888}
+  - {fileID: 254667767}
   - {fileID: 182349430}
   m_Father: {fileID: 1879261289}
   m_RootOrder: 3
@@ -744,12 +744,12 @@ RectTransform:
   m_Children:
   - {fileID: 1543642738}
   m_Father: {fileID: 273373056}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211, y: -120}
-  m_SizeDelta: {x: 106.0063, y: 66.7158}
+  m_AnchoredPosition: {x: -3.9864998, y: -19.170586}
+  m_SizeDelta: {x: 278.0294, y: 57.1589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066154889
 MonoBehaviour:
@@ -794,7 +794,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1066154890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 273373053}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1066154890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,9 +1076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Restart
-
-    Instance'
+  m_text: Restart Instance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1180,8 +1190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 311, y: -120}
-  m_SizeDelta: {x: 106.0063, y: 66.7158}
+  m_AnchoredPosition: {x: -1.3638, y: 45.9426}
+  m_SizeDelta: {x: 278.0294, y: 57.1589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673122348
 MonoBehaviour:
@@ -1226,7 +1236,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1673122349}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 273373053}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1673122349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,9 +1345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Start
-
-    Menu'
+  m_text: Start Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
