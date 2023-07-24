@@ -265,9 +265,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -313,6 +329,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &47593741 stripped
@@ -327,9 +363,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -375,6 +427,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541278, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &65696784 stripped
@@ -389,9 +465,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -437,6 +529,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &185736448 stripped
@@ -451,9 +567,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -499,6 +631,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &195837767 stripped
@@ -513,9 +665,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -560,6 +728,30 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -1092,9 +1284,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1140,6 +1348,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541278, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &675890911 stripped
@@ -1154,9 +1390,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1201,6 +1453,30 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -1351,9 +1627,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1398,6 +1690,26 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -1464,9 +1776,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1511,6 +1839,30 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -1573,9 +1925,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1621,6 +1989,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1367058510 stripped
@@ -1635,9 +2023,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1682,6 +2086,26 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -1831,9 +2255,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1879,6 +2319,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1400982050 stripped
@@ -1893,9 +2353,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -1940,6 +2416,30 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
@@ -2360,9 +2860,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2408,6 +2924,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1621889378 stripped
@@ -2422,9 +2958,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2470,6 +3022,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1684395586 stripped
@@ -2484,9 +3060,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2532,6 +3124,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1690498230 stripped
@@ -2546,9 +3162,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2594,6 +3226,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541278, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1750086343 stripped
@@ -2608,9 +3268,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2656,6 +3332,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1751805984 stripped
@@ -2670,9 +3366,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -2718,6 +3430,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
 --- !u!4 &1835897351 stripped
@@ -2744,7 +3480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1838391532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,9 +4123,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866599629}
     m_Modifications:
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7313276472884445827, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_Name
       value: Particle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541248, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_RootOrder
@@ -3434,6 +4186,30 @@ PrefabInstance:
     - target: {fileID: 4423723842126541249, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541276, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: busyTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: maxSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: selected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423723842126541277, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}
+      propertyPath: reproduceCooldown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4628c6e912f8894197a7d6e808ca856, type: 3}

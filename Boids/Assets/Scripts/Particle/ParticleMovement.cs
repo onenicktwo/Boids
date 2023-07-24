@@ -10,47 +10,51 @@ public class ParticleMovement : MonoBehaviour
     {
         pc = this.GetComponent<ParticleController>();
     }
-    public Vector2 alignment()
+    public Vector2 alignment(List<ParticleController> particleNeighbors)
     {
         Vector2 v = Vector2.zero;
-        if (pc.particleNeighbors.Count != 0)
+        if (particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.particleNeighbors)
+            foreach (ParticleController n in particleNeighbors)
             {
-                v += (Vector2) (n.rb2d.velocity);
+                if(n != null && !n.isBusy)
+                    v += (Vector2) (n.rb2d.velocity);
             }
-            v /= pc.particleNeighbors.Count;
+            v /= particleNeighbors.Count;
         }
         return v;
     }
 
-    public Vector2 cohesion()
+    public Vector2 cohesion(List<ParticleController> particleNeighbors)
     {
         Vector2 v = Vector2.zero;
-        if (pc.particleNeighbors.Count != 0)
+        if (particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.particleNeighbors)
+            foreach (ParticleController n in particleNeighbors)
             {
-                v += (Vector2)(n.gameObject.transform.position);
+                if(n != null && !n.isBusy)
+                    v += (Vector2)(n.gameObject.transform.position);
             }
-            v /= pc.particleNeighbors.Count;
+            v /= particleNeighbors.Count;
             v -= (Vector2) (pc.gameObject.transform.position);  
         }
         return v;
     }
 
-    public Vector2 seperation()
+    public Vector2 seperation(List<ParticleController> particleNeighbors)
     {
         Vector2 v = Vector2.zero;
         int nAvoid = 0;
-        if (pc.particleNeighbors.Count != 0)
+        if (particleNeighbors.Count != 0)
         {
-            foreach (ParticleController n in pc.particleNeighbors)
+            foreach (ParticleController n in particleNeighbors)
             {
-                if (Vector2.Distance(n.gameObject.transform.position, pc.gameObject.transform.position) < radius)
+                if (n != null &&
+                    Vector2.Distance(n.gameObject.transform.position, this.gameObject.transform.position) < radius && 
+                    !n.isBusy)
                 {
                     nAvoid++;
-                    v += (Vector2)(pc.gameObject.transform.position - n.gameObject.transform.position);
+                    v += (Vector2)(this.gameObject.transform.position - n.gameObject.transform.position);
                 }
             }
             if(nAvoid > 0)
@@ -59,25 +63,59 @@ public class ParticleMovement : MonoBehaviour
         return v;
     }
 
-    public Vector2 nearestFood()
+    public Vector2 nearestFood(List<GameObject> foodNeighbors)
     {
         Vector2 v = Vector2.zero;
-        if (pc.foodNeighbors.Count == 0)
+        if (foodNeighbors.Count == 0)
             return Vector2.zero;
-        for(int i = 0; i < pc.foodNeighbors.Count; i++)
+        for(int i = 0; i < foodNeighbors.Count; i++)
         {
-            if (pc.foodNeighbors[i] != null)
+            if (foodNeighbors[i] != null)
             {       
                 if (v == Vector2.zero)
-                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
-                else if ((pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position).magnitude < v.magnitude)
+                    v = foodNeighbors[i].transform.position - this.gameObject.transform.position;
+                else if ((foodNeighbors[i].transform.position - this.gameObject.transform.position).magnitude < v.magnitude)
                 {
-                    v = pc.foodNeighbors[i].transform.position - pc.gameObject.transform.position;
+                    v = foodNeighbors[i].transform.position - this.gameObject.transform.position;
                 }
             }
             else
             {
                 pc.foodNeighbors.Remove(pc.foodNeighbors[i]);
+                i--;
+            }
+        }
+        v.Normalize();
+        return v;
+    }
+
+    public Vector2 nearestAvailableMate(List<ParticleController> particleNeighbors)
+    {
+        Vector2 v = Vector2.zero;
+        if (particleNeighbors.Count == 0)
+            return Vector2.zero;
+        for (int i = 0; i < particleNeighbors.Count; i++)
+        {
+            if (particleNeighbors[i] != null)
+            {
+                if (!particleNeighbors[i].isBusy &&
+                    !particleNeighbors[i].reproduction.onCooldown &&
+                    (particleNeighbors[i].selected && !GetComponent<ParticleController>().selected) ||
+                    (!particleNeighbors[i].selected && GetComponent<ParticleController>().selected))
+                {
+                    if (v == Vector2.zero)
+                    {
+                        v = particleNeighbors[i].transform.position - this.gameObject.transform.position;
+                    }
+                    else if ((particleNeighbors[i].transform.position - this.gameObject.transform.position).magnitude < v.magnitude)
+                    {
+                        v = particleNeighbors[i].transform.position - this.gameObject.transform.position;
+                    }
+                }
+            }
+            else
+            {
+                pc.particleNeighbors.Remove(pc.particleNeighbors[i]);
                 i--;
             }
         }
