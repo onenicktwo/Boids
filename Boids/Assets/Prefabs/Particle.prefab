@@ -115,23 +115,29 @@ MonoBehaviour:
   maxX: 11.4
   maxY: 5
   turnFactor: 0.2
-  initEnergy: 100
+  initEnergy: 20
   currEnergy: 0
   particleNeighbors: []
   foodNeighbors: []
+  reproduction: {fileID: 0}
   rb2d: {fileID: 0}
   speed: 150
-  maxSpeed: 200
+  maxSpeed: 250
   aliWeight: 0
   cohWeight: 0
   sepWeight: 0
-  currState: 0
+  currState: 1
   hungryPercent: 0.3
   maxHungryWeight: 3
   currHungryWeight: 0
+  isBusy: 0
   reproducePercent: 0.7
-  maxReproduceWeight: 3
+  maxReproduceWeight: 10
   currReproduceWeight: 0
+  busyTimeFactor: 20
+  reproduceCooldownFactor: 10
+  matureCooldownFactor: 5
+  selected: 0
 --- !u!114 &4423723842126541276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdbe8a8f0ff89147886b0b2f2f82f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 0.25
+  onCooldown: 0
+  childPrefab: {fileID: 4423723842126541248}
+  energyUsage: 1
 --- !u!50 &4423723842126541279
 Rigidbody2D:
   serializedVersion: 4

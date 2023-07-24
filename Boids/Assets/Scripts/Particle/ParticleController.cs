@@ -24,7 +24,8 @@ public class ParticleController : MonoBehaviour
     public List<ParticleController> particleNeighbors = new List<ParticleController>();
     public List<GameObject> foodNeighbors = new List<GameObject>();
     private ParticleMovement movement;
-    private ParticleReproduction reproduction;
+    [HideInInspector]
+    public ParticleReproduction reproduction;
 
     [HideInInspector]
     public Rigidbody2D rb2d;
@@ -51,14 +52,22 @@ public class ParticleController : MonoBehaviour
      */
     public enum States { Hungry, Content, Reproduce}
     public States currState;
+    
     public float hungryPercent = .3f;
     private Vector2 food;
     public float maxHungryWeight = 3f;
     public float currHungryWeight = 0f;
-    public float reproducePercent = .7f;
+
+    public bool isBusy = false;
     private Vector2 mate;
+    public float reproducePercent = .7f;
     public float maxReproduceWeight = 3f;
     public float currReproduceWeight = 0f;
+    public float busyTimeFactor = 1f;
+    public float reproduceCooldownFactor = 1f;
+    public float matureCooldownFactor = 1f;
+    // Determines who makes the child call
+    public bool selected = false;
 
     private void Awake()
     {
@@ -68,52 +77,58 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
    
-        aliWeight = Random.Range(0f, 2f);
-        cohWeight = Random.Range(0f, 2f);
-        sepWeight = Random.Range(0f, 2f);
+        aliWeight = Random.Range(0f, 1f);
+        cohWeight = Random.Range(0f, 1f);
+        sepWeight = Random.Range(0f, 1f);
 
         currEnergy = initEnergy;
     }
 
     private void Update()
     {
-        StateControl();
-        Border();
-        UpdateEnergy();
-        Look();
-        Reproduce();
+        if (!isBusy)
+        {
+            StateControl();
+            Border();
+            UpdateEnergy();
+            Look();
+            if (currState == States.Reproduce)
+                reproduction.Check();
+        }
     }
 
     private void FixedUpdate()
     {
-        ali = movement.alignment(particleNeighbors) * aliWeight;
-        coh = movement.cohesion(particleNeighbors) * cohWeight * currReproduceWeight;
-        sep = movement.seperation(particleNeighbors) * sepWeight;
-        food = movement.nearestFood(foodNeighbors) * currHungryWeight;
-        Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food;
-        newVelocity = newVelocity.normalized * speed * Time.deltaTime;
-        rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
-
-        if (rb2d.velocity.magnitude > maxSpeed)
+        if (!isBusy)
         {
-            rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-        }
-    }
+            ali = movement.alignment(particleNeighbors) * aliWeight;
+            coh = movement.cohesion(particleNeighbors) * cohWeight;
+            sep = movement.seperation(particleNeighbors) * sepWeight;
+            food = movement.nearestFood(foodNeighbors) * currHungryWeight;
+            if (!reproduction.onCooldown )
+                mate = movement.nearestAvailableMate(particleNeighbors) * currReproduceWeight;
+            else
+                mate = Vector2.zero;
+            Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food + mate;
+            newVelocity = newVelocity.normalized * speed * Time.deltaTime;
+            rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
 
-    private void Reproduce()
-    {
-        reproduction.Reproduce();
+            if (rb2d.velocity.magnitude > maxSpeed)
+            {
+                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
+            }
+        }
     }
 
     private void StateControl()
     {
         float currEnergyPercent = currEnergy / initEnergy;
-        currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
-        currReproduceWeight = currEnergyPercent * maxReproduceWeight;
+        // currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
+        // currReproduceWeight = currEnergyPercent * maxReproduceWeight;
         if (currEnergyPercent < hungryPercent)
         {
             currState = States.Hungry;
-            //currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
+            currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
         }
         else if (currEnergyPercent > reproducePercent)
         {
@@ -123,8 +138,8 @@ public class ParticleController : MonoBehaviour
         else
         {
             currState = States.Content;
-            //currHungryWeight = 0f;
-            //currReproduceWeight = 0f;
+            currHungryWeight = 0f;
+            currReproduceWeight = 0f;
         }
     }
 

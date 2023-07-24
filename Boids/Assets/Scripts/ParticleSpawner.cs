@@ -15,10 +15,15 @@ public class ParticleSpawner : MonoBehaviour
 
     public void SpawnParticles(int count)
     {
+        // Maybe some type of percentage from selected : unselected
         for (int i = 0; i < count; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameObject particle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            if (Random.Range(0, 2) == 1)
+                particle.GetComponent<ParticleController>().selected = true;
+            else
+                particle.GetComponent<ParticleController>().selected = false;
         }
     }
 
