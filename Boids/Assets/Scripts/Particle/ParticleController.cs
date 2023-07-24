@@ -133,7 +133,7 @@ public class ParticleController : MonoBehaviour
         else if (currEnergyPercent > reproducePercent)
         {
             currState = States.Reproduce;
-            //currReproduceWeight = (1 - (1 - currEnergyPercent) / (1 - reproducePercent)) * maxReproduceWeight;
+            currReproduceWeight = (1 - (1 - currEnergyPercent) / (1 - reproducePercent)) * maxReproduceWeight;
         }
         else
         {
