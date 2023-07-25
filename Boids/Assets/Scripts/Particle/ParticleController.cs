@@ -27,7 +27,6 @@ public class ParticleController : MonoBehaviour
     [HideInInspector]
     public ParticleReproduction reproduction;
 
-    [HideInInspector]
     public Rigidbody2D rb2d;
 
     public float speed = 1f;
@@ -72,10 +71,10 @@ public class ParticleController : MonoBehaviour
     private void Awake()
     {
         movement = this.GetComponent<ParticleMovement>();
-        reproduction = this.GetComponent<ParticleReproduction>();
         rb2d = this.GetComponent<Rigidbody2D>();
+        reproduction = this.GetComponent<ParticleReproduction>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-        rb2d.velocity = rb2d.velocity.normalized * speed * Time.deltaTime;
+        rb2d.velocity = rb2d.velocity.normalized * speed;
    
         aliWeight = Random.Range(0f, 1f);
         cohWeight = Random.Range(0f, 1f);
@@ -110,7 +109,7 @@ public class ParticleController : MonoBehaviour
             else
                 mate = Vector2.zero;
             Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food + mate;
-            newVelocity = newVelocity.normalized * speed * Time.deltaTime;
+            newVelocity = newVelocity.normalized * speed;
             rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
 
             if (rb2d.velocity.magnitude > maxSpeed)

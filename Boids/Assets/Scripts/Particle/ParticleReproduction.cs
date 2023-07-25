@@ -90,8 +90,9 @@ public class ParticleReproduction : MonoBehaviour
     public IEnumerator Cooldown()
     {
         pc.isBusy = false;
-        pc.rb2d.constraints = RigidbodyConstraints2D.None;
-        pc.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //Error grabbing the rb2d (saying null, meaning it isn't set by the time it reaches here?)
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         onCooldown = true;
         yield return new WaitForSecondsRealtime(cooldown);
         onCooldown = false;
