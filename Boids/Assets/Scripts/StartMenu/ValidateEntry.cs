@@ -26,7 +26,7 @@ public class ValidateEntry : MonoBehaviour {
 
   public static void FlagInvalidEntry() {
       GameManager._instance.warningText.text = "Invalid Entry. Please enter a positive, whole number for all fields.";
-      GameManager._instance.particleInput.text = "";
+     
       GameManager._instance.foodInput.text = "";
       GameManager._instance.energyInput.text = "";
     }

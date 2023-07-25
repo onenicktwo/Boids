@@ -56,17 +56,17 @@ public class GameManager : MonoBehaviour
     
     public void Verify() {
         //Validate input is present and parse into integers
-          int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+          //int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
           int initialFood = ValidateEntry.ValidateInput(foodInput.text);
           energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
 
-        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+        if (initialFood == -1 || energyFromFood == -1) {
             ValidateEntry.FlagInvalidEntry();
         } else {
             ValidateEntry.ClearWarning();
-            StartGame(initialParticles, initialFood);
+            StartGame(5, initialFood);
         }
     }
 
