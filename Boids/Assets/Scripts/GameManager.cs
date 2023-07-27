@@ -37,7 +37,12 @@ public class GameManager : MonoBehaviour
     {
         _instance = this;
         DontDestroyOnLoad(this);
+
+        // Initialize a default flock
+        AddFlock(1.0f, 1.0f, 1.0f, 100.0f, 10);
     }
+
+    // rest of your methods...
 
     public void AddParticle(GameObject particle)
     {
