@@ -6,20 +6,29 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public class Flock
+    {
+        public float alignmentWeight;
+        public float cohesionWeight;
+        public float separationWeight;
+        public float initEnergy;
+        public int particleCount;
+    }
+
     public static GameManager _instance;
 
     public int particleCount;
     public int foodCount;
     public List<GameObject> particles = new List<GameObject>();
     public List<GameObject> foods = new List<GameObject>();
+    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
     public int energyFromFood;   // Holds the energy value of the food
 
     public TMP_InputField particleInput;
     public TMP_InputField foodInput;
-    public TMP_InputField energyInput;    
+    public TMP_InputField energyInput;
 
     public TextMeshProUGUI warningText;
-    
 
     public float maxX = 11.4f;
     public float maxY = 5f;
@@ -53,18 +62,36 @@ public class GameManager : MonoBehaviour
         foods.Remove(food);
         foodCount--;
     }
-    
-    public void Verify() {
+
+    public void AddFlock(float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
+    {
+        Flock flock = new Flock
+        {
+            alignmentWeight = alignmentWeight,
+            cohesionWeight = cohesionWeight,
+            separationWeight = separationWeight,
+            initEnergy = initEnergy,
+            particleCount = particleCount
+        };
+
+        flocks.Add(flock);
+    }
+
+    public void Verify()
+    {
         //Validate input is present and parse into integers
-          int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
-          int initialFood = ValidateEntry.ValidateInput(foodInput.text);
-          energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
+        int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+        int initialFood = ValidateEntry.ValidateInput(foodInput.text);
+        energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
 
         //Checks for and flags invalid entries:
 
-        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1) {
+        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1)
+        {
             ValidateEntry.FlagInvalidEntry();
-        } else {
+        }
+        else
+        {
             ValidateEntry.ClearWarning();
             StartGame(initialParticles, initialFood);
         }
@@ -76,10 +103,10 @@ public class GameManager : MonoBehaviour
         this.foodCount = foodCount;
 
         SceneManager.LoadScene("Game");
-
     }
 
-    public void EndGame() {
+    public void EndGame()
+    {
         SceneManager.LoadScene("Start Menu");
     }
 

@@ -5,20 +5,35 @@ using UnityEngine;
 public class ParticleSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
-    public int initialParticleCount;
 
     private void Awake()
     {
-        initialParticleCount = GameManager._instance.particleCount;
-        SpawnParticles(initialParticleCount);
+        // Assuming GameManager has already been instantiated and initialized
+        if (GameManager._instance.flocks.Count > 0)
+        {
+            foreach (GameManager.Flock flock in GameManager._instance.flocks)
+            {
+                SpawnParticles(flock);
+            }
+        }
     }
 
-    public void SpawnParticles(int count)
+    public void SpawnParticles(GameManager.Flock flock)
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < flock.particleCount; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            ParticleController particleController = newParticle.GetComponent<ParticleController>();
+
+            // Set particle properties based on flock parameters
+            particleController.aliWeight = flock.alignmentWeight;
+            particleController.cohWeight = flock.cohesionWeight;
+            particleController.sepWeight = flock.separationWeight;
+            particleController.initEnergy = flock.initEnergy;
+
+            // Add the new particle to the GameManager's list
+            GameManager._instance.AddParticle(newParticle);
         }
     }
 
