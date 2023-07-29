@@ -16,6 +16,7 @@ public class ParticleReproduction : MonoBehaviour
     private float cooldownFactor = 10f;
     private float matureCooldown;
     private float matureCooldownFactor = 4f;
+    [HideInInspector]
     public bool onCooldown = false;
 
     public GameObject childPrefab;
@@ -63,13 +64,15 @@ public class ParticleReproduction : MonoBehaviour
         yield return new WaitForSecondsRealtime(busyTime);
 
         // Interesting error, since the prefab is technically itself you have to reset its constraints first or the child is frozen
-        // This can be fixed later with seperate child prefab
+        // I don't know the immediate fix for this since making a seperate prefab would still need a prefab to spawn in
         int indexOfOtherPC = pc.particleNeighbors.IndexOf(otherParent);
         StartCoroutine(Cooldown());
         StartCoroutine(pc.particleNeighbors[indexOfOtherPC].reproduction.Cooldown());
 
         // Child making
         GameObject particle = Instantiate(childPrefab, this.transform.position, Quaternion.identity);
+        GameManager._instance.AddParticle(particle);
+        particle.name = "Particle " + GameManager._instance.particles.Count;
         if (Random.Range(0, 2) == 1)
             particle.GetComponent<ParticleController>().selected = true;
         else
@@ -79,7 +82,7 @@ public class ParticleReproduction : MonoBehaviour
         pc.currEnergy -= energyUsage;
     }
 
-    // Uses the already made onCooldown variable (making another variable would just overcomplicate things
+    // Uses the already made onCooldown variable (making another variable would just overcomplicate things)
     public IEnumerator MatureCooldown()
     {
         onCooldown = true;
@@ -90,7 +93,7 @@ public class ParticleReproduction : MonoBehaviour
     public IEnumerator Cooldown()
     {
         pc.isBusy = false;
-        //Error grabbing the rb2d (saying null, meaning it isn't set by the time it reaches here?)
+        // Error grabbing the rb2d (saying null, meaning it isn't set by the time it reaches here?)
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         onCooldown = true;

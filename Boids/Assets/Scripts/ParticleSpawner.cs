@@ -9,7 +9,7 @@ public class ParticleSpawner : MonoBehaviour
 
     private void Awake()
     {
-        initialParticleCount = GameManager._instance.particleCount;
+        initialParticleCount = GameManager._instance.initialParticles;
         SpawnParticles(initialParticleCount);
     }
 
@@ -20,6 +20,10 @@ public class ParticleSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             GameObject particle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameManager._instance.AddParticle(particle);
+            particle.name = "Particle " + GameManager._instance.particles.Count;
+
+            // Very lazy way of choosing which particles call the reproduction script
             if (Random.Range(0, 2) == 1)
                 particle.GetComponent<ParticleController>().selected = true;
             else

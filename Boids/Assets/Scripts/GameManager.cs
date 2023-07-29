@@ -8,18 +8,24 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
 
-    public int particleCount;
-    public int foodCount;
+    [HideInInspector]
+    public int particleCount = 0;
+    [HideInInspector]
+    public int foodCount = 0;
+    [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
-    public List<GameObject> foods = new List<GameObject>();
-    public int energyFromFood;   // Holds the energy value of the food
+    public int energyFromFood;
+    public int foodPerSec;
 
     public TMP_InputField particleInput;
     public TMP_InputField foodInput;
-    public TMP_InputField energyInput;    
+    public TMP_InputField energyInput;
+    public TMP_InputField foodPerSecInput;
 
     public TextMeshProUGUI warningText;
-    
+
+    public int initialParticles;
+    public int initialFood;
 
     public float maxX = 11.4f;
     public float maxY = 5f;
@@ -27,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void AddParticle(GameObject particle)
@@ -44,39 +50,36 @@ public class GameManager : MonoBehaviour
 
     public void AddFood(GameObject food)
     {
-        foods.Add(food);
         foodCount++;
     }
 
     public void RemoveFood(GameObject food)
     {
-        foods.Remove(food);
         foodCount--;
     }
     
     public void Verify() {
         //Validate input is present and parse into integers
-          //int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
-          int initialFood = ValidateEntry.ValidateInput(foodInput.text);
+          initialParticles = ValidateEntry.ValidateInput(particleInput.text);
+          initialFood = ValidateEntry.ValidateInput(foodInput.text);
           energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
+          foodPerSec = ValidateEntry.ValidateInput(foodPerSecInput.text);
 
         //Checks for and flags invalid entries:
-
-        if (initialFood == -1 || energyFromFood == -1) {
+        if (initialFood <= 0 || 
+            energyFromFood <= 0 || 
+            initialParticles <= 0 || 
+            foodPerSec <= 0) {
             ValidateEntry.FlagInvalidEntry();
         } else {
             ValidateEntry.ClearWarning();
-            StartGame(5, initialFood);
+            StartGame();
         }
     }
 
-    public void StartGame(int particleCount, int foodCount)
+    public void StartGame()
     {
-        this.particleCount = particleCount;
-        this.foodCount = foodCount;
-
         SceneManager.LoadScene("Game");
-
     }
 
     public void EndGame() {
@@ -110,6 +113,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        particleCount = 0;
+        foodCount = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
