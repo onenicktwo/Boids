@@ -23,10 +23,18 @@ public class ParticleController : MonoBehaviour
 
     public List<ParticleController> particleNeighbors = new List<ParticleController>();
     public List<GameObject> foodNeighbors = new List<GameObject>();
+
+    // Reducing method call lag
+    [HideInInspector]
+    private Transform particleTransform;
+    [HideInInspector]
+    public Vector2 globalPosition;
+
+    [HideInInspector]
     private ParticleMovement movement;
     [HideInInspector]
     public ParticleReproduction reproduction;
-
+    [HideInInspector]
     public Rigidbody2D rb2d;
 
     public float speed = 1f;
@@ -37,6 +45,8 @@ public class ParticleController : MonoBehaviour
     public float cohWeight = 1f;
     private Vector2 sep;
     public float sepWeight = 1f;
+
+    private bool active = true;
 
     /*
      * States should be on a fixed percentage. Ex: 0<=Hungry<40<=Content<70<=Reproduce<100
@@ -70,6 +80,9 @@ public class ParticleController : MonoBehaviour
 
     private void Awake()
     {
+        particleTransform = this.transform;
+        globalPosition = particleTransform.position;
+
         movement = this.GetComponent<ParticleMovement>();
         rb2d = this.GetComponent<Rigidbody2D>();
         reproduction = this.GetComponent<ParticleReproduction>();
@@ -87,34 +100,47 @@ public class ParticleController : MonoBehaviour
     {
         if (!isBusy)
         {
+            globalPosition = particleTransform.position;
             StateControl();
             Border();
             UpdateEnergy();
             Look();
+            GetNewVelocity();
             if (currState == States.Reproduce)
                 reproduction.Check();
         }
     }
-
+    
     private void FixedUpdate()
     {
-        if (!isBusy)
-        {
-            ali = movement.alignment(particleNeighbors) * aliWeight;
-            coh = movement.cohesion(particleNeighbors) * cohWeight;
-            sep = movement.seperation(particleNeighbors) * sepWeight;
-            food = movement.nearestFood(foodNeighbors) * currHungryWeight;
-            if (!reproduction.onCooldown )
-                mate = movement.nearestAvailableMate(particleNeighbors) * currReproduceWeight;
-            else
-                mate = Vector2.zero;
-            Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food + mate;
-            newVelocity = newVelocity.normalized * speed;
-            rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
+        StartCoroutine(GetNewVelocity());
+    }
+    
 
-            if (rb2d.velocity.magnitude > maxSpeed)
+    private IEnumerator GetNewVelocity()
+    {
+        while (active)
+        {
+            if (!isBusy)
             {
-                rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
+                yield return new WaitForSeconds(.05f);
+                ali = movement.alignment(particleNeighbors) * aliWeight;
+                coh = movement.cohesion(particleNeighbors, globalPosition) * cohWeight;
+                sep = movement.seperation(particleNeighbors, globalPosition) * sepWeight;
+                food = movement.nearestFood(foodNeighbors, globalPosition) * currHungryWeight;
+                if (!reproduction.onCooldown)
+                    mate = movement.nearestAvailableMate(particleNeighbors, globalPosition) * currReproduceWeight;
+                else
+                    mate = Vector2.zero;
+                Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food + mate;
+                newVelocity = newVelocity.normalized * speed;
+
+                rb2d.velocity = Vector2.Lerp(rb2d.velocity, newVelocity, .05f);
+
+                if (rb2d.velocity.magnitude > maxSpeed)
+                {
+                    rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
+                }
             }
         }
     }
@@ -144,8 +170,8 @@ public class ParticleController : MonoBehaviour
 
     private void Border()
     {
-        float posX = gameObject.transform.position.x;
-        float posY = gameObject.transform.position.y;
+        float posX = globalPosition.x;
+        float posY = globalPosition.y;
         /*
         Vector2 normVel = rb2d.velocity.normalized;
         if (posX > maxX || posX < -maxX || posY > maxY || posY < -maxY)
@@ -168,8 +194,8 @@ public class ParticleController : MonoBehaviour
     {
         if (currEnergy <= 0)
         {
-            //Kill effect
-            Debug.Log(this.gameObject.name + " Died at " + System.DateTime.Now);
+            // Kill effect
+            // Debug.Log(this.gameObject.name + " Died at " + System.DateTime.Now);
             GameManager._instance.RemoveParticle(this.gameObject);
             Destroy(this.gameObject);
         }
@@ -192,11 +218,11 @@ public class ParticleController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "particle")
+        if (collision.gameObject.GetComponent<ParticleController>())
         {
             particleNeighbors.Add(collision.gameObject.GetComponent<ParticleController>());
         }
-        if (collision.gameObject.tag == "food")
+        if (collision.gameObject.GetComponent<FoodBehave>())
         {
             foodNeighbors.Add(collision.gameObject);
         }
@@ -204,13 +230,13 @@ public class ParticleController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "particle")
+        if (collision.gameObject.GetComponent<ParticleController>())
         {
             int indexOfController = particleNeighbors.IndexOf(collision.gameObject.GetComponent<ParticleController>());
             if (indexOfController >= 0)
                 particleNeighbors.RemoveAt(indexOfController);
         }
-        if(collision.gameObject.tag == "food")
+        if(collision.gameObject.GetComponent<FoodBehave>())
         {
             int indexOfFood = foodNeighbors.IndexOf(collision.gameObject);
             if (indexOfFood >= 0)

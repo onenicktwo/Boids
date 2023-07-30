@@ -25,7 +25,7 @@ public class ParticleMovement : MonoBehaviour
         return v;
     }
 
-    public Vector2 cohesion(List<ParticleController> particleNeighbors)
+    public Vector2 cohesion(List<ParticleController> particleNeighbors, Vector2 globalPosition)
     {
         Vector2 v = Vector2.zero;
         if (particleNeighbors.Count != 0)
@@ -33,15 +33,15 @@ public class ParticleMovement : MonoBehaviour
             foreach (ParticleController n in particleNeighbors)
             {
                 if(n != null && !n.isBusy)
-                    v += (Vector2)(n.gameObject.transform.position);
+                    v += n.globalPosition;
             }
             v /= particleNeighbors.Count;
-            v -= (Vector2) (pc.gameObject.transform.position);  
+            v -= globalPosition;  
         }
         return v;
     }
 
-    public Vector2 seperation(List<ParticleController> particleNeighbors)
+    public Vector2 seperation(List<ParticleController> particleNeighbors, Vector2 globalPosition)
     {
         Vector2 v = Vector2.zero;
         int nAvoid = 0;
@@ -50,11 +50,11 @@ public class ParticleMovement : MonoBehaviour
             foreach (ParticleController n in particleNeighbors)
             {
                 if (n != null &&
-                    Vector2.Distance(n.gameObject.transform.position, this.gameObject.transform.position) < radius && 
+                    Vector2.Distance(n.globalPosition, globalPosition) < radius && 
                     !n.isBusy)
                 {
                     nAvoid++;
-                    v += (Vector2)(this.gameObject.transform.position - n.gameObject.transform.position);
+                    v += (Vector2)(globalPosition - n.globalPosition);
                 }
             }
             if(nAvoid > 0)
@@ -63,7 +63,7 @@ public class ParticleMovement : MonoBehaviour
         return v;
     }
 
-    public Vector2 nearestFood(List<GameObject> foodNeighbors)
+    public Vector2 nearestFood(List<GameObject> foodNeighbors, Vector2 globalPosition)
     {
         Vector2 v = Vector2.zero;
         if (foodNeighbors.Count == 0)
@@ -73,10 +73,10 @@ public class ParticleMovement : MonoBehaviour
             if (foodNeighbors[i] != null)
             {       
                 if (v == Vector2.zero)
-                    v = foodNeighbors[i].transform.position - this.gameObject.transform.position;
-                else if ((foodNeighbors[i].transform.position - this.gameObject.transform.position).magnitude < v.magnitude)
+                    v = (Vector2) foodNeighbors[i].transform.position - globalPosition;
+                else if (((Vector2) foodNeighbors[i].transform.position - globalPosition).magnitude < v.magnitude)
                 {
-                    v = foodNeighbors[i].transform.position - this.gameObject.transform.position;
+                    v = (Vector2) foodNeighbors[i].transform.position - globalPosition;
                 }
             }
             else
@@ -89,7 +89,7 @@ public class ParticleMovement : MonoBehaviour
         return v;
     }
 
-    public Vector2 nearestAvailableMate(List<ParticleController> particleNeighbors)
+    public Vector2 nearestAvailableMate(List<ParticleController> particleNeighbors, Vector2 globalPosition)
     {
         Vector2 v = Vector2.zero;
         if (particleNeighbors.Count == 0)
@@ -105,11 +105,11 @@ public class ParticleMovement : MonoBehaviour
                 {
                     if (v == Vector2.zero)
                     {
-                        v = particleNeighbors[i].transform.position - this.gameObject.transform.position;
+                        v = particleNeighbors[i].globalPosition - globalPosition;
                     }
-                    else if ((particleNeighbors[i].transform.position - this.gameObject.transform.position).magnitude < v.magnitude)
+                    else if ((particleNeighbors[i].globalPosition - globalPosition).magnitude < v.magnitude)
                     {
-                        v = particleNeighbors[i].transform.position - this.gameObject.transform.position;
+                        v = particleNeighbors[i].globalPosition - globalPosition;
                     }
                 }
             }
