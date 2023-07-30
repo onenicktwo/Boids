@@ -89,11 +89,12 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed;
    
-        aliWeight = Random.Range(0f, 1f);
-        cohWeight = Random.Range(0f, 1f);
-        sepWeight = Random.Range(0f, 1f);
+        aliWeight = Random.Range(.5f, 1.5f);
+        cohWeight = Random.Range(.5f, 1.5f);
+        sepWeight = Random.Range(.5f, 1.5f);
 
         currEnergy = initEnergy;
+        StartCoroutine(GetNewVelocity());
     }
 
     private void Update()
@@ -110,20 +111,14 @@ public class ParticleController : MonoBehaviour
                 reproduction.Check();
         }
     }
-    
-    private void FixedUpdate()
-    {
-        StartCoroutine(GetNewVelocity());
-    }
-    
-
+   
     private IEnumerator GetNewVelocity()
     {
         while (active)
         {
+            yield return new WaitForSeconds(.05f);
             if (!isBusy)
             {
-                yield return new WaitForSeconds(.05f);
                 ali = movement.alignment(particleNeighbors) * aliWeight;
                 coh = movement.cohesion(particleNeighbors, globalPosition) * cohWeight;
                 sep = movement.seperation(particleNeighbors, globalPosition) * sepWeight;
