@@ -16,19 +16,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager _instance;
-    
-    public int particleCount;
-    public int foodCount;
-    public List<GameObject> particles = new List<GameObject>();
-    public List<GameObject> foods = new List<GameObject>();
-    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
-    public int energyFromFood;   // Holds the energy value of the food
 
-    public TMP_InputField particleInput;
-    public TMP_InputField foodInput;
-    public TMP_InputField energyInput;
-
-    public TextMeshProUGUI warningText;
     private InputManager inputManager;
 
     [HideInInspector]
@@ -37,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int foodCount = 0;
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
+    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
     public int energyFromFood;
     public int foodPerSec;
 
