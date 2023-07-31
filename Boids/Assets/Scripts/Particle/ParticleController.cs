@@ -47,7 +47,6 @@ public class ParticleController : MonoBehaviour
     public float sepWeight = 1f;
 
     private bool active = true;
-
     /*
      * States should be on a fixed percentage. Ex: 0<=Hungry<40<=Content<70<=Reproduce<100
      * This needs to be put on a variable so it can be randomized later. Note: These variables

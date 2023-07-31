@@ -6,8 +6,29 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager _instance;
+    public class Flock
+    {
+        public float alignmentWeight;
+        public float cohesionWeight;
+        public float separationWeight;
+        public float initEnergy;
+        public int particleCount;
+    }
 
+    public static GameManager _instance;
+    
+    public int particleCount;
+    public int foodCount;
+    public List<GameObject> particles = new List<GameObject>();
+    public List<GameObject> foods = new List<GameObject>();
+    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
+    public int energyFromFood;   // Holds the energy value of the food
+
+    public TMP_InputField particleInput;
+    public TMP_InputField foodInput;
+    public TMP_InputField energyInput;
+
+    public TextMeshProUGUI warningText;
     private InputManager inputManager;
 
     [HideInInspector]
@@ -56,9 +77,24 @@ public class GameManager : MonoBehaviour
     {
         foodCount--;
     }
-    
-    public void Verify() {
-        //Validate input is present and parse into integers
+
+    public void AddFlock(float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
+    {
+        Flock flock = new Flock
+        {
+            alignmentWeight = alignmentWeight,
+            cohesionWeight = cohesionWeight,
+            separationWeight = separationWeight,
+            initEnergy = initEnergy,
+            particleCount = particleCount
+        };
+
+        flocks.Add(flock);
+    }
+
+    public void Verify()
+    {
+
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
 
         initialParticles = inputManager.getParticleInput();
@@ -72,7 +108,9 @@ public class GameManager : MonoBehaviour
             initialParticles <= 0 || 
             foodPerSec <= 0) {
             ValidateEntry.FlagInvalidEntry();
-        } else {
+        }
+        else
+        {
             ValidateEntry.ClearWarning();
             StartGame();
         }
@@ -83,7 +121,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void EndGame() {
+    public void EndGame()
+    {
         SceneManager.LoadScene("Start Menu");
     }
 
