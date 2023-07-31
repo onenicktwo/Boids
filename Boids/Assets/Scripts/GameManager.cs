@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager _instance;
-
+    
     public int particleCount;
     public int foodCount;
     public List<GameObject> particles = new List<GameObject>();
@@ -29,6 +29,21 @@ public class GameManager : MonoBehaviour
     public TMP_InputField energyInput;
 
     public TextMeshProUGUI warningText;
+    private InputManager inputManager;
+
+    [HideInInspector]
+    public int particleCount = 0;
+    [HideInInspector]
+    public int foodCount = 0;
+    [HideInInspector]
+    public List<GameObject> particles = new List<GameObject>();
+    public int energyFromFood;
+    public int foodPerSec;
+
+    public TextMeshProUGUI warningText;
+
+    public int initialParticles;
+    public int initialFood;
 
     public float maxX = 11.4f;
     public float maxY = 5f;
@@ -36,30 +51,30 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void AddParticle(GameObject particle)
     {
+        Debug.Log("Particle Called");
         particles.Add(particle);
         particleCount++;
     }
 
     public void RemoveParticle(GameObject particle)
     {
+        Debug.Log("Food Called");
         particles.Remove(particle);
         particleCount--;
     }
 
-    public void AddFood(GameObject food)
+    public void AddFood()
     {
-        foods.Add(food);
         foodCount++;
     }
 
-    public void RemoveFood(GameObject food)
+    public void RemoveFood()
     {
-        foods.Remove(food);
         foodCount--;
     }
 
@@ -79,35 +94,48 @@ public class GameManager : MonoBehaviour
 
     public void Verify()
     {
-        //Validate input is present and parse into integers
-        int initialParticles = ValidateEntry.ValidateInput(particleInput.text);
-        int initialFood = ValidateEntry.ValidateInput(foodInput.text);
-        energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
+
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+
+        initialParticles = inputManager.getParticleInput();
+        initialFood = inputManager.getFoodInput();
+        energyFromFood = inputManager.getEnergyInput();
+        foodPerSec = inputManager.getFoodPerSecInput();
 
         //Checks for and flags invalid entries:
-
-        if (initialParticles == -1 || initialFood == -1 || energyFromFood == -1)
-        {
+        if (initialFood <= 0 || 
+            energyFromFood <= 0 || 
+            initialParticles <= 0 || 
+            foodPerSec <= 0) {
             ValidateEntry.FlagInvalidEntry();
         }
         else
         {
             ValidateEntry.ClearWarning();
-            StartGame(initialParticles, initialFood);
+            StartGame();
         }
     }
 
-    public void StartGame(int particleCount, int foodCount)
+    public void StartGame()
     {
-        this.particleCount = particleCount;
-        this.foodCount = foodCount;
-
         SceneManager.LoadScene("Game");
     }
 
     public void EndGame()
     {
         SceneManager.LoadScene("Start Menu");
+    }
+
+    public void OpenOptions() {
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    public void SetOptions() {
+        CloseOptions();
+    }
+
+    public void CloseOptions() {
+        SceneManager.LoadSceneAsync(0);
     }
 
     public enum GameState { Play, Pause }
@@ -125,6 +153,12 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        particleCount = 0;
+        foodCount = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
 }

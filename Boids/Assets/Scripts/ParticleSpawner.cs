@@ -31,9 +31,16 @@ public class ParticleSpawner : MonoBehaviour
             particleController.cohWeight = flock.cohesionWeight;
             particleController.sepWeight = flock.separationWeight;
             particleController.initEnergy = flock.initEnergy;
+            
+            // Very lazy way of choosing which particles call the reproduction script
+            if (Random.Range(0, 2) == 1)
+                particleController.selected = true;
+            else
+                particleController.selected = false;
 
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);
+            newParticle.name = "Particle " + GameManager._instance.particles.Count;
         }
     }
 

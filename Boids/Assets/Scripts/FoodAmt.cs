@@ -10,7 +10,7 @@ public class FoodAmt : MonoBehaviour {
 
 
     public void Start() {
-        foodAmtText.text = GameManager._instance.foodInput.text;
+        foodAmtText.text = GameManager._instance.foodCount.ToString();
     }
 
     public void Update() {
