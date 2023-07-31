@@ -6,20 +6,15 @@ public class ParticleSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
 
-    private void Start()
+    private void Awake()
     {
         // Assuming GameManager has already been instantiated and initialized
         if (GameManager._instance.flocks.Count > 0)
         {
-            Debug.Log("GameManager is initialized. Flocks count: " + GameManager._instance.flocks.Count);
             foreach (GameManager.Flock flock in GameManager._instance.flocks)
             {
                 SpawnParticles(flock);
             }
-        }
-        else
-        {
-            Debug.Log("GameManager is not initialized or there are no flocks.");
         }
     }
 
