@@ -28,7 +28,7 @@ public class FoodSpawner : MonoBehaviour
             {
                 timer = secPerFood;
                 GameObject food = Instantiate(foodPrefab, GetRandomSpawnPosition(), Quaternion.identity);
-                GameManager._instance.AddFood();
+                GameManager._instance.AddFood(food);
             }
         }
     }
@@ -39,7 +39,7 @@ public class FoodSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             GameObject food = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
-            GameManager._instance.AddFood();
+            GameManager._instance.AddFood(food);
         }
         secPerFood = 1 / foodPerSec;
         timer = secPerFood;
