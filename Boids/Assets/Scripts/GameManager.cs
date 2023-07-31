@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
         energyFromFood = inputManager.getEnergyInput();
         foodPerSec = inputManager.getFoodPerSecInput();
 
+        maxX = inputManager.getXAxisInput();
+        maxY = inputManager.getYAxisInput();
+
         //Checks for and flags invalid entries:
         if (initialFood <= 0 || 
             energyFromFood <= 0 || 

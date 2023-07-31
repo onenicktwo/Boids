@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     public TMP_InputField foodInput;
     public TMP_InputField energyInput;
     public TMP_InputField foodPerSecInput;
+    public TMP_InputField xAxisInput;
+    public TMP_InputField yAxisInput;
 
     public int getParticleInput()
     {
@@ -26,6 +28,15 @@ public class InputManager : MonoBehaviour
     {
         return ValidateEntry.ValidateInput(foodPerSecInput.text);
     }
+
+    public float getXAxisInput() {
+        return ValidateEntry.ValidateX(xAxisInput.text);
+    }
+
+    public float getYAxisInput() {
+        return ValidateEntry.ValidateY(yAxisInput.text);
+    }
+
 
     public void ClearInputs()
     {

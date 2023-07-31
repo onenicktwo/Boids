@@ -8043,7 +8043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5844a07eec143c14bb0934d823ccdf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleInput: {fileID: 0}
+  particleInput: {fileID: 1145870954}
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
