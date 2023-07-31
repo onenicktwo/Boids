@@ -8043,7 +8043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5844a07eec143c14bb0934d823ccdf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleInput: {fileID: 0}
+  particleInput: {fileID: 1145870954}
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
@@ -14039,7 +14039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 88.91101, y: -10}
+  m_AnchoredPosition: {x: 88.91101, y: -9.999939}
   m_SizeDelta: {x: -216.68005, y: -195.7138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519567110
@@ -53612,7 +53612,6 @@ GameObject:
   - component: {fileID: 1796428352}
   - component: {fileID: 1796428351}
   - component: {fileID: 1796428350}
-  - component: {fileID: 1796428354}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -53710,18 +53709,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1796428354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796428349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b784af624b27a2043a55d062ef8c9763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1800131528
 GameObject:
   m_ObjectHideFlags: 0
