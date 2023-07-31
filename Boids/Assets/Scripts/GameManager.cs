@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
 
+    private InputManager inputManager;
+
     [HideInInspector]
     public int particleCount = 0;
     [HideInInspector]
@@ -16,11 +18,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> particles = new List<GameObject>();
     public int energyFromFood;
     public int foodPerSec;
-
-    public TMP_InputField particleInput;
-    public TMP_InputField foodInput;
-    public TMP_InputField energyInput;
-    public TMP_InputField foodPerSecInput;
 
     public TextMeshProUGUI warningText;
 
@@ -62,10 +59,12 @@ public class GameManager : MonoBehaviour
     
     public void Verify() {
         //Validate input is present and parse into integers
-          initialParticles = ValidateEntry.ValidateInput(particleInput.text);
-          initialFood = ValidateEntry.ValidateInput(foodInput.text);
-          energyFromFood = ValidateEntry.ValidateInput(energyInput.text);
-          foodPerSec = ValidateEntry.ValidateInput(foodPerSecInput.text);
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+
+        initialParticles = inputManager.getParticleInput();
+        initialFood = inputManager.getFoodInput();
+        energyFromFood = inputManager.getEnergyInput();
+        foodPerSec = inputManager.getFoodPerSecInput();
 
         //Checks for and flags invalid entries:
         if (initialFood <= 0 || 
