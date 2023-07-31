@@ -5,29 +5,42 @@ using UnityEngine;
 public class ParticleSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
-    public int initialParticleCount;
 
     private void Awake()
     {
-        initialParticleCount = GameManager._instance.initialParticles;
-        SpawnParticles(initialParticleCount);
+        // Assuming GameManager has already been instantiated and initialized
+        if (GameManager._instance.flocks.Count > 0)
+        {
+            foreach (GameManager.Flock flock in GameManager._instance.flocks)
+            {
+                SpawnParticles(flock);
+            }
+        }
     }
 
-    public void SpawnParticles(int count)
+    public void SpawnParticles(GameManager.Flock flock)
     {
-        // Maybe some type of percentage from selected : unselected
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < flock.particleCount; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject particle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
-            GameManager._instance.AddParticle(particle);
-            particle.name = "Particle " + GameManager._instance.particles.Count;
+            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
+            // Set particle properties based on flock parameters
+            particleController.aliWeight = flock.alignmentWeight;
+            particleController.cohWeight = flock.cohesionWeight;
+            particleController.sepWeight = flock.separationWeight;
+            particleController.initEnergy = flock.initEnergy;
+            
             // Very lazy way of choosing which particles call the reproduction script
             if (Random.Range(0, 2) == 1)
-                particle.GetComponent<ParticleController>().selected = true;
+                particleController.selected = true;
             else
-                particle.GetComponent<ParticleController>().selected = false;
+                particleController.selected = false;
+
+            // Add the new particle to the GameManager's list
+            GameManager._instance.AddParticle(newParticle);
+            newParticle.name = "Particle " + GameManager._instance.particles.Count;
         }
     }
 
