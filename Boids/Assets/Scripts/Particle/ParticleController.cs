@@ -78,20 +78,11 @@ public class ParticleController : MonoBehaviour
     // Determines who makes the child call
     public bool selected = false;
 
-    /*
-    // Sight
-    public float sightRadius = 1f;
-    private BoxCollider2D boxCollider;
-    private int particleLayer = 1 << 6;
-    private int foodLayer = 1 << 7;
-    */
-
     private void Awake()
     {
         particleTransform = this.transform;
         globalPosition = particleTransform.position;
 
-        // boxCollider = this.GetComponent<BoxCollider2D>();
         movement = this.GetComponent<ParticleMovement>();
         rb2d = this.GetComponent<Rigidbody2D>();
         reproduction = this.GetComponent<ParticleReproduction>();
@@ -103,7 +94,6 @@ public class ParticleController : MonoBehaviour
         sepWeight = Random.Range(.5f, 1.5f);
 
         currEnergy = initEnergy;
-        // StartCoroutine(GetNewNeighbors());
         StartCoroutine(GetNewVelocity());
     }
 
@@ -116,41 +106,17 @@ public class ParticleController : MonoBehaviour
             Border();
             UpdateEnergy();
             Look();
+            GetNewVelocity();
             if (currState == States.Reproduce)
                 reproduction.Check();
         }
     }
    
-    /*
-    private IEnumerator GetNewNeighbors()
-    {
-        while (active)
-        {
-            List<Collider2D> colliders = new List<Collider2D>(Physics2D.OverlapCircleAll(globalPosition, sightRadius, particleLayer));
-            colliders.Remove(boxCollider);
-            particleNeighbors.Clear();
-            foreach (Collider2D collider in colliders)
-            {
-                particleNeighbors.Add(collider.GetComponent<ParticleController>());
-            }
-
-            colliders = new List<Collider2D>(Physics2D.OverlapCircleAll(globalPosition, sightRadius, foodLayer));
-            foodNeighbors.Clear();
-            foreach (Collider2D collider in colliders)
-            {
-                foodNeighbors.Add(collider.gameObject);
-            }
-
-            yield return new WaitForSeconds(.1f);
-        }
-    }
-    */
-
     private IEnumerator GetNewVelocity()
     {
         while (active)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
             if (!isBusy)
             {
                 ali = movement.alignment(particleNeighbors) * aliWeight;
@@ -245,33 +211,31 @@ public class ParticleController : MonoBehaviour
         gfx.rotation = rotation;
     }
 
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.gameObject.GetComponent<ParticleController>())
         {
-            particleNeighbors.Add(pc);
+            particleNeighbors.Add(collision.gameObject.GetComponent<ParticleController>());
         }
-        if (collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
+        if (collision.gameObject.GetComponent<FoodBehave>())
         {
-            foodNeighbors.Add(fb.gameObject);
+            foodNeighbors.Add(collision.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.gameObject.GetComponent<ParticleController>())
         {
-            //int indexOfController = particleNeighbors.IndexOf(pc);
-            //if (indexOfController >= 0)
-            particleNeighbors.RemoveAt(particleNeighbors.IndexOf(pc));
+            int indexOfController = particleNeighbors.IndexOf(collision.gameObject.GetComponent<ParticleController>());
+            if (indexOfController >= 0)
+                particleNeighbors.RemoveAt(indexOfController);
         }
-        if(collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
+        if(collision.gameObject.GetComponent<FoodBehave>())
         {
-            int indexOfFood = foodNeighbors.IndexOf(fb.gameObject);
+            int indexOfFood = foodNeighbors.IndexOf(collision.gameObject);
             if (indexOfFood >= 0)
-                foodNeighbors.RemoveAt(foodNeighbors.IndexOf(fb.gameObject));
+                foodNeighbors.RemoveAt(indexOfFood);
         }
     }
-    
 }
