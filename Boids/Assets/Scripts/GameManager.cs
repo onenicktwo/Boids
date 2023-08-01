@@ -45,14 +45,12 @@ public class GameManager : MonoBehaviour
 
     public void AddParticle(GameObject particle)
     {
-        Debug.Log("Particle Called");
         particles.Add(particle);
         particleCount++;
     }
 
     public void RemoveParticle(GameObject particle)
     {
-        Debug.Log("Food Called");
         particles.Remove(particle);
         particleCount--;
     }

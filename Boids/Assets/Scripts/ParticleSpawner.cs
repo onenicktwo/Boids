@@ -8,6 +8,7 @@ public class ParticleSpawner : MonoBehaviour
 
     private void Awake()
     {
+        /*
         // Assuming GameManager has already been instantiated and initialized
         if (GameManager._instance.flocks.Count > 0)
         {
@@ -15,6 +16,23 @@ public class ParticleSpawner : MonoBehaviour
             {
                 SpawnParticles(flock);
             }
+        }
+        */
+        for (int i = 0; i < GameManager._instance.initialParticles; i++)
+        {
+            Vector3 spawnPosition = GetRandomSpawnPosition();
+            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            ParticleController particleController = newParticle.GetComponent<ParticleController>();
+
+            // Very lazy way of choosing which particles call the reproduction script
+            if (Random.Range(0, 2) == 1)
+                particleController.selected = true;
+            else
+                particleController.selected = false;
+
+            // Add the new particle to the GameManager's list
+            GameManager._instance.AddParticle(newParticle);
+            newParticle.name = "Particle " + GameManager._instance.particles.Count;
         }
     }
 
