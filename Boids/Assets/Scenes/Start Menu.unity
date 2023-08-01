@@ -8047,6 +8047,8 @@ MonoBehaviour:
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
+  xAxisInput: {fileID: 241618252}
+  yAxisInput: {fileID: 116920081}
 --- !u!4 &265021041
 Transform:
   m_ObjectHideFlags: 0
@@ -13992,8 +13994,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.18097, z: -9.294948}
-  m_LocalScale: {x: 0.9294947, y: 0.9294947, z: 0.9294947}
+  m_LocalPosition: {x: 0, y: 16.180954, z: -9.294949}
+  m_LocalScale: {x: 0.92949474, y: 0.92949474, z: 0.92949474}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
