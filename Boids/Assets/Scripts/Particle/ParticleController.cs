@@ -247,7 +247,7 @@ public class ParticleController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(BoxCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
         {
             particleNeighbors.Add(pc);
         }
@@ -259,7 +259,7 @@ public class ParticleController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(BoxCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
         {
             //int indexOfController = particleNeighbors.IndexOf(pc);
             //if (indexOfController >= 0)
