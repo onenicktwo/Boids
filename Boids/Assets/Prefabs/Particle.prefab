@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1286266957003327588}
   - component: {fileID: 3319779429516175684}
   - component: {fileID: 193375489604221772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Beak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: -7313276472884445827}
   - component: {fileID: 4423723842126541279}
   - component: {fileID: 4423723842126541278}
-  - component: {fileID: -7334803360065686812}
+  - component: {fileID: 8622930831103508552}
   m_Layer: 6
   m_Name: Particle
   m_TagString: particle
@@ -136,9 +136,9 @@ MonoBehaviour:
   reproducePercent: 0.7
   maxReproduceWeight: 10
   currReproduceWeight: 0
-  busyTimeFactor: 20
-  reproduceCooldownFactor: 10
-  matureCooldownFactor: 5
+  busyTimeFactor: 0.05
+  reproduceCooldownFactor: 0.1
+  matureCooldownFactor: 0.2
   selected: 0
 --- !u!114 &4423723842126541276
 MonoBehaviour:
@@ -177,7 +177,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423723842126541248}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 1
@@ -188,7 +188,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &4423723842126541278
 CircleCollider2D:
@@ -205,9 +205,9 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
---- !u!61 &-7334803360065686812
-BoxCollider2D:
+  m_Radius: 3
+--- !u!70 &8622930831103508552
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -220,18 +220,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.5}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.2, y: 0.5}
+  m_Direction: 0
 --- !u!1 &4423723843037569908
 GameObject:
   m_ObjectHideFlags: 0

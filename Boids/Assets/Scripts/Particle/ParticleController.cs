@@ -115,6 +115,7 @@ public class ParticleController : MonoBehaviour
             Border();
             UpdateEnergy();
             Look();
+
             if (currState == States.Reproduce)
                 reproduction.Check();
         }
@@ -149,17 +150,19 @@ public class ParticleController : MonoBehaviour
     {
         while (active)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
             if (!isBusy)
             {
                 ali = movement.alignment(particleNeighbors) * aliWeight;
                 coh = movement.cohesion(particleNeighbors, globalPosition) * cohWeight;
                 sep = movement.seperation(particleNeighbors, globalPosition) * sepWeight;
                 food = movement.nearestFood(foodNeighbors, globalPosition) * currHungryWeight;
+                
                 if (!reproduction.onCooldown)
                     mate = movement.nearestAvailableMate(particleNeighbors, globalPosition) * currReproduceWeight;
                 else
                     mate = Vector2.zero;
+                
                 Vector2 newVelocity = rb2d.velocity + ali + coh + sep + food + mate;
                 newVelocity = newVelocity.normalized * speed;
 
@@ -176,12 +179,12 @@ public class ParticleController : MonoBehaviour
     private void StateControl()
     {
         float currEnergyPercent = currEnergy / initEnergy;
-        // currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
+        currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
         // currReproduceWeight = currEnergyPercent * maxReproduceWeight;
         if (currEnergyPercent < hungryPercent)
         {
             currState = States.Hungry;
-            currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
+            //currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
         }
         else if (currEnergyPercent > reproducePercent)
         {
@@ -191,7 +194,7 @@ public class ParticleController : MonoBehaviour
         else
         {
             currState = States.Content;
-            currHungryWeight = 0f;
+            // currHungryWeight = 0f;
             currReproduceWeight = 0f;
         }
     }
@@ -247,9 +250,11 @@ public class ParticleController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetType() == typeof(BoxCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(CapsuleCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
         {
-            particleNeighbors.Add(pc);
+            // Issue: getting multiple copies of particle controllers of the same object 
+            if(particleNeighbors.IndexOf(pc) < 0)
+                particleNeighbors.Add(pc);
         }
         if (collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
         {
@@ -259,11 +264,11 @@ public class ParticleController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetType() == typeof(BoxCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(CapsuleCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
         {
-            //int indexOfController = particleNeighbors.IndexOf(pc);
-            //if (indexOfController >= 0)
-            particleNeighbors.RemoveAt(particleNeighbors.IndexOf(pc));
+            int indexOfController = particleNeighbors.IndexOf(pc);
+            if (indexOfController >= 0)
+                particleNeighbors.RemoveAt(particleNeighbors.IndexOf(pc));
         }
         if(collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
         {

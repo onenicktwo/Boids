@@ -32,9 +32,9 @@ public class ParticleReproduction : MonoBehaviour
         cooldownFactor = pc.reproduceCooldownFactor;
         matureCooldownFactor = pc.matureCooldownFactor;
 
-        busyTime = pc.initEnergy / busyTimeFactor;
-        cooldown = pc.initEnergy / cooldownFactor;
-        matureCooldown = pc.initEnergy / matureCooldownFactor;
+        busyTime = pc.initEnergy * busyTimeFactor;
+        cooldown = pc.initEnergy * cooldownFactor;
+        matureCooldown = pc.initEnergy * matureCooldownFactor;
     }
 
     public void Check()
