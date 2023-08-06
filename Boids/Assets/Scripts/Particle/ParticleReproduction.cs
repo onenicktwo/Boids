@@ -9,6 +9,7 @@ public class ParticleReproduction : MonoBehaviour
      */
     public float radius = .1f;
     private ParticleController pc;
+    private Transform particleSpawner;
 
     private float busyTime;
     private float busyTimeFactor = 20f;
@@ -26,6 +27,7 @@ public class ParticleReproduction : MonoBehaviour
     private void Awake()
     {
         pc = GetComponent<ParticleController>();
+        particleSpawner = GameObject.Find("ParticleSpawner").transform;
 
         // Energy is already a timer, so this shouldn't cause issues
         busyTimeFactor = GameManager._instance.busyTimeFactor;
@@ -72,7 +74,7 @@ public class ParticleReproduction : MonoBehaviour
         StartCoroutine(otherParentController.reproduction.Cooldown());
 
         // Child making
-        GameObject particle = GeneSelection(Instantiate(childPrefab, this.transform.position, Quaternion.identity), this.pc, otherParentController);
+        GameObject particle = GeneSelection(Instantiate(childPrefab, this.transform.position, Quaternion.identity, particleSpawner), this.pc, otherParentController);
         GameManager._instance.AddParticle(particle);
         particle.name = "Particle " + GameManager._instance.particles.Count;
         StartCoroutine(particle.GetComponent<ParticleController>().reproduction.MatureCooldown());
@@ -88,16 +90,13 @@ public class ParticleReproduction : MonoBehaviour
         childController.currEnergy = childController.initEnergy;
 
         childController.speed = GeneSelector.GetGeneFloat(parent1.speed, parent2.speed);
-        childController.maxSpeed = GeneSelector.GetGeneFloat(parent1.maxSpeed, parent2.maxSpeed);
 
         childController.aliWeight = GeneSelector.GetGeneFloat(parent1.aliWeight, parent2.aliWeight);
         childController.cohWeight = GeneSelector.GetGeneFloat(parent1.cohWeight, parent2.cohWeight);
         childController.sepWeight = GeneSelector.GetGeneFloat(parent1.sepWeight, parent2.sepWeight);
 
-        childController.hungryPercent = GeneSelector.GetGeneFloat(parent1.hungryPercent, parent2.hungryPercent);
         childController.maxHungryWeight = GeneSelector.GetGeneFloat(parent1.maxHungryWeight, parent2.maxHungryWeight);
 
-        childController.reproducePercent = GeneSelector.GetGeneFloat(parent1.reproducePercent, parent2.reproducePercent);
         childController.maxReproduceWeight = GeneSelector.GetGeneFloat(parent1.maxReproduceWeight, parent2.maxReproduceWeight);
 
         childController.reproductionEnergyUse = GeneSelector.GetGeneFloat(parent1.reproductionEnergyUse, parent2.reproductionEnergyUse);

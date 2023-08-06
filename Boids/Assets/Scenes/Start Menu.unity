@@ -38086,10 +38086,10 @@ MonoBehaviour:
   warningText: {fileID: 1480581713}
   initialParticles: 0
   initialFood: 0
-  maxX: 11.4
-  maxY: 6.4
+  maxX: 20
+  maxY: 20
   mutationChance: 50
-  mutationFactor: 0.1
+  mutationFactor: 0.5
   busyTimeFactor: 0.05
   reproduceCooldownFactor: 0.2
   matureCooldownFactor: 0.1

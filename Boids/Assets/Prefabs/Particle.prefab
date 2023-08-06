@@ -98,15 +98,12 @@ MonoBehaviour:
   sepWeight: 0
   currState: 1
   hungryPercent: 0.3
-  maxHungryWeight: 10
+  maxHungryWeight: 1
   currHungryWeight: 0
   isBusy: 0
   reproducePercent: 0.7
-  maxReproduceWeight: 3
+  maxReproduceWeight: 1
   currReproduceWeight: 0
-  busyTimeFactor: 0.05
-  reproduceCooldownFactor: 0.1
-  matureCooldownFactor: 0.2
   reproductionEnergyUse: 1
   selected: 0
 --- !u!114 &4423723842126541276

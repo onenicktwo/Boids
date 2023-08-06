@@ -21,7 +21,7 @@ public class ParticleSpawner : MonoBehaviour
         for (int i = 0; i < GameManager._instance.initialParticles; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
             particleController.aliWeight = Random.Range(.5f, 1.5f);
@@ -41,7 +41,7 @@ public class ParticleSpawner : MonoBehaviour
         for (int i = 0; i < flock.particleCount; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
             // Set particle properties based on flock parameters
