@@ -24,11 +24,11 @@ public class ParticleSpawner : MonoBehaviour
             GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
+            particleController.aliWeight = Random.Range(.5f, 1.5f);
+            particleController.cohWeight = Random.Range(.5f, 1.5f);
+            particleController.sepWeight = Random.Range(.5f, 1.5f);
             // Very lazy way of choosing which particles call the reproduction script
-            if (Random.Range(0, 2) == 1)
-                particleController.selected = true;
-            else
-                particleController.selected = false;
+            particleController.selected = GeneSelector.GetGeneBool();
 
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);

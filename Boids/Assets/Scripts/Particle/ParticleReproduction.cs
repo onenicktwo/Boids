@@ -28,9 +28,10 @@ public class ParticleReproduction : MonoBehaviour
         pc = GetComponent<ParticleController>();
 
         // Energy is already a timer, so this shouldn't cause issues
-        busyTimeFactor = pc.busyTimeFactor;
-        cooldownFactor = pc.reproduceCooldownFactor;
-        matureCooldownFactor = pc.matureCooldownFactor;
+        busyTimeFactor = GameManager._instance.busyTimeFactor;
+        cooldownFactor = GameManager._instance.reproduceCooldownFactor;
+        matureCooldownFactor = GameManager._instance.matureCooldownFactor;
+        energyUsage = pc.reproductionEnergyUse;
 
         busyTime = pc.initEnergy * busyTimeFactor;
         cooldown = pc.initEnergy * cooldownFactor;
@@ -66,20 +67,45 @@ public class ParticleReproduction : MonoBehaviour
         // Interesting error, since the prefab is technically itself you have to reset its constraints first or the child is frozen
         // I don't know the immediate fix for this since making a seperate prefab would still need a prefab to spawn in
         int indexOfOtherPC = pc.particleNeighbors.IndexOf(otherParent);
+        ParticleController otherParentController = pc.particleNeighbors[indexOfOtherPC];
         StartCoroutine(Cooldown());
-        StartCoroutine(pc.particleNeighbors[indexOfOtherPC].reproduction.Cooldown());
+        StartCoroutine(otherParentController.reproduction.Cooldown());
 
         // Child making
-        GameObject particle = Instantiate(childPrefab, this.transform.position, Quaternion.identity);
+        GameObject particle = GeneSelection(Instantiate(childPrefab, this.transform.position, Quaternion.identity), this.pc, otherParentController);
         GameManager._instance.AddParticle(particle);
         particle.name = "Particle " + GameManager._instance.particles.Count;
-        if (Random.Range(0, 2) == 1)
-            particle.GetComponent<ParticleController>().selected = true;
-        else
-            particle.GetComponent<ParticleController>().selected = false;
         StartCoroutine(particle.GetComponent<ParticleController>().reproduction.MatureCooldown());
 
         pc.currEnergy -= energyUsage;
+    }
+
+    private GameObject GeneSelection(GameObject particle, ParticleController parent1, ParticleController parent2)
+    {
+        ParticleController childController = particle.GetComponent<ParticleController>();
+
+        childController.initEnergy = GeneSelector.GetGeneFloat(parent1.initEnergy, parent2.initEnergy);
+        childController.currEnergy = childController.initEnergy;
+
+        childController.speed = GeneSelector.GetGeneFloat(parent1.speed, parent2.speed);
+        childController.maxSpeed = GeneSelector.GetGeneFloat(parent1.maxSpeed, parent2.maxSpeed);
+
+        childController.aliWeight = GeneSelector.GetGeneFloat(parent1.aliWeight, parent2.aliWeight);
+        childController.cohWeight = GeneSelector.GetGeneFloat(parent1.cohWeight, parent2.cohWeight);
+        childController.sepWeight = GeneSelector.GetGeneFloat(parent1.sepWeight, parent2.sepWeight);
+
+        childController.hungryPercent = GeneSelector.GetGeneFloat(parent1.hungryPercent, parent2.hungryPercent);
+        childController.maxHungryWeight = GeneSelector.GetGeneFloat(parent1.maxHungryWeight, parent2.maxHungryWeight);
+
+        childController.reproducePercent = GeneSelector.GetGeneFloat(parent1.reproducePercent, parent2.reproducePercent);
+        childController.maxReproduceWeight = GeneSelector.GetGeneFloat(parent1.maxReproduceWeight, parent2.maxReproduceWeight);
+
+        childController.reproductionEnergyUse = GeneSelector.GetGeneFloat(parent1.reproductionEnergyUse, parent2.reproductionEnergyUse);
+        energyUsage = childController.reproductionEnergyUse;
+
+        childController.selected = GeneSelector.GetGeneBool();
+
+        return particle;
     }
 
     // Uses the already made onCooldown variable (making another variable would just overcomplicate things)

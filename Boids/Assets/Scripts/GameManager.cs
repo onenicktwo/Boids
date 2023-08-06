@@ -37,6 +37,15 @@ public class GameManager : MonoBehaviour
     public float maxX = 11.4f;
     public float maxY = 5f;
 
+    public float mutationChance = 0f;
+    // Would recommend being less then 1
+    public float mutationFactor = .1f;
+
+    // Moved it here since messing with spawn rates while reproducing doesn't sound like a good idea
+    public float busyTimeFactor = 1f;
+    public float reproduceCooldownFactor = 1f;
+    public float matureCooldownFactor = 1f;
+
     private void Awake()
     {
         _instance = this;
