@@ -9,6 +9,16 @@ public class InputManager : MonoBehaviour
     public TMP_InputField foodInput;
     public TMP_InputField energyInput;
     public TMP_InputField foodPerSecInput;
+    public GameManager gameManager;
+
+    void Start()
+    {
+        particleInput.onEndEdit.AddListener(delegate { gameManager.UpdateParticleCount(getParticleInput()); });
+        foodInput.onEndEdit.AddListener(delegate { gameManager.UpdateFoodCount(getFoodInput()); });
+        energyInput.onEndEdit.AddListener(delegate { gameManager.UpdateEnergyFromFood(getEnergyInput()); });
+        foodPerSecInput.onEndEdit.AddListener(delegate { gameManager.UpdateFoodPerSec(getFoodPerSecInput()); });
+    }
+
 
     public int getParticleInput()
     {
