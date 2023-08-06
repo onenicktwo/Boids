@@ -20,10 +20,10 @@ public class GeneSelector : MonoBehaviour
         if (mutationChance)
         {
             if (randNum % 2 == 0)
-                geneAmnt += GameManager._instance.mutationFactor;
+                geneAmnt += geneAmnt * GameManager._instance.mutationFactor;
             else
-                geneAmnt -= GameManager._instance.mutationFactor;
+                geneAmnt -= geneAmnt * GameManager._instance.mutationFactor;
         }
-        return geneAmnt < 0 ? 0 : geneAmnt;
+        return geneAmnt;
     }
 }
