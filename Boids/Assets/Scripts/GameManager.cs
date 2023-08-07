@@ -148,25 +148,4 @@ public class GameManager : MonoBehaviour
     public void QuitGame() {
         Application.Quit();
     }
-
-    public void UpdateParticleCount(int newCount)
-    {
-        initialParticles = newCount;
-    }
-
-    public void UpdateFoodCount(int newCount)
-    {
-        initialFood = newCount;
-    }
-
-    public void UpdateEnergyFromFood(int newEnergy)
-    {
-        energyFromFood = newEnergy;
-    }
-
-    public void UpdateFoodPerSec(int newFoodPerSec)
-    {
-        foodPerSec = newFoodPerSec;
-    }
-
 }

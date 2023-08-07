@@ -8047,7 +8047,6 @@ MonoBehaviour:
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
-  gameManager: {fileID: 1251998907}
 --- !u!4 &265021041
 Transform:
   m_ObjectHideFlags: 0
