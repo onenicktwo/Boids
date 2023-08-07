@@ -14,8 +14,8 @@ public class ParticleController : MonoBehaviour
      */
     public Transform gfx;
 
-    public float maxX = 11.4f;
-    public float maxY = 5f;
+    public float maxX;
+    public float maxY;
     public float turnFactor = 1f;
 
     public float initEnergy = 1f;
@@ -71,9 +71,7 @@ public class ParticleController : MonoBehaviour
     public float reproducePercent = .7f;
     public float maxReproduceWeight = 3f;
     public float currReproduceWeight = 0f;
-    public float busyTimeFactor = 1f;
-    public float reproduceCooldownFactor = 1f;
-    public float matureCooldownFactor = 1f;
+    public float reproductionEnergyUse = 1f;
     // Determines who makes the child call
     public bool selected = false;
 
@@ -89,6 +87,8 @@ public class ParticleController : MonoBehaviour
     {
         particleTransform = this.transform;
         globalPosition = particleTransform.position;
+        maxX = GameManager._instance.maxX;
+        maxY = GameManager._instance.maxY;
 
         // boxCollider = this.GetComponent<BoxCollider2D>();
         movement = this.GetComponent<ParticleMovement>();
@@ -96,10 +96,6 @@ public class ParticleController : MonoBehaviour
         reproduction = this.GetComponent<ParticleReproduction>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed;
-   
-        aliWeight = Random.Range(.5f, 1.5f);
-        cohWeight = Random.Range(.5f, 1.5f);
-        sepWeight = Random.Range(.5f, 1.5f);
 
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
@@ -179,12 +175,12 @@ public class ParticleController : MonoBehaviour
     private void StateControl()
     {
         float currEnergyPercent = currEnergy / initEnergy;
-        currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
+        // currHungryWeight = (1 - currEnergyPercent) * maxHungryWeight;
         // currReproduceWeight = currEnergyPercent * maxReproduceWeight;
         if (currEnergyPercent < hungryPercent)
         {
             currState = States.Hungry;
-            //currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
+            currHungryWeight = (1 - currEnergyPercent / hungryPercent) * maxHungryWeight;
         }
         else if (currEnergyPercent > reproducePercent)
         {
@@ -194,7 +190,7 @@ public class ParticleController : MonoBehaviour
         else
         {
             currState = States.Content;
-            // currHungryWeight = 0f;
+            currHungryWeight = 0f;
             currReproduceWeight = 0f;
         }
     }
@@ -203,14 +199,7 @@ public class ParticleController : MonoBehaviour
     {
         float posX = globalPosition.x;
         float posY = globalPosition.y;
-        /*
-        Vector2 normVel = rb2d.velocity.normalized;
-        if (posX > maxX || posX < -maxX || posY > maxY || posY < -maxY)
-        {
-            gameObject.transform.position *= -1;
-            gameObject.transform.position += new Vector3(normVel.x / 10, normVel.y / 10, 0);
-        }
-        */
+
         if (posX < -maxX)
             rb2d.velocity += new Vector2(turnFactor, 0);
         if (posX > maxX)
@@ -226,7 +215,6 @@ public class ParticleController : MonoBehaviour
         if (currEnergy <= 0)
         {
             // Kill effect
-            // Debug.Log(this.gameObject.name + " Died at " + System.DateTime.Now);
             GameManager._instance.RemoveParticle(this.gameObject);
             Destroy(this.gameObject);
         }
@@ -250,11 +238,14 @@ public class ParticleController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetType() == typeof(CapsuleCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(CapsuleCollider2D))
         {
-            // Issue: getting multiple copies of particle controllers of the same object 
-            if(particleNeighbors.IndexOf(pc) < 0)
-                particleNeighbors.Add(pc);
+            Transform parent = collision.gameObject.transform.parent;
+            if (parent.TryGetComponent<ParticleController>(out ParticleController pc))
+            {
+                if (particleNeighbors.IndexOf(pc) < 0)
+                    particleNeighbors.Add(pc);
+            }
         }
         if (collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
         {
@@ -264,11 +255,15 @@ public class ParticleController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetType() == typeof(CapsuleCollider2D) && collision.TryGetComponent<ParticleController>(out ParticleController pc))
+        if (collision.GetType() == typeof(CapsuleCollider2D))
         {
-            int indexOfController = particleNeighbors.IndexOf(pc);
-            if (indexOfController >= 0)
-                particleNeighbors.RemoveAt(particleNeighbors.IndexOf(pc));
+            Transform parent = collision.gameObject.transform.parent;
+            if (parent.TryGetComponent<ParticleController>(out ParticleController pc))
+            {
+                int indexOfController = particleNeighbors.IndexOf(pc);
+                if (indexOfController >= 0)
+                    particleNeighbors.RemoveAt(particleNeighbors.IndexOf(pc));
+            }
         }
         if(collision.TryGetComponent<FoodBehave>(out FoodBehave fb))
         {
