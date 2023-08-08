@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ValidateEntry : MonoBehaviour {
 
-    public static int ValidateInput(string inputString) {
+    public static float ValidateInput(string inputString) {
         if (inputString != "" && inputString != "-") {
-            return int.Parse(inputString);
+            return float.Parse(inputString);
         } else {
-            return 0;
+            throw new Exception(inputString);
         }
     }
 
     public static void FlagInvalidEntry() {
         GameManager._instance.warningText.text = "Invalid Entry. Please enter a positive, whole number for all fields.";
-        GameObject.Find("InputManager").GetComponent<InputManager>().ClearInputs();
+        GameObject.Find("InputManager").GetComponent<InputManager>().ClearAllInputs();
     }
 
     public static void ClearWarning() {

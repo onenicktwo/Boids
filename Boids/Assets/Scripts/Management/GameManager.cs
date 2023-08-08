@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    // Will be removed when flocks are setup
+    public float alignmentWeight;
+    public float cohesionWeight;
+    public float separationWeight;
+    public float initEnergy;
+    public float speed;
+    public float sightRadius;
+
     public class Flock
     {
         public float alignmentWeight;
@@ -91,24 +100,36 @@ public class GameManager : MonoBehaviour
 
     public void Verify()
     {
-
+        ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-
-        initialParticles = inputManager.getParticleInput();
-        initialFood = inputManager.getFoodInput();
-        energyFromFood = inputManager.getEnergyInput();
-        foodPerSec = inputManager.getFoodPerSecInput();
-
-        //Checks for and flags invalid entries:
-        if (initialFood <= 0 || 
-            energyFromFood <= 0 || 
-            initialParticles <= 0 || 
-            foodPerSec <= 0) {
-            ValidateEntry.FlagInvalidEntry();
-        }
-        else
+        try
         {
-            ValidateEntry.ClearWarning();
+            maxX = inputManager.getMaxX();
+            maxY = inputManager.getMaxY();
+
+            initialParticles = (int) inputManager.getParticleInput();
+            alignmentWeight = inputManager.getAlignment();
+            cohesionWeight = inputManager.getCohesion();
+            separationWeight = inputManager.getSeperation();
+            initEnergy = inputManager.getInitEnergy();
+            speed = inputManager.getSpeed();
+            sightRadius = inputManager.getSightRadius();
+
+            initialFood = (int) inputManager.getFoodInput();
+            energyFromFood = (int) inputManager.getEnergyInput();
+            foodPerSec = (int) inputManager.getFoodPerSecInput();
+
+            mutationChance = inputManager.getMutationChance();
+            mutationFactor = inputManager.getMutationFactor();
+        } 
+        catch (Exception e)
+        {
+            ValidateEntry.FlagInvalidEntry();
+            Debug.Log(e.ToString());
+        }
+
+        if (GameManager._instance.warningText.text == "")
+        {
             StartGame();
         }
     }

@@ -6184,7 +6184,7 @@ GameObject:
   - component: {fileID: 183178980}
   - component: {fileID: 183178981}
   m_Layer: 5
-  m_Name: MutationChanceSlider
+  m_Name: MutationFactorSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8401,10 +8401,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5844a07eec143c14bb0934d823ccdf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxX: {fileID: 241618252}
+  maxY: {fileID: 116920081}
   particleInput: {fileID: 1145870954}
+  speed: {fileID: 1043637557}
+  sightRadius: {fileID: 995778076}
+  initEnergy: {fileID: 96431579}
+  sep: {fileID: 1986928142}
+  ali: {fileID: 1418399241}
+  coh: {fileID: 1331301398}
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
+  mutationChance: {fileID: 1642154070}
+  mutationFactor: {fileID: 183178981}
 --- !u!4 &265021041
 Transform:
   m_ObjectHideFlags: 0
@@ -38078,6 +38088,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3772324e8b5ea411eb15fff8b39fe590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alignmentWeight: 0
+  cohesionWeight: 0
+  separationWeight: 0
+  initEnergy: 0
+  speed: 0
+  sightRadius: 0
   particleCount: 0
   foodCount: 0
   particles: []

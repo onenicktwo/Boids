@@ -8,6 +8,7 @@ public class ParticleSpawner : MonoBehaviour
 
     private void Awake()
     {
+        GameManager gm = GameManager._instance;
         /*
         // Assuming GameManager has already been instantiated and initialized
         if (GameManager._instance.flocks.Count > 0)
@@ -24,9 +25,13 @@ public class ParticleSpawner : MonoBehaviour
             GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
-            particleController.aliWeight = Random.Range(.5f, 1.5f);
-            particleController.cohWeight = Random.Range(.5f, 1.5f);
-            particleController.sepWeight = Random.Range(.5f, 1.5f);
+            particleController.speed = gm.speed;
+            particleController.initEnergy = gm.initEnergy;
+            particleController.GetComponent<CircleCollider2D>().radius = gm.sightRadius;
+
+            particleController.aliWeight = gm.alignmentWeight;
+            particleController.cohWeight = gm.cohesionWeight;
+            particleController.sepWeight = gm.separationWeight;
             // Very lazy way of choosing which particles call the reproduction script
             particleController.selected = GeneSelector.GetGeneBool();
 
