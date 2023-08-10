@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public class Flock
     {
+        public string flockID; // Unique identifier for each flock
         public float alignmentWeight;
         public float cohesionWeight;
         public float separationWeight;
@@ -84,10 +85,11 @@ public class GameManager : MonoBehaviour
         foodCount--;
     }
 
-    public void AddFlock(float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
+    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
     {
         Flock flock = new Flock
         {
+            flockID = id,
             alignmentWeight = alignmentWeight,
             cohesionWeight = cohesionWeight,
             separationWeight = separationWeight,
@@ -96,6 +98,12 @@ public class GameManager : MonoBehaviour
         };
 
         flocks.Add(flock);
+    }
+
+    // Method to get a specific flock by its ID
+    public Flock GetFlockByID(string id)
+    {
+        return flocks.Find(f => f.flockID == id);
     }
 
     public void Verify()

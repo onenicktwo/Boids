@@ -74,6 +74,9 @@ public class ParticleController : MonoBehaviour
     public float reproductionEnergyUse = 1f;
     // Determines who makes the child call
     public bool selected = false;
+    // This will be set when the particle is instantiated
+    public string flockID;
+
 
     /*
     // Sight
@@ -98,11 +101,13 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = rb2d.velocity.normalized * speed;
         
         // Set the properties based on the current flock
-        if (GameManager._instance.currentFlock != null){
-            aliWeight = GameManager._instance.currentFlock.alignmentWeight;
-            cohWeight = GameManager._instance.currentFlock.cohesionWeight;
-            sepWeight = GameManager._instance.currentFlock.separationWeight;
-            initEnergy = GameManager._instance.currentFlock.initEnergy;
+        GameManager.Flock assignedFlock = GameManager._instance.GetFlockByID(flockID);
+        if (assignedFlock != null)
+        {
+            aliWeight = assignedFlock.alignmentWeight;
+            cohWeight = assignedFlock.cohesionWeight;
+            sepWeight = assignedFlock.separationWeight;
+            initEnergy = assignedFlock.initEnergy;
         }
         else
         {
