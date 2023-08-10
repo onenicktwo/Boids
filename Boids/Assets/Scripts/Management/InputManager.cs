@@ -18,6 +18,12 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private Slider mutationChance, mutationFactor;
 
+    [SerializeField]
+    private ToggleGroup flockIDToggleGroup;
+
+    [SerializeField]
+    private ToggleGroup colorToggleGroup;
+
     public float getMutationFactor()
     {
         //Debug.Log(ValidateEntry.ValidateInput(mutationFactor.value.ToString("F2")));
@@ -89,6 +95,45 @@ public class InputManager : MonoBehaviour
         return ValidateEntry.ValidateInput(foodPerSecInput.text);
     }
 
+     public string GetSelectedFlockID()
+    {
+        foreach (Toggle toggle in flockIDToggleGroup.ActiveToggles())
+        {
+            return toggle.GetComponentInChildren<TextMeshProUGUI>().text;
+        }
+        return null; 
+    }
+    
+    public Color GetSelectedColor()
+    {
+        foreach (Toggle toggle in colorToggleGroup.ActiveToggles())
+        {
+            return ConvertStringToColor(toggle.name); // Convert the string name to a Color
+        }
+        return Color.white; // Return white as a default if no toggle is active
+    }
+
+    private Color ConvertStringToColor(string colorName)
+    {
+        switch (colorName.ToLower())
+        {
+            case "red":
+                return Color.red;
+            case "orange":
+                return new Color(1, 0.5f, 0); // RGB for Orange
+            case "yellow":
+                return Color.yellow;
+            case "green":
+                return Color.green;
+            case "blue":
+                return Color.blue;
+            case "purple":
+                return new Color(0.5f, 0, 0.5f); // RGB for Purple
+            default:
+                return Color.white; // Default to white if the color name doesn't match
+        }
+    }
+
     public void ClearAllInputs()
     {
         particleInput.text = "";
@@ -103,5 +148,14 @@ public class InputManager : MonoBehaviour
         coh.text = "";
         initEnergy.text = "";
         sightRadius.text = "";
+        foreach (Toggle toggle in flockIDToggleGroup.GetComponentsInChildren<Toggle>())
+        {
+            toggle.isOn = false;
+        }
+
+        foreach (Toggle toggle in colorToggleGroup.GetComponentsInChildren<Toggle>())
+        {
+            toggle.isOn = false;
+        }
     }
 }

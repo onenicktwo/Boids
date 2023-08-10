@@ -7,14 +7,6 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    // Will be removed when flocks are setup
-    public float alignmentWeight;
-    public float cohesionWeight;
-    public float separationWeight;
-    public float initEnergy;
-    public float speed;
-    public float sightRadius;
-
     public class Flock
     {
         public string flockID; // Unique identifier for each flock
@@ -22,7 +14,10 @@ public class GameManager : MonoBehaviour
         public float cohesionWeight;
         public float separationWeight;
         public float initEnergy;
+        public float speed; // Added speed to the Flock class
+        public float sightRadius; // Added sightRadius to the Flock class
         public int particleCount;
+        public Color flockColor;
     }
 
     public static GameManager _instance;
@@ -35,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int foodCount = 0;
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
-    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
+    public List<Flock> flocks = new List<Flock>();
     public int energyFromFood;
     public int foodPerSec;
 
@@ -47,12 +42,9 @@ public class GameManager : MonoBehaviour
     public float maxX = 11.4f;
     public float maxY = 5f;
     
-    // 0 < x < 100
     public float mutationChance = 0f;
-    // 0 < x < 1
     public float mutationFactor = .1f;
 
-    // Moved it here since messing with spawn rates while reproducing doesn't sound like a good idea
     public float busyTimeFactor = 1f;
     public float reproduceCooldownFactor = 1f;
     public float matureCooldownFactor = 1f;
@@ -85,7 +77,7 @@ public class GameManager : MonoBehaviour
         foodCount--;
     }
 
-    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
+    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount, Color flockColor, float speed, float sightRadius)
     {
         Flock flock = new Flock
         {
@@ -94,17 +86,25 @@ public class GameManager : MonoBehaviour
             cohesionWeight = cohesionWeight,
             separationWeight = separationWeight,
             initEnergy = initEnergy,
-            particleCount = particleCount
+            particleCount = particleCount,
+            flockColor = flockColor,
+            speed = speed, // Set the speed for the flock
+            sightRadius = sightRadius // Set the sightRadius for the flock
         };
 
         flocks.Add(flock);
     }
 
-    // Method to get a specific flock by its ID
     public Flock GetFlockByID(string id)
     {
         return flocks.Find(f => f.flockID == id);
     }
+
+    public void SaveCurrentFlocks()
+    {
+        SaveSystem.SaveFlocks(flocks);
+    }
+
 
     public void Verify()
     {
@@ -116,12 +116,12 @@ public class GameManager : MonoBehaviour
             maxY = inputManager.getMaxY();
 
             initialParticles = (int) inputManager.getParticleInput();
-            alignmentWeight = inputManager.getAlignment();
-            cohesionWeight = inputManager.getCohesion();
-            separationWeight = inputManager.getSeperation();
-            initEnergy = inputManager.getInitEnergy();
-            speed = inputManager.getSpeed();
-            sightRadius = inputManager.getSightRadius();
+            float alignmentWeight = inputManager.getAlignment();
+            float cohesionWeight = inputManager.getCohesion();
+            float separationWeight = inputManager.getSeperation();
+            float initEnergy = inputManager.getInitEnergy();
+            float speed = inputManager.getSpeed(); // Get the speed from InputManager
+            float sightRadius = inputManager.getSightRadius(); // Get the sightRadius from InputManager
 
             initialFood = (int) inputManager.getFoodInput();
             energyFromFood = (int) inputManager.getEnergyInput();
@@ -129,6 +129,12 @@ public class GameManager : MonoBehaviour
 
             mutationChance = inputManager.getMutationChance();
             mutationFactor = inputManager.getMutationFactor();
+
+            Color selectedColor = inputManager.GetSelectedColor();
+
+            string selectedFlockID = inputManager.GetSelectedFlockID();
+
+            AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius);
         } 
         catch (Exception e)
         {

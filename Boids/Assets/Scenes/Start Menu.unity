@@ -4382,6 +4382,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1251998907}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SaveCurrentFlocks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116852805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8732,6 +8744,8 @@ MonoBehaviour:
   foodPerSecInput: {fileID: 1032461249}
   mutationChance: {fileID: 1642154070}
   mutationFactor: {fileID: 183178981}
+  flockIDToggleGroup: {fileID: 501969358}
+  colorToggleGroup: {fileID: 1816641450}
 --- !u!4 &265021041
 Transform:
   m_ObjectHideFlags: 0
@@ -38747,12 +38761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3772324e8b5ea411eb15fff8b39fe590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alignmentWeight: 0
-  cohesionWeight: 0
-  separationWeight: 0
-  initEnergy: 0
-  speed: 0
-  sightRadius: 0
   particleCount: 0
   foodCount: 0
   particles: []

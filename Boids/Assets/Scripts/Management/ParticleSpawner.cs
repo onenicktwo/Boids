@@ -8,45 +8,14 @@ public class ParticleSpawner : MonoBehaviour
 
     private void Awake()
     {
-        GameManager gm = GameManager._instance;
-        /*
-        // Assuming GameManager has already been instantiated and initialized
-        if (GameManager._instance.flocks.Count > 0)
-        {
-            foreach (GameManager.Flock flock in GameManager._instance.flocks)
-            {
-                SpawnParticles(flock);
-            }
-        }
-        */
-        for (int i = 0; i < GameManager._instance.initialParticles; i++)
-        {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
-            ParticleController particleController = newParticle.GetComponent<ParticleController>();
-
-            particleController.speed = gm.speed;
-            particleController.initEnergy = gm.initEnergy;
-            particleController.GetComponent<CircleCollider2D>().radius = gm.sightRadius;
-
-            particleController.aliWeight = gm.alignmentWeight;
-            particleController.cohWeight = gm.cohesionWeight;
-            particleController.sepWeight = gm.separationWeight;
-            // Very lazy way of choosing which particles call the reproduction script
-            particleController.selected = GeneSelector.GetGeneBool();
-
-            // Add the new particle to the GameManager's list
-            GameManager._instance.AddParticle(newParticle);
-            newParticle.name = "Particle " + GameManager._instance.particles.Count;
-        }
-
+        // Loop through each flock in the GameManager's flocks list
         foreach (GameManager.Flock flock in GameManager._instance.flocks)
         {
-            SpawnParticles(flock);
+            SpawnParticlesForFlock(flock);
         }
     }
 
-    public void SpawnParticles(GameManager.Flock flock)
+    private void SpawnParticlesForFlock(GameManager.Flock flock)
     {
         for (int i = 0; i < flock.particleCount; i++)
         {
@@ -56,20 +25,20 @@ public class ParticleSpawner : MonoBehaviour
 
             // Set particle properties based on flock parameters
             particleController.flockID = flock.flockID;
+            particleController.speed = flock.speed;
+            particleController.initEnergy = flock.initEnergy;
+            particleController.GetComponent<CircleCollider2D>().radius = flock.sightRadius;
             particleController.aliWeight = flock.alignmentWeight;
             particleController.cohWeight = flock.cohesionWeight;
             particleController.sepWeight = flock.separationWeight;
-            particleController.initEnergy = flock.initEnergy;
-            
+
             // Very lazy way of choosing which particles call the reproduction script
-            if (Random.Range(0, 2) == 1)
-                particleController.selected = true;
-            else
-                particleController.selected = false;
+            particleController.selected = GeneSelector.GetGeneBool();
 
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);
             newParticle.name = "Particle " + GameManager._instance.particles.Count;
+            newParticle.GetComponent<SpriteRenderer>().color = flock.flockColor; // Set the color of the particle based on the flock's color
         }
     }
 
