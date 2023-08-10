@@ -8038,7 +8038,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265021039}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5844a07eec143c14bb0934d823ccdf93, type: 3}
   m_Name: 
@@ -8047,6 +8047,11 @@ MonoBehaviour:
   foodInput: {fileID: 1008063424}
   energyInput: {fileID: 2079078500}
   foodPerSecInput: {fileID: 1032461249}
+  alignmentWeightInput: {fileID: 1418399241}
+  cohesionWeightInput: {fileID: 1331301398}
+  separationWeightInput: {fileID: 1986928142}
+  populationChoices: {fileID: 0}
+  setButton: {fileID: 116852804}
   gameManager: {fileID: 1251998907}
 --- !u!4 &265021041
 Transform:
@@ -13062,7 +13067,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501969356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13078,7 +13083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000019073486}
+  m_AnchoredPosition: {x: -51.84723, y: -33.03912}
   m_SizeDelta: {x: 116, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501969358
@@ -34049,8 +34054,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2096761692}
   - {fileID: 1986928141}
+  - {fileID: 2096761692}
   m_Father: {fileID: 948147503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36827,6 +36832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3772324e8b5ea411eb15fff8b39fe590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: 0}
   particleCount: 0
   foodCount: 0
   particles: []
@@ -58641,7 +58647,7 @@ RectTransform:
   m_Children:
   - {fileID: 157204438}
   m_Father: {fileID: 1147091560}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -63074,7 +63080,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1147091560}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

@@ -96,11 +96,20 @@ public class ParticleController : MonoBehaviour
         reproduction = this.GetComponent<ParticleReproduction>();
         rb2d.velocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rb2d.velocity = rb2d.velocity.normalized * speed;
-   
-        aliWeight = Random.Range(.5f, 1.5f);
-        cohWeight = Random.Range(.5f, 1.5f);
-        sepWeight = Random.Range(.5f, 1.5f);
-
+        
+        // Set the properties based on the current flock
+        if (GameManager._instance.currentFlock != null){
+            aliWeight = GameManager._instance.currentFlock.alignmentWeight;
+            cohWeight = GameManager._instance.currentFlock.cohesionWeight;
+            sepWeight = GameManager._instance.currentFlock.separationWeight;
+            initEnergy = GameManager._instance.currentFlock.initEnergy;
+        }
+        else
+        {
+            aliWeight = Random.Range(.5f, 1.5f);
+            cohWeight = Random.Range(.5f, 1.5f);
+            sepWeight = Random.Range(.5f, 1.5f);
+        }
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
         StartCoroutine(GetNewVelocity());

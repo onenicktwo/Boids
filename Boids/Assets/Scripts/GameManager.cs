@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager _instance;
 
-    private InputManager inputManager;
+    public InputManager inputManager;
 
     [HideInInspector]
     public int particleCount = 0;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int foodCount = 0;
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
-    public List<Flock> flocks = new List<Flock>(); // List to store multiple flocks
+    public List<Flock> flocks = new List<Flock>();
     public int energyFromFood;
     public int foodPerSec;
 
@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public float maxX = 11.4f;
     public float maxY = 5f;
+
+    public Flock currentFlock;
 
     private void Awake()
     {
@@ -77,23 +79,74 @@ public class GameManager : MonoBehaviour
         };
 
         flocks.Add(flock);
+        currentFlock = flock;
+    }
+
+    public void SwitchToFlock(int index)
+    {
+        if (index >= 0 && index < flocks.Count)
+        {
+            currentFlock = flocks[index];
+        }
+    }
+
+    public void EditCurrentFlock(float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount)
+    {
+        if (currentFlock != null)
+        {
+            currentFlock.alignmentWeight = alignmentWeight;
+            currentFlock.cohesionWeight = cohesionWeight;
+            currentFlock.separationWeight = separationWeight;
+            currentFlock.initEnergy = initEnergy;
+            currentFlock.particleCount = particleCount;
+        }
+    }
+
+    public void SaveCurrentPopulation()
+    {
+        // Check if the currentFlock is null, if so, create a new flock
+        if (currentFlock == null)
+        {
+            currentFlock = new Flock();
+            flocks.Add(currentFlock);
+        }
+
+        // Update the currentFlock's properties based on the input fields
+        currentFlock.alignmentWeight = float.Parse(InputManager._instance.alignmentWeightInput.text);
+        currentFlock.cohesionWeight = float.Parse(InputManager._instance.cohesionWeightInput.text);
+        currentFlock.separationWeight = float.Parse(InputManager._instance.separationWeightInput.text);
+        currentFlock.initEnergy = InputManager._instance.getEnergyInput();
+        currentFlock.particleCount = InputManager._instance.getParticleInput();
+
+        InputManager._instance.UpdatePopulationList(); // Update the list after saving
+    }
+
+
+    public void LoadPopulation(int index)
+    {
+        if (index >= 0 && index < flocks.Count)
+        {
+            currentFlock = flocks[index];
+
+            // Update the input fields based on the currentFlock's properties
+            inputManager.alignmentWeightInput.text = currentFlock.alignmentWeight.ToString();
+            inputManager.cohesionWeightInput.text = currentFlock.cohesionWeight.ToString();
+            inputManager.separationWeightInput.text = currentFlock.separationWeight.ToString();
+            inputManager.energyInput.text = currentFlock.initEnergy.ToString();
+            inputManager.particleInput.text = currentFlock.particleCount.ToString();
+        }
     }
 
     public void Verify()
     {
-
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-
         initialParticles = inputManager.getParticleInput();
         initialFood = inputManager.getFoodInput();
         energyFromFood = inputManager.getEnergyInput();
         foodPerSec = inputManager.getFoodPerSecInput();
 
-        //Checks for and flags invalid entries:
-        if (initialFood <= 0 || 
-            energyFromFood <= 0 || 
-            initialParticles <= 0 || 
-            foodPerSec <= 0) {
+        if (initialFood <= 0 || energyFromFood <= 0 || initialParticles <= 0 || foodPerSec <= 0)
+        {
             ValidateEntry.FlagInvalidEntry();
         }
         else
@@ -113,15 +166,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Start Menu");
     }
 
-    public void OpenOptions() {
+    public void OpenOptions()
+    {
         SceneManager.LoadSceneAsync(2);
     }
 
-    public void SetOptions() {
+    public void SetOptions()
+    {
         CloseOptions();
     }
 
-    public void CloseOptions() {
+    public void CloseOptions()
+    {
         SceneManager.LoadSceneAsync(0);
     }
 
@@ -145,11 +201,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit();
     }
 
-    public void UpdateParticleCount(int newCount)
+      public void UpdateParticleCount(int newCount)
     {
         initialParticles = newCount;
     }
