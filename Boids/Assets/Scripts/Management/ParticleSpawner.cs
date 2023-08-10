@@ -39,6 +39,11 @@ public class ParticleSpawner : MonoBehaviour
             GameManager._instance.AddParticle(newParticle);
             newParticle.name = "Particle " + GameManager._instance.particles.Count;
         }
+
+        foreach (GameManager.Flock flock in GameManager._instance.flocks)
+        {
+            SpawnParticles(flock);
+        }
     }
 
     public void SpawnParticles(GameManager.Flock flock)
@@ -50,6 +55,7 @@ public class ParticleSpawner : MonoBehaviour
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
             // Set particle properties based on flock parameters
+            particleController.flockID = flock.flockID;
             particleController.aliWeight = flock.alignmentWeight;
             particleController.cohWeight = flock.cohesionWeight;
             particleController.sepWeight = flock.separationWeight;
