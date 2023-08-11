@@ -96,13 +96,16 @@ public class InputManager : MonoBehaviour
     }
 
      public string GetSelectedFlockID()
-    {
+     {
+        /*
         foreach (Toggle toggle in flockIDToggleGroup.ActiveToggles())
         {
             return toggle.GetComponentInChildren<TextMeshProUGUI>().text;
         }
         return null; 
-    }
+        */
+        return "" + Random.Range(0f, 10000000);
+     }
     
     public Color GetSelectedColor()
     {
@@ -148,6 +151,8 @@ public class InputManager : MonoBehaviour
         coh.text = "";
         initEnergy.text = "";
         sightRadius.text = "";
+
+        /*
         foreach (Toggle toggle in flockIDToggleGroup.GetComponentsInChildren<Toggle>())
         {
             toggle.isOn = false;
@@ -157,5 +162,6 @@ public class InputManager : MonoBehaviour
         {
             toggle.isOn = false;
         }
+        */
     }
 }

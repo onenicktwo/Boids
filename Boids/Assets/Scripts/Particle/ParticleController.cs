@@ -102,19 +102,7 @@ public class ParticleController : MonoBehaviour
         
         // Set the properties based on the current flock
         GameManager.Flock assignedFlock = GameManager._instance.GetFlockByID(flockID);
-        if (assignedFlock != null)
-        {
-            aliWeight = assignedFlock.alignmentWeight;
-            cohWeight = assignedFlock.cohesionWeight;
-            sepWeight = assignedFlock.separationWeight;
-            initEnergy = assignedFlock.initEnergy;
-        }
-        else
-        {
-            aliWeight = Random.Range(.5f, 1.5f);
-            cohWeight = Random.Range(.5f, 1.5f);
-            sepWeight = Random.Range(.5f, 1.5f);
-        }
+
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
         StartCoroutine(GetNewVelocity());

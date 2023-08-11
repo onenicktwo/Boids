@@ -30,13 +30,14 @@ public class GameManager : MonoBehaviour
     public int foodCount = 0;
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
+
     public List<Flock> flocks = new List<Flock>();
+
     public int energyFromFood;
     public int foodPerSec;
 
     public TextMeshProUGUI warningText;
 
-    public int initialParticles;
     public int initialFood;
 
     public float maxX = 11.4f;
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
         };
 
         flocks.Add(flock);
+        Debug.Log(flocks.Count);
     }
 
     public Flock GetFlockByID(string id)
@@ -106,29 +108,19 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Verify()
+    public void Set()
     {
         ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
-        {
-            maxX = inputManager.getMaxX();
-            maxY = inputManager.getMaxY();
-
-            initialParticles = (int) inputManager.getParticleInput();
+        { 
+            int initialParticles = (int) inputManager.getParticleInput();
             float alignmentWeight = inputManager.getAlignment();
             float cohesionWeight = inputManager.getCohesion();
             float separationWeight = inputManager.getSeperation();
             float initEnergy = inputManager.getInitEnergy();
             float speed = inputManager.getSpeed(); // Get the speed from InputManager
             float sightRadius = inputManager.getSightRadius(); // Get the sightRadius from InputManager
-
-            initialFood = (int) inputManager.getFoodInput();
-            energyFromFood = (int) inputManager.getEnergyInput();
-            foodPerSec = (int) inputManager.getFoodPerSecInput();
-
-            mutationChance = inputManager.getMutationChance();
-            mutationFactor = inputManager.getMutationFactor();
 
             Color selectedColor = inputManager.GetSelectedColor();
 
@@ -141,16 +133,34 @@ public class GameManager : MonoBehaviour
             ValidateEntry.FlagInvalidEntry();
             Debug.Log(e.ToString());
         }
-
-        if (GameManager._instance.warningText.text == "")
-        {
-            StartGame();
-        }
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        Debug.Log(flocks.Count);
+        ValidateEntry.ClearWarning();
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        try
+        {
+            maxX = inputManager.getMaxX();
+            maxY = inputManager.getMaxY();
+
+            initialFood = (int)inputManager.getFoodInput();
+            energyFromFood = (int)inputManager.getEnergyInput();
+            foodPerSec = (int)inputManager.getFoodPerSecInput();
+
+            mutationChance = inputManager.getMutationChance();
+            mutationFactor = inputManager.getMutationFactor();
+        }
+        catch (Exception e)
+        {
+            ValidateEntry.FlagInvalidEntry();
+            Debug.Log(e.ToString());
+        }
+        if (GameManager._instance.warningText.text == "")
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     public void EndGame()

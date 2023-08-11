@@ -38,7 +38,7 @@ public class ParticleSpawner : MonoBehaviour
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);
             newParticle.name = "Particle " + GameManager._instance.particles.Count;
-            newParticle.GetComponent<SpriteRenderer>().color = flock.flockColor; // Set the color of the particle based on the flock's color
+            //newParticle.GetComponent<SpriteRenderer>().color = flock.flockColor; // Set the color of the particle based on the flock's color
         }
     }
 
