@@ -86,6 +86,7 @@ public class ParticleReproduction : MonoBehaviour
     {
         ParticleController childController = particle.GetComponent<ParticleController>();
 
+        childController.flockID = Random.Range(0, 2) == 0 ? parent1.flockID : parent2.flockID;
         childController.initEnergy = GeneSelector.GetGeneFloat(parent1.initEnergy, parent2.initEnergy);
         childController.currEnergy = childController.initEnergy;
 

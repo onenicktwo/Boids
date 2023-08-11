@@ -530,7 +530,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -3932,7 +3932,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420035}
+      - m_Target: {fileID: 1796428354}
         m_TargetAssemblyTypeName: UnMuteSound, Assembly-CSharp
         m_MethodName: UnmuteSounds
         m_Mode: 1
@@ -3944,7 +3944,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 1796428356}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -4370,7 +4370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 1796428356}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -9033,7 +9033,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -9807,7 +9807,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -11542,7 +11542,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -11694,7 +11694,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -11983,7 +11983,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -14835,9 +14835,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14911,45 +14908,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3d1c937c8499e4481977de9cba5cf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundPlayer: {fileID: 1864812297}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e6fd09f216e7044bda6b323954a75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xImage: {fileID: 108519130}
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7f5742a4dd2c940b17ce1affa2f208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xImage: {fileID: 108519130}
 --- !u!1 &519567108
 GameObject:
   m_ObjectHideFlags: 0
@@ -17467,7 +17425,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -18954,7 +18912,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -19276,7 +19234,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -20178,7 +20136,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -20490,7 +20448,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -21104,7 +21062,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -21957,7 +21915,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 1796428356}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -22228,7 +22186,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -25224,7 +25182,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -27242,7 +27200,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -27471,7 +27429,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -28509,7 +28467,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 1796428356}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -29147,7 +29105,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -29246,7 +29204,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -30081,7 +30039,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -31349,7 +31307,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -33499,7 +33457,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -34234,7 +34192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -35242,7 +35200,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -35905,7 +35863,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -39610,7 +39568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -42030,7 +41988,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -43910,7 +43868,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -44134,7 +44092,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -45771,7 +45729,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -47100,7 +47058,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -47449,7 +47407,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -47748,7 +47706,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -49574,7 +49532,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -49829,7 +49787,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -50471,7 +50429,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -51010,7 +50968,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -51109,7 +51067,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -51208,7 +51166,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -52026,7 +51984,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -53610,7 +53568,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -56116,6 +56074,9 @@ GameObject:
   - component: {fileID: 1796428352}
   - component: {fileID: 1796428351}
   - component: {fileID: 1796428350}
+  - component: {fileID: 1796428356}
+  - component: {fileID: 1796428355}
+  - component: {fileID: 1796428354}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -56208,6 +56169,8 @@ RectTransform:
   - {fileID: 1256878599}
   - {fileID: 1480581712}
   - {fileID: 108519131}
+  - {fileID: 2002170840}
+  - {fileID: 1864812298}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56216,6 +56179,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1796428354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796428349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7f5742a4dd2c940b17ce1affa2f208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xImage: {fileID: 108519130}
+--- !u!114 &1796428355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796428349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e6fd09f216e7044bda6b323954a75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xImage: {fileID: 108519130}
+--- !u!114 &1796428356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796428349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3d1c937c8499e4481977de9cba5cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPlayer: {fileID: 1864812297}
 --- !u!1 &1800131528
 GameObject:
   m_ObjectHideFlags: 0
@@ -56605,7 +56607,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -58502,13 +58504,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864812296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 379.632, y: 219.7884, z: -0.83746374}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.673473, y: -10.46115, z: -0.810318}
+  m_LocalScale: {x: 0.9675858, y: 0.9675858, z: 0.9675858}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1796428353}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866211302
 GameObject:
@@ -59784,7 +59786,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -60489,7 +60491,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
+      - m_Target: {fileID: 1796428355}
         m_TargetAssemblyTypeName: MuteSound, Assembly-CSharp
         m_MethodName: MuteSounds
         m_Mode: 1
@@ -60501,7 +60503,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 1796428356}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -60714,7 +60716,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -61272,7 +61274,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -62952,13 +62954,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002170838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 379.632, y: 219.7884, z: -0.83746374}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.673473, y: -10.46115, z: -0.810318}
+  m_LocalScale: {x: 0.9675858, y: 0.9675858, z: 0.9675858}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1796428353}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2004420939
 GameObject:
@@ -63123,7 +63125,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -64100,7 +64102,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -66935,7 +66937,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1
@@ -67466,7 +67468,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
         m_MethodName: playSound
         m_Mode: 1

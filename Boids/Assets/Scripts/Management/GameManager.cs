@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
 
-    public List<Flock> flocks = new List<Flock>();
+    public Hashtable flocks = new Hashtable();
 
     public int energyFromFood;
     public int foodPerSec;
@@ -93,20 +93,20 @@ public class GameManager : MonoBehaviour
             sightRadius = sightRadius // Set the sightRadius for the flock
         };
 
-        flocks.Add(flock);
-        Debug.Log(flocks.Count);
+        flocks.Add(id, flock);
     }
 
     public Flock GetFlockByID(string id)
     {
-        return flocks.Find(f => f.flockID == id);
+        return (Flock) flocks[id];
     }
 
+    /*
     public void SaveCurrentFlocks()
     {
         SaveSystem.SaveFlocks(flocks);
     }
-
+    */
 
     public void Set()
     {

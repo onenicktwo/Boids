@@ -76,6 +76,7 @@ public class ParticleController : MonoBehaviour
     public bool selected = false;
     // This will be set when the particle is instantiated
     public string flockID;
+    GameManager.Flock assignedFlock;
 
 
     /*
@@ -101,7 +102,7 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = rb2d.velocity.normalized * speed;
         
         // Set the properties based on the current flock
-        GameManager.Flock assignedFlock = GameManager._instance.GetFlockByID(flockID);
+        assignedFlock = GameManager._instance.GetFlockByID(flockID);
 
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
