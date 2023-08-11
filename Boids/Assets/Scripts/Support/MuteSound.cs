@@ -10,4 +10,10 @@ public class MuteSound: MonoBehaviour {
         AudioListener.volume = 0;
         xImage.SetActive(true);
     }
+
+    public void Update() {
+        if (AudioListener.volume == 0) {
+            xImage.SetActive(true);
+        }
+    }
 }
