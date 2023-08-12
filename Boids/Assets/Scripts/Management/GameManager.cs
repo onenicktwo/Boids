@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
         public float sightRadius; // Added sightRadius to the Flock class
         public int particleCount;
         public Color flockColor;
+        public float hungryPercentage;
+        public float reproducePercentage;
     }
 
     public static GameManager _instance;
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         foodCount--;
     }
 
-    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount, Color flockColor, float speed, float sightRadius)
+    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount, Color flockColor, float speed, float sightRadius, float hungryPercent, float reproducePercent)
     {
         Flock flock = new Flock
         {
@@ -92,7 +94,9 @@ public class GameManager : MonoBehaviour
             particleCount = particleCount,
             flockColor = flockColor,
             speed = speed, // Set the speed for the flock
-            sightRadius = sightRadius // Set the sightRadius for the flock
+            sightRadius = sightRadius, // Set the sightRadius for the flock
+            hungryPercentage = hungryPercent,
+            reproducePercentage = reproducePercent
         };
 
         if (flocks.ContainsKey(id))
@@ -120,11 +124,14 @@ public class GameManager : MonoBehaviour
             float speed = inputManager.getSpeed(); // Get the speed from InputManager
             float sightRadius = inputManager.getSightRadius(); // Get the sightRadius from InputManager
 
+            float hungryPercentage = inputManager.getHungryPercentage();
+            float reproducePercentage = inputManager.getReproducePercentage();
+
             Color selectedColor = inputManager.GetSelectedColor();
 
             string selectedFlockID = currPopId;
 
-            AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius);
+            AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius, hungryPercentage, reproducePercentage);
         } 
         catch (Exception e)
         {

@@ -141,6 +141,7 @@ Library: lib_burst_generated
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
+--root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.TerrainTools.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.Tilemap.Extras.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
 --assembly-folder=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\
@@ -292,6 +293,7 @@ Library: lib_burst_generated
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
+--root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.TerrainTools.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.2D.Tilemap.Extras.dll
 --root-assembly=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
 --assembly-folder=C:\UnityProjects\Cloned-repos\Boids\Boids\Temp\StagingArea\Data\Managed\

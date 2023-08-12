@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     private TMP_InputField foodInput, energyInput, foodPerSecInput;
 
     [SerializeField]
-    private Slider mutationChance, mutationFactor;
+    private Slider mutationChance, mutationFactor, hungryPercentage, reproducePercentage;
 
     [SerializeField]
     private ToggleGroup flockIDToggleGroup;
@@ -161,6 +161,16 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public float getHungryPercentage()
+    {
+        //Debug.Log(ValidateEntry.ValidateInput(hungryPercentage.value.ToString("F2"));
+        return ValidateEntry.ValidateInput(hungryPercentage.value.ToString("F2"));
+    }
+    public float getReproducePercentage()
+    {
+        //Debug.Log(ValidateEntry.ValidateInput(reproducePercentage.value.ToString("F2"));
+        return ValidateEntry.ValidateInput(reproducePercentage.value.ToString("F2"));
+    }
     public float getMutationFactor()
     {
         //Debug.Log(ValidateEntry.ValidateInput(mutationFactor.value.ToString("F2")));

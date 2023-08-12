@@ -107,6 +107,7 @@ public class ParticleReproduction : MonoBehaviour
 
         childController.selected = GeneSelector.GetGeneBool();
 
+        Mutator.MutateCheck(childController);
         return particle;
     }
 

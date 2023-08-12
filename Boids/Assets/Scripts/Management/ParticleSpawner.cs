@@ -33,6 +33,9 @@ public class ParticleSpawner : MonoBehaviour
             particleController.cohWeight = flock.cohesionWeight;
             particleController.sepWeight = flock.separationWeight;
 
+            particleController.hungryPercent = flock.hungryPercentage;
+            particleController.reproducePercent = flock.reproducePercentage;
+
             // Very lazy way of choosing which particles call the reproduction script
             particleController.selected = GeneSelector.GetGeneBool();
 

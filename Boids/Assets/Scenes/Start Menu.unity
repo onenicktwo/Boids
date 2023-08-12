@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1544773}
   - component: {fileID: 1544772}
   m_Layer: 5
-  m_Name: ContentPerTxt
+  m_Name: HungryPerTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.8, y: -18.6}
+  m_AnchoredPosition: {x: -27, y: -25.837}
   m_SizeDelta: {x: 51.0267, y: 15.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544772
@@ -3122,6 +3122,8 @@ MonoBehaviour:
   foodPerSecInput: {fileID: 1032461249}
   mutationChance: {fileID: 1642154070}
   mutationFactor: {fileID: 183178981}
+  hungryPercentage: {fileID: 1840715987}
+  reproducePercentage: {fileID: 946447309}
   flockIDToggleGroup: {fileID: 501969358}
   colorToggleGroup: {fileID: 1816641450}
   populationNumAsTxt: {fileID: 200684859}
@@ -5767,7 +5769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.5, y: -19.3}
+  m_AnchoredPosition: {x: 50.6, y: -25.837}
   m_SizeDelta: {x: 51.0267, y: 15.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579243514
@@ -9885,7 +9887,7 @@ GameObject:
   - component: {fileID: 1050427165}
   - component: {fileID: 1050427164}
   m_Layer: 5
-  m_Name: ContentAtTxt
+  m_Name: HungryAtTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9908,7 +9910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.9, y: -8.6}
+  m_AnchoredPosition: {x: -50.5, y: -10.2}
   m_SizeDelta: {x: 51.0267, y: 15.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050427164
@@ -9931,7 +9933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Content at:
+  m_text: 'Hungry at:
 
 '
   m_isRightToLeft: 0
@@ -12058,7 +12060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: -8.9}
+  m_AnchoredPosition: {x: 26.700056, y: -10.2000065}
   m_SizeDelta: {x: 51.0267, y: 15.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255664851
@@ -12081,7 +12083,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mate \nat:\n"
+  m_text: 'Content at:
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
