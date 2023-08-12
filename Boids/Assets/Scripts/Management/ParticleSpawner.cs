@@ -9,9 +9,10 @@ public class ParticleSpawner : MonoBehaviour
     private void Awake()
     {
         // Loop through each flock in the GameManager's flocks list
-        foreach (GameManager.Flock flock in GameManager._instance.flocks)
+        ICollection flockKeys = GameManager._instance.flocks.Keys;
+        foreach (string flockKey in flockKeys)
         {
-            SpawnParticlesForFlock(flock);
+            SpawnParticlesForFlock((GameManager.Flock) GameManager._instance.flocks[flockKey]);
         }
     }
 
@@ -38,7 +39,7 @@ public class ParticleSpawner : MonoBehaviour
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);
             newParticle.name = "Particle " + GameManager._instance.particles.Count;
-            //newParticle.GetComponent<SpriteRenderer>().color = flock.flockColor; // Set the color of the particle based on the flock's color
+            particleController.spriteRenderer.color = flock.flockColor; // Set the color of the particle based on the flock's color
         }
     }
 

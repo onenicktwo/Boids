@@ -5,6 +5,16 @@ using TMPro;
 using UnityEngine.UI;
 
 public class PopulationOptions : MonoBehaviour {
+    /*
+     * On population change -> 
+     * Send a message to Input manager ->
+     * Input manager will get the correct flock values stored in the hashmap ->
+     * Which will be used to switch out the current values in the related fields in the Input Manager
+     * 
+
+     */
+
+    public InputManager inputManager;
 
     public int numberOfPopulations;    
     public int populationIndex;
@@ -20,13 +30,6 @@ public class PopulationOptions : MonoBehaviour {
     public Toggle togPop4;
     public Toggle togPop5;
     public Toggle togPop6;
-    public GameObject PopOpts1;
-    public GameObject PopOpts2;
-    public GameObject PopOpts3;
-    public GameObject PopOpts4;
-    public GameObject PopOpts5;
-    public GameObject PopOpts6;
-
 
     public void Start() {
         downButton.interactable = false;
@@ -98,36 +101,24 @@ public class PopulationOptions : MonoBehaviour {
         }
     }
 
-    public void ResetPopOpts() {
-        PopOpts1.SetActive(true);
-        PopOpts2.SetActive(false);
-        PopOpts3.SetActive(false);
-        PopOpts4.SetActive(false);
-        PopOpts5.SetActive(false);
-        PopOpts6.SetActive(false);
-    }
-
     public void OpenPopOptions() {
-            ResetPopOpts();
+        if (togPop1.isOn == true) {
+            GameManager._instance.currPopId = "1";
+        }
         if (togPop2.isOn == true) {
-            PopOpts1.SetActive(false);
-            PopOpts2.SetActive(true);
+            GameManager._instance.currPopId = "2";
         }
         if (togPop3.isOn == true) {
-            PopOpts1.SetActive(false);
-            PopOpts3.SetActive(true);
+            GameManager._instance.currPopId = "3";
         }
         if (togPop4.isOn == true) {
-            PopOpts1.SetActive(false);
-            PopOpts4.SetActive(true);
+            GameManager._instance.currPopId = "4";
         }
         if (togPop5.isOn == true) {
-            PopOpts1.SetActive(false);
-            PopOpts5.SetActive(true);
+            GameManager._instance.currPopId = "5";
         }
         if (togPop6.isOn == true) {
-            PopOpts1.SetActive(false);
-            PopOpts6.SetActive(true);
+            GameManager._instance.currPopId = "6";
         }
     }
 

@@ -91,6 +91,7 @@ MonoBehaviour:
   globalPosition: {x: 0, y: 0}
   reproduction: {fileID: 0}
   rb2d: {fileID: 0}
+  spriteRenderer: {fileID: 4423723843887367094}
   speed: 5
   maxSpeed: 10
   aliWeight: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   currReproduceWeight: 0
   reproductionEnergyUse: 1
   selected: 0
+  flockID: 
 --- !u!114 &4423723842126541276
 MonoBehaviour:
   m_ObjectHideFlags: 0

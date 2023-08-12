@@ -24,6 +24,143 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private ToggleGroup colorToggleGroup;
 
+    // From Pop options
+    private int numberOfPopulations;
+    private int populationIndex;
+    [SerializeField]
+    private TMP_Text populationNumAsTxt;
+    private int startingPopulations = 1;
+    private string startingPopTxt = "1";
+    public Button upButton, downButton;
+    public Toggle togPop1, togPop2, togPop3, togPop4, togPop5, togPop6;
+
+    // Pop options methods
+    public void Start()
+    {
+        downButton.interactable = false;
+        numberOfPopulations = startingPopulations;
+        populationNumAsTxt.text = startingPopTxt;
+    }
+
+    public void IncreasePopulations()
+    {
+        downButton.interactable = true;
+        numberOfPopulations = int.Parse(populationNumAsTxt.text);
+        numberOfPopulations++;
+        populationNumAsTxt.text = numberOfPopulations.ToString();
+        if (numberOfPopulations == 6)
+        {
+            upButton.interactable = false;
+
+        }
+    }
+
+    public void DecreasePopulations()
+    {
+        upButton.interactable = true;
+        numberOfPopulations = int.Parse(populationNumAsTxt.text);
+        numberOfPopulations--;
+        populationNumAsTxt.text = numberOfPopulations.ToString();
+        if (numberOfPopulations == 1)
+        {
+            downButton.interactable = false;
+
+        }
+    }
+
+
+    public void ActivateOptions()
+    {
+
+        switch (populationNumAsTxt.text)
+        {
+            case "1":
+                togPop2.interactable = false;
+                togPop3.interactable = false;
+                togPop4.interactable = false;
+                togPop5.interactable = false;
+                togPop6.interactable = false;
+                break;
+            case "2": togPop2.interactable = true; break;
+            case "3": togPop3.interactable = true; break;
+            case "4": togPop4.interactable = true; break;
+            case "5": togPop5.interactable = true; break;
+            case "6": togPop6.interactable = true; break;
+
+        }
+    }
+
+    public void DeactivateOptions()
+    {
+
+        switch (populationNumAsTxt.text)
+        {
+            case "5":
+                togPop1.isOn = true;
+                togPop6.interactable = false; break;
+            case "4":
+                togPop1.isOn = true;
+                togPop5.interactable = false; break;
+            case "3":
+                togPop1.isOn = true;
+                togPop4.interactable = false; break;
+            case "2":
+                togPop1.isOn = true;
+                togPop3.interactable = false; break;
+            case "1":
+                togPop1.isOn = true;
+                togPop2.interactable = false; break;
+
+        }
+        GameManager._instance.currPopId = "1";
+        SetFlockPopOptionValues(GameManager._instance.currPopId);
+    }
+
+    public void OpenPopOptions()
+    {
+        if (togPop1.isOn == true)
+        {
+            GameManager._instance.currPopId = "1";
+        }
+        if (togPop2.isOn == true)
+        {
+            GameManager._instance.currPopId = "2";
+        }
+        if (togPop3.isOn == true)
+        {
+            GameManager._instance.currPopId = "3";
+        }
+        if (togPop4.isOn == true)
+        {
+            GameManager._instance.currPopId = "4";
+        }
+        if (togPop5.isOn == true)
+        {
+            GameManager._instance.currPopId = "5";
+        }
+        if (togPop6.isOn == true)
+        {
+            GameManager._instance.currPopId = "6";
+        }
+        SetFlockPopOptionValues(GameManager._instance.currPopId);
+    }
+
+    private void SetFlockPopOptionValues(string flockId)
+    {
+        GameManager.Flock flock = GameManager._instance.GetFlockByID(flockId);
+
+        if (flock != null)
+        {
+            particleInput.text = flock.particleCount.ToString();
+            speed.text = flock.speed.ToString();
+            sightRadius.text = flock.sightRadius.ToString();
+            initEnergy.text = flock.initEnergy.ToString();
+            sep.text = flock.separationWeight.ToString();
+            ali.text = flock.alignmentWeight.ToString();
+            coh.text = flock.cohesionWeight.ToString();
+        }
+    }
+
     public float getMutationFactor()
     {
         //Debug.Log(ValidateEntry.ValidateInput(mutationFactor.value.ToString("F2")));
@@ -94,18 +231,6 @@ public class InputManager : MonoBehaviour
         //Debug.Log(ValidateEntry.ValidateInput(foodPerSecInput.text));
         return ValidateEntry.ValidateInput(foodPerSecInput.text);
     }
-
-     public string GetSelectedFlockID()
-     {
-        /*
-        foreach (Toggle toggle in flockIDToggleGroup.ActiveToggles())
-        {
-            return toggle.GetComponentInChildren<TextMeshProUGUI>().text;
-        }
-        return null; 
-        */
-        return "" + Random.Range(0f, 10000000);
-     }
     
     public Color GetSelectedColor()
     {

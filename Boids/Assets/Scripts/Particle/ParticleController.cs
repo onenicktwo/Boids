@@ -30,12 +30,12 @@ public class ParticleController : MonoBehaviour
     [HideInInspector]
     public Vector2 globalPosition;
 
-    [HideInInspector]
     private ParticleMovement movement;
     [HideInInspector]
     public ParticleReproduction reproduction;
     [HideInInspector]
     public Rigidbody2D rb2d;
+    public SpriteRenderer spriteRenderer;
 
     public float speed = 1f;
     public float maxSpeed = 3f;

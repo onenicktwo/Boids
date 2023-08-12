@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private InputManager inputManager;
 
+    public string currPopId = "1";
+
     [HideInInspector]
     public int particleCount = 0;
     [HideInInspector]
@@ -93,20 +95,16 @@ public class GameManager : MonoBehaviour
             sightRadius = sightRadius // Set the sightRadius for the flock
         };
 
-        flocks.Add(id, flock);
+        if (flocks.ContainsKey(id))
+            flocks[id] = flock;
+        else
+            flocks.Add(id, flock);
     }
 
     public Flock GetFlockByID(string id)
     {
         return (Flock) flocks[id];
     }
-
-    /*
-    public void SaveCurrentFlocks()
-    {
-        SaveSystem.SaveFlocks(flocks);
-    }
-    */
 
     public void Set()
     {
@@ -124,7 +122,7 @@ public class GameManager : MonoBehaviour
 
             Color selectedColor = inputManager.GetSelectedColor();
 
-            string selectedFlockID = inputManager.GetSelectedFlockID();
+            string selectedFlockID = currPopId;
 
             AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius);
         } 
@@ -137,7 +135,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log(flocks.Count);
         ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
