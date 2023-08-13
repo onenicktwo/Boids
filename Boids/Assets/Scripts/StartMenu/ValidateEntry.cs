@@ -7,10 +7,15 @@ using System;
 public class ValidateEntry : MonoBehaviour {
 
     public static float ValidateInput(string inputString) {
-        if (inputString != "" && inputString != "-") {
-            return float.Parse(inputString);
-        } else {
-            throw new Exception(inputString);
+        try {
+            float input = float.Parse(inputString);
+            if (input <= 0)
+            {
+                throw new Exception("Negative input value");
+            }
+            return input;
+        } catch (Exception e) {
+            throw e;
         }
     }
 

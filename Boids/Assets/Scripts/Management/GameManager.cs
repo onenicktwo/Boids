@@ -155,6 +155,15 @@ public class GameManager : MonoBehaviour
 
             mutationChance = inputManager.getMutationChance();
             mutationFactor = inputManager.getMutationFactor();
+
+            // Checking pop blanks
+            int initialParticles = (int)inputManager.getParticleInput();
+            float alignmentWeight = inputManager.getAlignment();
+            float cohesionWeight = inputManager.getCohesion();
+            float separationWeight = inputManager.getSeperation();
+            float initEnergy = inputManager.getInitEnergy();
+            float speed = inputManager.getSpeed(); // Get the speed from InputManager
+            float sightRadius = inputManager.getSightRadius(); // Get the sightRadius from InputManager
         }
         catch (Exception e)
         {
