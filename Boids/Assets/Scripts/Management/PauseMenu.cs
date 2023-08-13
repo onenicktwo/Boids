@@ -58,7 +58,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
 
-        GetComponent<GameManager>().particleCount = 0;
-        GetComponent<GameManager>().foodCount = 0;
+        GameManager._instance.particleCount = 0;
+        GameManager._instance.foodCount = 0;
     }    
 }

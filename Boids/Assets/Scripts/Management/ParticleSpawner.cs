@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
+    public float width = 3f;
 
     private void Awake()
     {
@@ -18,9 +19,10 @@ public class ParticleSpawner : MonoBehaviour
 
     private void SpawnParticlesForFlock(GameManager.Flock flock)
     {
+        Vector3 spawnBoxArea = GetRandomBoxAreaSpawnPosition();
         for (int i = 0; i < flock.particleCount; i++)
         {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
+            Vector3 spawnPosition = GetRandomSpawnPosition(spawnBoxArea);
             GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
             ParticleController particleController = newParticle.GetComponent<ParticleController>();
 
@@ -46,7 +48,14 @@ public class ParticleSpawner : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    private Vector3 GetRandomSpawnPosition(Vector3 area)
+    {
+        Vector3 position = area;
+        position += new Vector3(Random.Range(-width, width), Random.Range(-width, width), 0);
+        return position;
+    }
+
+    private Vector3 GetRandomBoxAreaSpawnPosition()
     {
         float spawnX = Random.Range(-GameManager._instance.maxX, GameManager._instance.maxX);
         float spawnY = Random.Range(-GameManager._instance.maxY, GameManager._instance.maxY);
