@@ -217,13 +217,16 @@ public class ParticleController : MonoBehaviour
             rb2d.velocity += new Vector2(0, turnFactor);
     }
 
+    public GameObject RIP;
     private void UpdateEnergy()
     {
         if (currEnergy <= 0)
         {
             // Kill effect
             GameManager._instance.RemoveParticle(this.gameObject);
-            Destroy(this.gameObject);
+            var obj = Instantiate (RIP, transform.position, transform.rotation);
+            Destroy (gameObject);
+            Destroy(obj, 3f);
         }
         if (currEnergy >= initEnergy)
         {
