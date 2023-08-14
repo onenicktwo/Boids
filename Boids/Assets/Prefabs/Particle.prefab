@@ -138,6 +138,7 @@ MonoBehaviour:
   onCooldown: 0
   childPrefab: {fileID: 4423723842126541248}
   energyUsage: 1
+  Hearts: {fileID: 246663135030463478, guid: c1e702d6c128c4e41b35b6949822aa0d, type: 3}
 --- !u!50 &4423723842126541279
 Rigidbody2D:
   serializedVersion: 4

@@ -226,7 +226,7 @@ public class ParticleController : MonoBehaviour
             GameManager._instance.RemoveParticle(this.gameObject);
             var obj = Instantiate (RIP, transform.position, transform.rotation);
             Destroy (gameObject);
-            Destroy(obj, 3f);
+            Destroy(obj, 5f);
         }
         if (currEnergy >= initEnergy)
         {
