@@ -8,6 +8,10 @@ public class ParticleSpawner : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("GameManager instance: " + GameManager._instance);
+        if(GameManager._instance != null)
+            Debug.Log("GameManager flocks count: " + GameManager._instance.flocks.Count);
+
         // Loop through each flock in the GameManager's flocks list
         foreach (GameManager.Flock flock in GameManager._instance.flocks)
         {
@@ -18,10 +22,13 @@ public class ParticleSpawner : MonoBehaviour
     private void SpawnParticlesForFlock(GameManager.Flock flock)
     {
         for (int i = 0; i < flock.particleCount; i++)
-        {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
-            GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
-            ParticleController particleController = newParticle.GetComponent<ParticleController>();
+    {
+        Vector3 spawnPosition = GetRandomSpawnPosition();
+        GameObject newParticle = Instantiate(particlePrefab, spawnPosition, Quaternion.identity, this.transform);
+        ParticleController particleController = newParticle.GetComponent<ParticleController>();
+        
+        // Set the random followSpeed for the particle
+        particleController.followSpeed = Random.Range(1f, 5f);
 
             // Set particle properties based on flock parameters
             particleController.flockID = flock.flockID;
