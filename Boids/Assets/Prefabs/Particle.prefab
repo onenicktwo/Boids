@@ -108,6 +108,7 @@ MonoBehaviour:
   reproductionEnergyUse: 1
   selected: 0
   flockID: 
+  RIP: {fileID: 346126320141125474, guid: 67ce5e92b77134040a83e100058818b2, type: 3}
 --- !u!114 &4423723842126541276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
   onCooldown: 0
   childPrefab: {fileID: 4423723842126541248}
   energyUsage: 1
+  Hearts: {fileID: 246663135030463478, guid: c1e702d6c128c4e41b35b6949822aa0d, type: 3}
 --- !u!50 &4423723842126541279
 Rigidbody2D:
   serializedVersion: 4

@@ -62,6 +62,7 @@ public class ParticleReproduction : MonoBehaviour
         }
     }
 
+    public GameObject Hearts;
     private IEnumerator Reproduce(ParticleController otherParent)
     {
         yield return new WaitForSecondsRealtime(busyTime);
@@ -72,6 +73,10 @@ public class ParticleReproduction : MonoBehaviour
         ParticleController otherParentController = pc.particleNeighbors[indexOfOtherPC];
         StartCoroutine(Cooldown());
         StartCoroutine(otherParentController.reproduction.Cooldown());
+
+        // Child making effect
+        var hearts = Instantiate(Hearts, transform.position, transform.rotation);
+        Destroy(hearts, 1f);
 
         // Child making
         GameObject particle = GeneSelection(Instantiate(childPrefab, this.transform.position, Quaternion.identity, particleSpawner), this.pc, otherParentController);
