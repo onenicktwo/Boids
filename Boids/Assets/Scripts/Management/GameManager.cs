@@ -7,6 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+
+    public static GameManager _instance;
     public class Flock
     {
         public string flockID; // Unique identifier for each flock
@@ -21,8 +23,7 @@ public class GameManager : MonoBehaviour
         public float hungryPercentage;
         public float reproducePercentage;
     }
-
-    public static GameManager _instance;
+    
 
     private InputManager inputManager;
 
@@ -56,20 +57,32 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     public void AddParticle(GameObject particle)
     {
         particles.Add(particle);
         particleCount++;
+        Camera.main.GetComponent<CameraMovement>().particles.Add(particle);
     }
+
 
     public void RemoveParticle(GameObject particle)
     {
         particles.Remove(particle);
         particleCount--;
+        Camera.main.GetComponent<CameraMovement>().particles.Remove(particle);
+
     }
 
     public void AddFood()

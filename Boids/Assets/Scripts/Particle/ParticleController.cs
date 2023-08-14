@@ -72,11 +72,12 @@ public class ParticleController : MonoBehaviour
     public float maxReproduceWeight = 3f;
     public float currReproduceWeight = 0f;
     public float reproductionEnergyUse = 1f;
-    // Determines who makes the child call
+    
     public bool selected = false;
-    // This will be set when the particle is instantiated
     public string flockID;
     GameManager.Flock assignedFlock;
+    
+    public float followSpeed = 2f; 
 
 
     /*
@@ -217,10 +218,16 @@ public class ParticleController : MonoBehaviour
             rb2d.velocity += new Vector2(0, turnFactor);
     }
 
+    public delegate void ParticleDeathAction(GameObject particle);
+    public static event ParticleDeathAction OnParticleDeath;
+
     private void UpdateEnergy()
     {
         if (currEnergy <= 0)
         {
+            // Trigger the event before destroying the particle
+            OnParticleDeath?.Invoke(this.gameObject);
+
             // Kill effect
             GameManager._instance.RemoveParticle(this.gameObject);
             Destroy(this.gameObject);
@@ -231,6 +238,7 @@ public class ParticleController : MonoBehaviour
         }
         currEnergy -= Time.deltaTime;
     }
+
 
     private void Look()
     {
