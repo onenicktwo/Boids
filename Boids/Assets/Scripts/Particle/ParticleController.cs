@@ -30,12 +30,12 @@ public class ParticleController : MonoBehaviour
     [HideInInspector]
     public Vector2 globalPosition;
 
-    [HideInInspector]
     private ParticleMovement movement;
     [HideInInspector]
     public ParticleReproduction reproduction;
     [HideInInspector]
     public Rigidbody2D rb2d;
+    public SpriteRenderer spriteRenderer;
 
     public float speed = 1f;
     public float maxSpeed = 3f;
@@ -75,8 +75,9 @@ public class ParticleController : MonoBehaviour
     
     public bool selected = false;
     public string flockID;
+    GameManager.Flock assignedFlock;
+    
     public float followSpeed = 2f; 
-
 
 
     /*
@@ -102,7 +103,7 @@ public class ParticleController : MonoBehaviour
         rb2d.velocity = rb2d.velocity.normalized * speed;
         
         // Set the properties based on the current flock
-        GameManager.Flock assignedFlock = GameManager._instance.GetFlockByID(flockID);
+        assignedFlock = GameManager._instance.GetFlockByID(flockID);
 
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
