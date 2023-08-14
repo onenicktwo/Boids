@@ -13,9 +13,10 @@ public class ParticleSpawner : MonoBehaviour
             Debug.Log("GameManager flocks count: " + GameManager._instance.flocks.Count);
 
         // Loop through each flock in the GameManager's flocks list
-        foreach (GameManager.Flock flock in GameManager._instance.flocks)
+        ICollection flockKeys = GameManager._instance.flocks.Keys;
+        foreach (string flockKey in flockKeys)
         {
-            SpawnParticlesForFlock(flock);
+            SpawnParticlesForFlock((GameManager.Flock) GameManager._instance.flocks[flockKey]);
         }
     }
 
@@ -39,13 +40,16 @@ public class ParticleSpawner : MonoBehaviour
             particleController.cohWeight = flock.cohesionWeight;
             particleController.sepWeight = flock.separationWeight;
 
+            particleController.hungryPercent = flock.hungryPercentage;
+            particleController.reproducePercent = flock.reproducePercentage;
+
             // Very lazy way of choosing which particles call the reproduction script
             particleController.selected = GeneSelector.GetGeneBool();
 
             // Add the new particle to the GameManager's list
             GameManager._instance.AddParticle(newParticle);
             newParticle.name = "Particle " + GameManager._instance.particles.Count;
-            //newParticle.GetComponent<SpriteRenderer>().color = flock.flockColor; // Set the color of the particle based on the flock's color
+            particleController.spriteRenderer.color = flock.flockColor; // Set the color of the particle based on the flock's color
         }
     }
 

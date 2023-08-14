@@ -20,10 +20,14 @@ public class GameManager : MonoBehaviour
         public float sightRadius; // Added sightRadius to the Flock class
         public int particleCount;
         public Color flockColor;
+        public float hungryPercentage;
+        public float reproducePercentage;
     }
     
 
     private InputManager inputManager;
+
+    public string currPopId = "1";
 
     [HideInInspector]
     public int particleCount = 0;
@@ -32,7 +36,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<GameObject> particles = new List<GameObject>();
 
-    public List<Flock> flocks = new List<Flock>();
+    public Hashtable flocks = new Hashtable();
 
     public int energyFromFood;
     public int foodPerSec;
@@ -91,7 +95,7 @@ public class GameManager : MonoBehaviour
         foodCount--;
     }
 
-    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount, Color flockColor, float speed, float sightRadius)
+    public void AddFlock(string id, float alignmentWeight, float cohesionWeight, float separationWeight, float initEnergy, int particleCount, Color flockColor, float speed, float sightRadius, float hungryPercent, float reproducePercent)
     {
         Flock flock = new Flock
         {
@@ -103,23 +107,21 @@ public class GameManager : MonoBehaviour
             particleCount = particleCount,
             flockColor = flockColor,
             speed = speed, // Set the speed for the flock
-            sightRadius = sightRadius // Set the sightRadius for the flock
+            sightRadius = sightRadius, // Set the sightRadius for the flock
+            hungryPercentage = hungryPercent,
+            reproducePercentage = reproducePercent
         };
 
-        flocks.Add(flock);
-        Debug.Log(flocks.Count);
+        if (flocks.ContainsKey(id))
+            flocks[id] = flock;
+        else
+            flocks.Add(id, flock);
     }
 
     public Flock GetFlockByID(string id)
     {
-        return flocks.Find(f => f.flockID == id);
+        return (Flock) flocks[id];
     }
-
-    public void SaveCurrentFlocks()
-    {
-        SaveSystem.SaveFlocks(flocks);
-    }
-
 
     public void Set()
     {
@@ -135,11 +137,14 @@ public class GameManager : MonoBehaviour
             float speed = inputManager.getSpeed(); // Get the speed from InputManager
             float sightRadius = inputManager.getSightRadius(); // Get the sightRadius from InputManager
 
+            float hungryPercentage = inputManager.getHungryPercentage();
+            float reproducePercentage = inputManager.getReproducePercentage();
+
             Color selectedColor = inputManager.GetSelectedColor();
 
-            string selectedFlockID = inputManager.GetSelectedFlockID();
+            string selectedFlockID = currPopId;
 
-            AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius);
+            AddFlock(selectedFlockID, alignmentWeight, cohesionWeight, separationWeight, initEnergy, initialParticles, selectedColor, speed, sightRadius, hungryPercentage, reproducePercentage);
         } 
         catch (Exception e)
         {
@@ -150,7 +155,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log(flocks.Count);
         ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
