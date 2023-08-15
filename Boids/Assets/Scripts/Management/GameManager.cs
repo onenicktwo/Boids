@@ -7,6 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    private CameraMovement mainCameraMovement;
+
     public class Flock
     {
         public string flockID; // Unique identifier for each flock
@@ -56,19 +58,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddParticle(GameObject particle)
     {
         particles.Add(particle);
+        Camera.main.GetComponent<CameraMovement>().particles.Add(particle);
         particleCount++;
     }
 
     public void RemoveParticle(GameObject particle)
     {
         particles.Remove(particle);
+        Camera.main.GetComponent<CameraMovement>().particles.Remove(particle);
         particleCount--;
     }
 
@@ -170,6 +181,7 @@ public class GameManager : MonoBehaviour
         if (GameManager._instance.warningText.text == "")
         {
             SceneManager.LoadScene("Game");
+            mainCameraMovement = Camera.main.GetComponent<CameraMovement>();
         }
     }
 
