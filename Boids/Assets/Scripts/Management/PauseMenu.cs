@@ -51,7 +51,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Start Menu");
+<<<<<<< Updated upstream
         ValidateEntry.ClearWarning();
+=======
+        
+>>>>>>> Stashed changes
     }
 
     public void RestartGame()
