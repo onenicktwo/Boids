@@ -299,4 +299,19 @@ public class InputManager : MonoBehaviour
         }
         */
     }
+
+    public void Set()
+    {
+        GameManager._instance.Set();
+    }
+
+    public void StartGame()
+    {
+        GameManager._instance.StartGame();
+    }
+
+    public void QuitGame()
+    {
+        GameManager._instance.QuitGame();
+    }
 }
