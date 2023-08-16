@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager _instance;
 
-    private InputManager inputManager;
+    [HideInInspector]
+    public InputManager inputManager;
 
     public string currPopId = "1";
 
@@ -42,9 +43,6 @@ public class GameManager : MonoBehaviour
     public int energyFromFood;
     public int foodPerSec;
 
-    public GameObject warningPanel;
-    public GameObject blockingPanel;
-
     public int initialFood;
 
     public float maxX = 11.4f;
@@ -59,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         if (_instance == null)
         {
             _instance = this;
@@ -124,10 +123,10 @@ public class GameManager : MonoBehaviour
 
     public void Set()
     {
-        //ValidateEntry.ClearWarning();
-        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        if (inputManager == null)
+            inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
-        { 
+        {
             int initialParticles = (int) inputManager.getParticleInput();
             float alignmentWeight = inputManager.getAlignment();
             float cohesionWeight = inputManager.getCohesion();
@@ -155,8 +154,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        //ValidateEntry.ClearWarning();
-        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        if (inputManager == null)
+            inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
         {
             maxX = inputManager.getMaxX();

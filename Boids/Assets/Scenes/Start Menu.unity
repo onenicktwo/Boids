@@ -3202,6 +3202,8 @@ MonoBehaviour:
   reproducePercentage: {fileID: 946447309}
   flockIDToggleGroup: {fileID: 501969358}
   colorToggleGroup: {fileID: 1816641450}
+  warningPanel: {fileID: 1458298947}
+  blockingPanel: {fileID: 455399955}
   populationNumAsTxt: {fileID: 200684859}
   upButton: {fileID: 994309381}
   downButton: {fileID: 2111872615}
@@ -13491,14 +13493,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3772324e8b5ea411eb15fff8b39fe590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: 0}
   currPopId: 1
   particleCount: 0
   foodCount: 0
   particles: []
   energyFromFood: 0
   foodPerSec: 0
-  warningPanel: {fileID: 1458298947}
-  blockingPanel: {fileID: 455399955}
   initialFood: 0
   maxX: 20
   maxY: 20

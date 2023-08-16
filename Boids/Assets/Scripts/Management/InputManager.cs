@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private ToggleGroup colorToggleGroup;
 
+    public GameObject warningPanel;
+    public GameObject blockingPanel;
+
     // From Pop options
     private int numberOfPopulations;
     private int populationIndex;

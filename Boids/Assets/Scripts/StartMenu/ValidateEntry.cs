@@ -25,16 +25,9 @@ public class ValidateEntry : MonoBehaviour {
     }
 
     public static void FlagInvalidEntry() {
-        GameManager._instance.warningPanel.SetActive(true);
-        GameManager._instance.blockingPanel.SetActive(true);
+        InputManager inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        inputManager.warningPanel.SetActive(true);
+        inputManager.blockingPanel.SetActive(true);
 
     }
-
-    public static void ClearWarning() {
-        GameObject.Find("InputManager").GetComponent<InputManager>().ClearAllInputs();
-        GameManager._instance.warningPanel.SetActive(false);
-        GameManager._instance.blockingPanel.SetActive(false);
-    }
-
-  
 }
