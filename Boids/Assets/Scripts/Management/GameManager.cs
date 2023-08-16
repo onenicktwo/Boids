@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
     public int energyFromFood;
     public int foodPerSec;
 
-    public TextMeshProUGUI warningText;
+    public GameObject warningPanel;
+    public GameObject blockingPanel;
 
     public int initialFood;
 
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void Set()
     {
-        ValidateEntry.ClearWarning();
+        //ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
         { 
@@ -154,7 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        ValidateEntry.ClearWarning();
+        //ValidateEntry.ClearWarning();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         try
         {
@@ -171,18 +172,18 @@ public class GameManager : MonoBehaviour
             if(flocks.Count == 0)
             {
                 ValidateEntry.FlagInvalidEntry();
+            } else {
+                SceneManager.LoadScene("Game");
+                mainCameraMovement = Camera.main.GetComponent<CameraMovement>();
             }
+
         }
         catch (Exception e)
         {
             ValidateEntry.FlagInvalidEntry();
             Debug.Log(e.ToString());
         }
-        if (GameManager._instance.warningText.text == "")
-        {
-            SceneManager.LoadScene("Game");
-            mainCameraMovement = Camera.main.GetComponent<CameraMovement>();
-        }
+      
     }
 
     public void EndGame()
