@@ -11,21 +11,29 @@ public class ValidateEntry : MonoBehaviour {
             float input = float.Parse(inputString);
             if (input <= 0)
             {
+                
                 throw new Exception("Negative input value");
+
             }
+            
             return input;
+            
         } catch (Exception e) {
+            
             throw e;
         }
     }
 
     public static void FlagInvalidEntry() {
-        GameManager._instance.warningText.text = "Invalid Entry. Please enter a positive, whole number for all fields.";
-        GameObject.Find("InputManager").GetComponent<InputManager>().ClearAllInputs();
+        GameManager._instance.warningPanel.SetActive(true);
+        GameManager._instance.blockingPanel.SetActive(true);
+
     }
 
     public static void ClearWarning() {
-        GameManager._instance.warningText.text = "";
+        GameObject.Find("InputManager").GetComponent<InputManager>().ClearAllInputs();
+        GameManager._instance.warningPanel.SetActive(false);
+        GameManager._instance.blockingPanel.SetActive(false);
     }
 
   
