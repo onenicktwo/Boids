@@ -2944,82 +2944,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241618250}
   m_CullTransparentMesh: 1
---- !u!1 &242977340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 242977341}
-  - component: {fileID: 242977343}
-  - component: {fileID: 242977342}
-  m_Layer: 5
-  m_Name: Handle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &242977341
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242977340}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 760511610}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.84133637}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &242977342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242977340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b348076af9fca2f4eaca0b1d63e93890, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &242977343
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242977340}
-  m_CullTransparentMesh: 1
 --- !u!1 &262092848
 GameObject:
   m_ObjectHideFlags: 0
@@ -6963,11 +6887,11 @@ RectTransform:
   m_Father: {fileID: 841573755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -959.3893}
-  m_SizeDelta: {x: 0, y: 1918.7789}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.000002861023, y: 0}
+  m_SizeDelta: {x: 474, y: 1953.8}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &646158334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6998,8 +6922,8 @@ MonoBehaviour:
     m_Left: 20
     m_Right: 20
     m_Top: 18
-    m_Bottom: 18
-  m_ChildAlignment: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -8002,43 +7926,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759871771}
   m_CullTransparentMesh: 1
---- !u!1 &760511609
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 760511610}
-  m_Layer: 5
-  m_Name: Sliding Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &760511610
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760511609}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 242977341}
-  m_Father: {fileID: 955381564}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &781892059
 GameObject:
   m_ObjectHideFlags: 0
@@ -8457,7 +8344,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 646158333}
-  - {fileID: 955381564}
   m_Father: {fileID: 337438596}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8526,7 +8412,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 20
   m_Viewport: {fileID: 841573755}
   m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 955381565}
+  m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0
   m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
@@ -9254,133 +9140,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952038911}
-  m_CullTransparentMesh: 1
---- !u!1 &955381563
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 955381564}
-  - component: {fileID: 955381567}
-  - component: {fileID: 955381566}
-  - component: {fileID: 955381565}
-  m_Layer: 5
-  m_Name: Scrollbar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &955381564
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955381563}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 760511610}
-  m_Father: {fileID: 841573755}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.81085, y: -0.00032167}
-  m_SizeDelta: {x: 21.5983, y: 361.85}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &955381565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955381563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 242977342}
-  m_HandleRect: {fileID: 242977341}
-  m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.15866362
-  m_NumberOfSteps: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &955381566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955381563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &955381567
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955381563}
   m_CullTransparentMesh: 1
 --- !u!1 &957134277
 GameObject:
@@ -18030,7 +17789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233.52895, y: -43}
+  m_AnchoredPosition: {x: 237, y: -43}
   m_SizeDelta: {x: 427.0579, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680675465
@@ -18264,8 +18023,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233.52895, y: -1200.3162}
-  m_SizeDelta: {x: 427.0579, y: 2124.6323}
+  m_AnchoredPosition: {x: 237, y: -1045.9}
+  m_SizeDelta: {x: 427.0579, y: 1815.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711155216
 MonoBehaviour:
@@ -18288,37 +18047,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Starting Food: This is the number of food particles generated at game
-    start. The boid particles collide with food particles to gain energy. The food
-    particle is destroyed at this point. This can be any positive whole number. The
-    more food particles, the easier it is for the boid particles to gain energy.\r\n\r\nFood
-    Energy: This is the amount of energy gained by the boid particle when colliding
-    with a food particle. Energy is used at about one unit per second during regular
-    flight and one unit is consumed by each boid particle during reproduction.\r\n\r\nFood
-    Per Second: This is the amount of food particles spawned per second. This replaces
-    the food consumed by boid particles and generates in random locations.\r\n\r\nField
-    Size: The size of the game field, in pixels.\r\n  X: The horizontal axis of the
-    game field (left/right).\r\n  Y: The verticle axis of the game field (up/down).\r\n\r\nNumber
-    of Populations: This is the number of groups of boid particles on the game field.
-    1-6 populations are allowed per game.\r\n\r\nSelect Population: This toggle menu
-    is used to select the population currently being customized. Toggles become active
-    depending on the number of populations selected previously.\r\n\r\nColor: This
-    selects the color for all boid particles in a population.\r\n\r\n# Particles:
-    This selects the number of boid particles initially spawned for the population
-    selected. At least 2 boid particles are required for reproduction to occur.\r\n\r\nSpeed:
+    start. \n\r\nFood Energy: This is the amount of energy gained by the boid particle
+    when colliding with a food particle.\n\r\nFood Per Second: This is the amount
+    of food particles spawned per second. \n\r\nField Size: The size of the game
+    field.\r\n  X: The horizontal axis of the game field (left/right).\r\n  Y: The
+    verticle axis of the game field (up/down).\r\n\r\nNumber of Populations: This
+    is the number of groups of boid particles on the game field. 1-6 populations
+    are allowed per game.\r\n\r\nSelect Population: This toggle menu is used to select
+    the population currently being customized. \n\r\nColor: This selects the color
+    for all boid particles in a population.\r\n\r\n# Particles: This selects the
+    number of boid particles initially spawned for the population selected. \n\nSpeed:
     This selects the maximum rate of movement for each boid particle in the population.
-    Higher numbers allow for quicker movement. Boid particles slow down as energy
-    is lost and will remain still during reproduction.\r\n\r\nSight Radius: This
-    selects the area of awareness for the boid particle, or how far away they can
-    \"see\" other objects (other boid particles and food particles). Smaller sight
-    radius requires the boid particle to be closer to an object before that object
-    affects the behavior of the boid particle.\r\n\r\nInitial Energy: This is the
-    amount of energy each boid particle has when it first enters the game. One energy
-    unit is lost per boid particle for reproduction to occur and about one energy
-    unit is lost per second during game play.\r\n\r\nSeparation: This is the factor
-    which controls how far away from the population a single boid particle will stay
-    to avoid collision. Populations with high separation values have a lower chance
-    of colliding with other boid particles in their population, but may lose sight
-    of the population members more easily.\r\n\r\nAlignment: This factor determines
+    \n\r\nSight Radius: This selects the area of awareness for the boid particle,
+    or how far away they can \"see\" other objects.\n\r\nInitial Energy: This is
+    the amount of energy each boid particle has when it first enters the game. \n\r\nSeparation:
+    This is the factor which controls how far away from the population a single boid
+    particle will stay to avoid collision. \n\r\nAlignment: This factor determines
     the rate at which boid particles adjust their trajectory based on the current
     average trajectory of the population.\r\n\r\nCohesion: This factor controls how
     strongly the boid particle is pulled toward the center of mass of the population.\r\n\r\nState
@@ -18326,12 +18070,11 @@ MonoBehaviour:
     a different behavior based on energy level.\r\n  Hungry: If the boid particle's
     energy level lowers past this point, the boid particle will start actively seeking
     food particles.\r\n  Content: If the boid particle's energy level lowers past
-    this point, the boid particle will stop seeking to reproduce. Otherwise, the
-    boid particle will seek a mate to reproduce.\r\n\r\nSet: This button assigns
-    the values entered for the selected population to the population's code. Each
-    playing population will need to have all values entered and set to start the
-    game.\r\n\r\nMutation Chance: The chance that any offspring will have a mutation,
-    or that their values will differ from their parents' values.\r\n\r\nMutation
+    this point, the boid particle will stop seeking a mate to reproduce.\n\r\nSet:
+    This button assigns the values entered for the selected population to the population's
+    code. Each playing population will need to have all values entered and set to
+    start the game.\r\n\r\nMutation Chance: The chance that any offspring will have
+    a mutation, or that their values will differ from their parents' values.\r\n\r\nMutation
     Factor: This factor controls how much the offspring's values will change from
     the parents' values.\r\n\r\nQuit: Click to exit game\r\n\r\nStart: Click to enter
     game scene\r"
@@ -18361,8 +18104,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21866,7 +21609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233.52895, y: -103}
+  m_AnchoredPosition: {x: 237, y: -103}
   m_SizeDelta: {x: 427.0579, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997333337
