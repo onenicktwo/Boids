@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private ToggleGroup colorToggleGroup;
 
+    public int InputSelected;
+
     public GameObject warningPanel;
     public GameObject blockingPanel;
 
@@ -44,6 +46,66 @@ public class InputManager : MonoBehaviour
         numberOfPopulations = startingPopulations;
         populationNumAsTxt.text = startingPopTxt;
     }
+
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift)) {
+            InputSelected--;
+            if(InputSelected <0) {
+                InputSelected = 0;
+            }
+            SelectInputField();
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab)) { 
+            InputSelected++;
+            if(InputSelected > 11) {
+                InputSelected = 0;
+            }
+        }
+        SelectInputField();
+    }
+
+    void SelectInputField() {
+        switch(InputSelected) {
+            case 0: foodInput.Select();
+                break;
+            case 1: energyInput.Select();
+                break;
+            case 2: foodPerSecInput.Select();
+                break;
+            case 3: maxX.Select();
+                break;
+            case 4: maxY.Select();
+                break;
+            case 5: particleInput.Select();
+                break;
+            case 6: speed.Select();
+                break;
+            case 7: sightRadius.Select();
+                break;
+            case 8: initEnergy.Select();
+                break;
+            case 9: sep.Select();
+                break;
+            case 10: ali.Select();
+                break;
+            case 11: coh.Select();
+                break;
+        }
+    }
+
+    public void foodInputSelected() => InputSelected = 0;
+    public void energyInputSelected() => InputSelected = 1;
+    public void foodPerSecInputSelected() => InputSelected = 2;
+    public void maxXSelected() => InputSelected = 3;
+    public void maxYSelected() => InputSelected = 4;
+    public void particleInputSelected() => InputSelected = 5;
+    public void speedSelected() => InputSelected = 6;
+    public void sightRadiusSelected() => InputSelected = 7;
+    public void initEnergySelected() => InputSelected = 8;
+    public void sepSelected() => InputSelected = 9;
+    public void aliSelected() => InputSelected = 10;
+    public void cohSelected() => InputSelected = 11;
+
 
     public void IncreasePopulations()
     {
