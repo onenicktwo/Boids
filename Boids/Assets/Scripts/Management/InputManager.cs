@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
     private ToggleGroup colorToggleGroup;
 
     [SerializeField]
-    private Toggle divergeToggle;
+    private Toggle mingleToggle;
 
     public int InputSelected;
 
@@ -229,9 +229,9 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public bool ifDiverges()
+    public bool ifMingle()
     {
-        return divergeToggle.isOn;
+        return mingleToggle.isOn;
     }
     public float getHungryPercentage()
     {

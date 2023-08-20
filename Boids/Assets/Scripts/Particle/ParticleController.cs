@@ -258,7 +258,7 @@ public class ParticleController : MonoBehaviour
             Transform parent = collision.gameObject.transform.parent;
             if (parent.TryGetComponent<ParticleController>(out ParticleController pc))
             {
-                if (particleNeighbors.IndexOf(pc) < 0)
+                if (((!GameManager._instance.mingle && pc.flockID == flockID) || (GameManager._instance.mingle)) && particleNeighbors.IndexOf(pc) < 0)
                     particleNeighbors.Add(pc);
             }
         }

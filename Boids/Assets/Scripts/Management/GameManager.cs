@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     public float reproduceCooldownFactor = 1f;
     public float matureCooldownFactor = 1f;
 
-    public bool diverges = false;
+    public bool mingle = false;
 
     private void Awake()
     {
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
             mutationChance = inputManager.getMutationChance();
             mutationFactor = inputManager.getMutationFactor();
 
-            diverges = inputManager.ifDiverges();
+            mingle = inputManager.ifMingle();
 
             if(flocks.Count == 0)
             {

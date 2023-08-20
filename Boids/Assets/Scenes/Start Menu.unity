@@ -3028,7 +3028,7 @@ MonoBehaviour:
   reproducePercentage: {fileID: 946447309}
   flockIDToggleGroup: {fileID: 501969358}
   colorToggleGroup: {fileID: 1816641450}
-  divergeToggle: {fileID: 676240995}
+  mingleToggle: {fileID: 676240995}
   InputSelected: 0
   warningPanel: {fileID: 1458298947}
   blockingPanel: {fileID: 455399955}
@@ -7020,7 +7020,7 @@ GameObject:
   - component: {fileID: 676240994}
   - component: {fileID: 676240995}
   m_Layer: 5
-  m_Name: DivToggle
+  m_Name: MingleToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10127,7 +10127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005648802}
   m_Layer: 5
-  m_Name: DivergenceOption
+  m_Name: MingleOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13644,7 +13644,7 @@ MonoBehaviour:
   busyTimeFactor: 0.05
   reproduceCooldownFactor: 0.2
   matureCooldownFactor: 0.1
-  diverges: 0
+  mingle: 0
   gameState: 0
 --- !u!4 &1251998908
 Transform:
@@ -18478,10 +18478,9 @@ MonoBehaviour:
     start the game.\r\n\r\nMutation Chance: The chance that any offspring will have
     a mutation, or that their values will differ from their parents' values.\r\n\r\nMutation
     Factor: This factor controls how much the offspring's values will change from
-    the parents' values.\r\n\r\nDivergence: Particles will only follow and mate with
-    similar particles. Particles will also leave groups they are too different from
-    and can form their own flocks if they find a similar particle.\n\nQuit: Click
-    to exit game\r\n\n\rGo: Click to enter game scene\r"
+    the parents' values.\r\n\r\nMingle: Allows populations to follow and mate with
+    other populations\n\nQuit: Click to exit game\r\n\n\rGo: Click to enter game
+    scene\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7f9acbf7804c0b4fbd8311fc0142abb, type: 2}
   m_sharedMaterial: {fileID: 8726255407867241601, guid: c7f9acbf7804c0b4fbd8311fc0142abb, type: 2}
@@ -22611,7 +22610,7 @@ GameObject:
   - component: {fileID: 2029775585}
   - component: {fileID: 2029775584}
   m_Layer: 5
-  m_Name: DivTxt
+  m_Name: MingleTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22657,7 +22656,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Divergence
+  m_text: 'Population Mingle
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22720,7 +22721,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -52.295685, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
