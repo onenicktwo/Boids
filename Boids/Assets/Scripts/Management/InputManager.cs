@@ -24,6 +24,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private ToggleGroup colorToggleGroup;
 
+    [SerializeField]
+    private Toggle divergeToggle;
+
     public int InputSelected;
 
     public GameObject warningPanel;
@@ -226,6 +229,10 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public bool ifDiverges()
+    {
+        return divergeToggle.isOn;
+    }
     public float getHungryPercentage()
     {
         //Debug.Log(ValidateEntry.ValidateInput(hungryPercentage.value.ToString("F2"));
