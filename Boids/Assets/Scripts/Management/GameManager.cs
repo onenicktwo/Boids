@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     public float reproduceCooldownFactor = 1f;
     public float matureCooldownFactor = 1f;
 
+    public bool mingle = false;
+
     private void Awake()
     {
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
@@ -167,6 +169,8 @@ public class GameManager : MonoBehaviour
 
             mutationChance = inputManager.getMutationChance();
             mutationFactor = inputManager.getMutationFactor();
+
+            mingle = inputManager.ifMingle();
 
             if(flocks.Count == 0)
             {
