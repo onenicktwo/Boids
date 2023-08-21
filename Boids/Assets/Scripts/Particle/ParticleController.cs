@@ -77,10 +77,6 @@ public class ParticleController : MonoBehaviour
     // This will be set when the particle is instantiated
     public string flockID;
     GameManager.Flock assignedFlock;
-    // Static counter to keep track of the number of particles created
-    private static int particleCounter = 0;
-    // Unique ID for each particle
-    public int particleID;
 
 
     /*
@@ -111,10 +107,6 @@ public class ParticleController : MonoBehaviour
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
         StartCoroutine(GetNewVelocity());
-
-        // Assign a unique ID to the particle and increment the counter
-        particleID = particleCounter++;
-
     }
 
     private void Update()
@@ -294,11 +286,6 @@ public class ParticleController : MonoBehaviour
             if (indexOfFood >= 0)
                 foodNeighbors.RemoveAt(foodNeighbors.IndexOf(fb.gameObject));
         }
-    }
-
-    public static void ResetParticleCounter()
-    {
-        particleCounter = 0;
     }
     
 }
