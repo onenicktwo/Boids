@@ -60,6 +60,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
 
         GameManager._instance.particleCount = 0;
-        GameManager._instance.foodCount = 0;
+        
     }    
 }

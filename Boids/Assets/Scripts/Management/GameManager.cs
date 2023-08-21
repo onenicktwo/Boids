@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         particleCount = 0;
-        foodCount = 0;
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
