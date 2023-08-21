@@ -77,6 +77,10 @@ public class ParticleController : MonoBehaviour
     // This will be set when the particle is instantiated
     public string flockID;
     GameManager.Flock assignedFlock;
+    // Static counter to keep track of the number of particles created
+    private static int particleCounter = 0;
+    // Unique ID for each particle
+    public int particleID;
 
 
     /*
@@ -107,6 +111,10 @@ public class ParticleController : MonoBehaviour
         currEnergy = initEnergy;
         // StartCoroutine(GetNewNeighbors());
         StartCoroutine(GetNewVelocity());
+
+        // Assign a unique ID to the particle and increment the counter
+        particleID = particleCounter++;
+
     }
 
     private void Update()
@@ -258,7 +266,7 @@ public class ParticleController : MonoBehaviour
             Transform parent = collision.gameObject.transform.parent;
             if (parent.TryGetComponent<ParticleController>(out ParticleController pc))
             {
-                if (((!GameManager._instance.mingle && pc.flockID == flockID) || (GameManager._instance.mingle)) && particleNeighbors.IndexOf(pc) < 0)
+                if (particleNeighbors.IndexOf(pc) < 0)
                     particleNeighbors.Add(pc);
             }
         }
@@ -287,5 +295,14 @@ public class ParticleController : MonoBehaviour
                 foodNeighbors.RemoveAt(foodNeighbors.IndexOf(fb.gameObject));
         }
     }
+
+    public static void ResetParticleCounter()
+    {
+        particleCounter = 0;
+    }
     
 }
+
+
+
+
