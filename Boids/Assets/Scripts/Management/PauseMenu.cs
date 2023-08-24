@@ -45,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("Start Menu");
+        GameManager._instance.GoToMainMenu();
     }
 
     public void RestartGame()

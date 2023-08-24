@@ -215,6 +215,13 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Play;
     }
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("Start Menu");
+        flocks.Clear();
+        currPopId = "1";
+    }
+
     public void RestartGame()
     {
         particleCount = 0;
