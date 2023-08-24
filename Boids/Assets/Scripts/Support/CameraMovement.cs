@@ -114,6 +114,9 @@ public class CameraMovement : MonoBehaviour
         if (currentParticleIndex < 0) currentParticleIndex = particles.Count - 1;
         if (currentParticleIndex >= particles.Count) currentParticleIndex = 0;
         targetParticle = particles[currentParticleIndex].transform;
+
+        UpdateParticleInfo(targetParticle.GetComponent<ParticleController>());
+        UpdateInstructionText("Press Space to focus and unfocus");
     }
 
     private void HandleParticleDeath(GameObject deadParticle)
@@ -130,7 +133,12 @@ public class CameraMovement : MonoBehaviour
     {
         if (particleInfoText == null) return;
 
-        string info = "Particle ID: " + particleController.particleID + "\nSpeed: " + particleController.speed;
+        string info = "Particle ID: " + particleController.particleID +
+            "\nFlock #: " + particleController.flockID +
+            "\nSpeed: " + particleController.speed +
+            "\nAlignment Weight: " + particleController.aliWeight +
+            "\nCohesion Weight: " + particleController.cohWeight +
+            "\nSeperation Weight: " + particleController.sepWeight;
         particleInfoText.text = info;
     }
 
